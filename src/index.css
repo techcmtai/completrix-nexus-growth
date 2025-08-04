@@ -8,27 +8,27 @@
 
 @layer base {
   :root {
-    /* Brand Colors */
-    --primary: 240 100% 20%;
-    --primary-light: 240 100% 35%;
-    --primary-dark: 240 100% 15%;
+    /* Brand Colors - Teal Accent Clean Design */
+    --primary: 240 3% 12%;
+    --primary-light: 240 3% 20%;
+    --primary-dark: 240 3% 8%;
     --primary-foreground: 0 0% 98%;
 
     /* Secondary Brand */
-    --secondary: 270 50% 40%;
-    --secondary-light: 270 50% 55%;
+    --secondary: 240 4% 16%;
+    --secondary-light: 240 4% 24%;
     --secondary-foreground: 0 0% 98%;
 
-    /* Accent Colors */
-    --accent: 45 100% 50%;
-    --accent-light: 45 100% 65%;
-    --accent-foreground: 240 100% 20%;
+    /* Accent Colors - Teal */
+    --accent: 180 68% 42%;
+    --accent-light: 180 68% 52%;
+    --accent-foreground: 0 0% 98%;
 
-    /* Neutrals */
+    /* Neutrals - Clean White Background */
     --background: 0 0% 100%;
-    --foreground: 220 20% 10%;
-    --muted: 220 15% 96%;
-    --muted-foreground: 220 15% 45%;
+    --foreground: 240 3% 12%;
+    --muted: 240 2% 96%;
+    --muted-foreground: 240 3% 46%;
     --card: 0 0% 100%;
     --card-foreground: 220 20% 10%;
 
@@ -43,16 +43,16 @@
     --input: 220 15% 88%;
     --ring: 240 100% 50%;
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(240 100% 20%), hsl(270 50% 40%));
-    --gradient-accent: linear-gradient(135deg, hsl(45 100% 50%), hsl(35 100% 50%));
-    --gradient-hero: linear-gradient(135deg, hsl(240 100% 20%) 0%, hsl(270 50% 40%) 50%, hsl(45 100% 50%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(220 15% 98%) 100%);
+    /* Gradients - Clean Teal Theme */
+    --gradient-primary: linear-gradient(135deg, hsl(180 68% 42%), hsl(180 68% 52%));
+    --gradient-accent: linear-gradient(135deg, hsl(180 68% 42%), hsl(180 60% 35%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(180 5% 95%) 50%, hsl(180 20% 90%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(240 2% 98%) 100%);
 
-    /* Shadows */
-    --shadow-card: 0 4px 6px -1px hsl(220 20% 10% / 0.1), 0 2px 4px -1px hsl(220 20% 10% / 0.06);
-    --shadow-elevated: 0 20px 25px -5px hsl(220 20% 10% / 0.1), 0 10px 10px -5px hsl(220 20% 10% / 0.04);
-    --shadow-glow: 0 0 40px hsl(240 100% 50% / 0.3);
+    /* Shadows - Subtle Clean Shadows */
+    --shadow-card: 0 4px 6px -1px hsl(180 68% 42% / 0.08), 0 2px 4px -1px hsl(180 68% 42% / 0.04);
+    --shadow-elevated: 0 20px 25px -5px hsl(180 68% 42% / 0.12), 0 10px 10px -5px hsl(180 68% 42% / 0.06);
+    --shadow-glow: 0 0 40px hsl(180 68% 42% / 0.2);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
