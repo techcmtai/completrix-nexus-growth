@@ -262,7 +262,7 @@ const PitchDeck = () => {
                 delay: 1
               }} />
                 <div className="relative z-10">
-                  <div className="w-32 h-32 mx-auto mb-6 relative">
+                  <div className="w-48 h-36 mx-auto mb-6 relative">
                     <img src={cmtAiLogo} alt="CMT AI Logo" className="w-full h-full object-contain rounded-2xl shadow-card" />
                     <motion.div className="absolute inset-0 bg-accent/20 rounded-2xl" initial={{
                     opacity: 0
@@ -309,7 +309,7 @@ const PitchDeck = () => {
                 delay: 1.2
               }} />
                 <div className="relative z-10">
-                  <div className="w-32 h-32 mx-auto mb-6 relative">
+                  <div className="w-48 h-36 mx-auto mb-6 relative">
                     <img src={weMarketYouLogo} alt="We Market You Logo" className="w-full h-full object-contain rounded-2xl shadow-card" />
                     <motion.div className="absolute inset-0 bg-accent/20 rounded-2xl" initial={{
                     opacity: 0
