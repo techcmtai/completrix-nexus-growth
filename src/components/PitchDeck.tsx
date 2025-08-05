@@ -1037,62 +1037,43 @@ const PitchDeck = () => {
         </motion.div>
       </AnimatePresence>
       
-      {/* Navigation */}
+      {/* Left Navigation Button */}
       <motion.div 
-        className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50"
-        initial={{ y: 100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        className="fixed left-4 top-1/2 transform -translate-y-1/2 z-50"
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.5 }}
       >
-        <div className="bg-white/90 backdrop-blur-sm rounded-full p-4 shadow-elevated flex items-center gap-4">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={prevSlide}
-            className="rounded-full hover:scale-110 transition-transform"
-          >
-            ←
-          </Button>
-          
-          <div className="flex gap-2">
-            {slides.map((_, index) => (
-              <motion.button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-smooth ${
-                  index === currentSlide 
-                    ? 'bg-primary' 
-                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                }`}
-                whileHover={{ scale: 1.3 }}
-                whileTap={{ scale: 0.9 }}
-              />
-            ))}
-          </div>
-          
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={nextSlide}
-            className="rounded-full hover:scale-110 transition-transform"
-          >
-            →
-          </Button>
-          
-          <Button
-            variant={isAutoPlay ? "default" : "outline"}
-            size="sm"
-            onClick={() => setIsAutoPlay(!isAutoPlay)}
-            className="rounded-full hover:scale-110 transition-transform"
-          >
-            {isAutoPlay ? "⏸" : "▶"}
-          </Button>
-        </div>
+        <Button
+          variant="outline"
+          size="lg"
+          onClick={prevSlide}
+          className="w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-elevated hover:scale-110 transition-transform border-2"
+        >
+          ←
+        </Button>
       </motion.div>
       
-      {/* Slide Counter */}
+      {/* Right Navigation Button */}
       <motion.div 
-        className="fixed top-8 right-8 z-50 bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 shadow-card"
+        className="fixed right-4 top-1/2 transform -translate-y-1/2 z-50"
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+      >
+        <Button
+          variant="outline"
+          size="lg"
+          onClick={nextSlide}
+          className="w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-elevated hover:scale-110 transition-transform border-2"
+        >
+          →
+        </Button>
+      </motion.div>
+      
+      {/* Slide Counter & Controls */}
+      <motion.div 
+        className="fixed top-8 right-8 z-50 bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 shadow-card flex items-center gap-4"
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.3 }}
@@ -1100,6 +1081,39 @@ const PitchDeck = () => {
         <span className="text-sm font-medium">
           {currentSlide + 1} / {slides.length}
         </span>
+        <div className="w-px h-4 bg-border"></div>
+        <Button
+          variant={isAutoPlay ? "default" : "outline"}
+          size="sm"
+          onClick={() => setIsAutoPlay(!isAutoPlay)}
+          className="rounded-full hover:scale-110 transition-transform"
+        >
+          {isAutoPlay ? "⏸" : "▶"}
+        </Button>
+      </motion.div>
+
+      {/* Slide Indicators */}
+      <motion.div 
+        className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50"
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.7 }}
+      >
+        <div className="flex gap-2 bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 shadow-card">
+          {slides.map((_, index) => (
+            <motion.button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`w-2 h-2 rounded-full transition-smooth ${
+                index === currentSlide 
+                  ? 'bg-primary' 
+                  : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+              }`}
+              whileHover={{ scale: 1.5 }}
+              whileTap={{ scale: 0.8 }}
+            />
+          ))}
+        </div>
       </motion.div>
     </div>
   );
