@@ -9,58 +9,42 @@ import cmtAiLogo from '@/assets/cmt-ai-logo.png';
 const PitchDeck = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(false);
-  const slides = ['hero', 'problem', 'solution', 'services-cmt', 'services-wmy', 'business-model', 'traction', 'projections', 'team', 'investment', 'contact'];
+  const slides = [
+    'hero', 'executive-summary', 'market-analysis', 'business-model', 'financial-projections', 
+    'competitive-analysis', 'team', 'technology', 'growth-strategy', 'risk-analysis', 
+    'investment-ask', 'exit-strategy', 'esg', 'recognition', 'next-steps', 'contact'
+  ];
 
   // Chart data
-  const revenueData = [{
-    month: 'Jan',
-    revenue: 8,
-    projection: 12
-  }, {
-    month: 'Feb',
-    revenue: 9,
-    projection: 15
-  }, {
-    month: 'Mar',
-    revenue: 10,
-    projection: 18
-  }, {
-    month: 'Apr',
-    revenue: 11,
-    projection: 22
-  }, {
-    month: 'May',
-    revenue: 12,
-    projection: 26
-  }, {
-    month: 'Jun',
-    revenue: 11,
-    projection: 30
-  }, {
-    month: 'Jul',
-    revenue: 10,
-    projection: 35
-  }, {
-    month: 'Aug',
-    revenue: 12,
-    projection: 40
-  }, {
-    month: 'Sep',
-    revenue: 11,
-    projection: 50
-  }, {
-    month: 'Oct',
-    revenue: 10,
-    projection: 60
-  }, {
-    month: 'Nov',
-    revenue: 12,
-    projection: 75
-  }, {
-    month: 'Dec',
-    revenue: 11,
-    projection: 100
-  }];
+  const revenueProjectionData = [
+    { year: '2024', revenue: 14.4, teamSize: 20, revenuePer: 72 },
+    { year: '2025', revenue: 50.4, teamSize: 35, revenuePer: 144 },
+    { year: '2026', revenue: 80.4, teamSize: 55, revenuePer: 146 },
+    { year: '2027', revenue: 99.6, teamSize: 75, revenuePer: 133 },
+    { year: '2028', revenue: 120.0, teamSize: 90, revenuePer: 133 }
+  ];
+
+  const marketSizeData = [
+    { sector: 'India IT Services', size: 39.83, growth: 7.30 },
+    { sector: 'Global Digital Marketing', size: 780, growth: 11.66 },
+    { sector: 'Global AI Services', size: 244.22, growth: 26.60 }
+  ];
+
+  const cashFlowData = [
+    { year: '2024', cashFlow: -7.7 },
+    { year: '2025', cashFlow: 6.7 },
+    { year: '2026', cashFlow: 11.5 },
+    { year: '2027', cashFlow: 7.7 },
+    { year: '2028', cashFlow: 9.6 }
+  ];
+
+  const competitiveData = [
+    { aspect: 'Technical Capability', completrix: 8, large: 9, local: 6, marketing: 3 },
+    { aspect: 'Marketing Expertise', completrix: 9, large: 3, local: 4, marketing: 9 },
+    { aspect: 'Cost Effectiveness', completrix: 8, large: 3, local: 7, marketing: 6 },
+    { aspect: 'Agility & Speed', completrix: 9, large: 4, local: 7, marketing: 8 },
+    { aspect: 'Client Size Focus', completrix: 8, large: 9, local: 6, marketing: 7 }
+  ];
   const marketShareData = [{
     name: 'CMT AI',
     value: 40,
@@ -314,7 +298,7 @@ const PitchDeck = () => {
       }}>
           <div className="grid grid-cols-3 gap-8 text-center">
             {[{
-            value: "₹1.2Cr+",
+            value: "₹14.4Cr",
             label: "Annual Revenue",
             icon: DollarSign
           }, {
@@ -322,7 +306,7 @@ const PitchDeck = () => {
             label: "Clients Served",
             icon: Users
           }, {
-            value: "20+",
+            value: "20",
             label: "Team Members",
             icon: Briefcase
           }].map((stat, i) => <motion.div key={i} className="flex flex-col items-center" whileHover={{
@@ -748,7 +732,7 @@ const PitchDeck = () => {
                 <h3 className="text-2xl font-bold mb-6 text-center text-primary">Revenue Growth Trajectory</h3>
                 <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
-                    <RechartsLineChart data={revenueData}>
+                    <RechartsLineChart data={revenueProjectionData}>
                       <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                       <XAxis dataKey="month" stroke="#64748b" />
                       <YAxis stroke="#64748b" />
@@ -920,50 +904,101 @@ const PitchDeck = () => {
         </div>
       </div>
     </div>;
-  const InvestmentSlide = () => <div className="pitch-slide bg-background">
-      <div className="pitch-content text-center">
-        <h2 className="text-5xl md:text-6xl font-black mb-8 text-primary">Investment Opportunity</h2>
+  const InvestmentSlide = () => (
+    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+      <div className="pitch-content">
+        <motion.h2 className="section-title" variants={itemVariants}>Investment Structure & Terms</motion.h2>
         
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
-          <Card className="bg-white border border-border shadow-elevated">
-            <CardContent className="p-8">
-              <h3 className="text-3xl font-bold mb-4 text-accent">Seeking Investment</h3>
-              <div className="text-6xl font-black mb-4 text-primary">₹1 Cr</div>
-              <p className="text-xl text-muted-foreground">Strategic Growth Capital</p>
-            </CardContent>
-          </Card>
-          
-          <Card className="bg-white border border-border shadow-elevated">
-            <CardContent className="p-8">
-              <h3 className="text-3xl font-bold mb-4 text-accent">Projected Returns</h3>
-              <div className="text-6xl font-black mb-4 text-primary">8-10x</div>
-              <p className="text-xl text-muted-foreground">Revenue Growth Multiple</p>
-            </CardContent>
-          </Card>
-        </div>
-        
-        <div className="grid md:grid-cols-4 gap-6">
-          {[{
-          title: "Market Expansion",
-          desc: "International presence"
-        }, {
-          title: "Team Scaling",
-          desc: "50+ professionals"
-        }, {
-          title: "Technology",
-          desc: "Proprietary AI platforms"
-        }, {
-          title: "Partnerships",
-          desc: "Global alliances"
-        }].map((use, index) => <Card key={index} className="bg-white border border-border shadow-card">
-              <CardContent className="p-6 text-center">
-                <h4 className="font-bold mb-2 text-accent">{use.title}</h4>
-                <p className="text-sm text-muted-foreground">{use.desc}</p>
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <motion.div variants={itemVariants}>
+            <Card className="bg-white border border-border shadow-elevated">
+              <CardContent className="p-8">
+                <h3 className="text-3xl font-bold mb-8 text-center text-primary">Investment Ask</h3>
+                
+                <div className="text-center mb-8">
+                  <motion.div className="text-6xl font-black text-accent mb-4" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.8, type: "spring" }}>
+                    ₹1 Crore
+                  </motion.div>
+                  <p className="text-xl text-muted-foreground">Series Seed Funding</p>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center p-4 bg-muted rounded-lg">
+                    <span className="font-medium">Pre-money Valuation</span>
+                    <span className="font-bold text-accent">₹1 Crore</span>
+                  </div>
+                  <div className="flex justify-between items-center p-4 bg-muted rounded-lg">
+                    <span className="font-medium">Post-money Valuation</span>
+                    <span className="font-bold text-accent">₹2 Crores</span>
+                  </div>
+                  <div className="flex justify-between items-center p-4 bg-muted rounded-lg">
+                    <span className="font-medium">Equity Offered</span>
+                    <span className="font-bold text-accent">~50%</span>
+                  </div>
+                  <div className="flex justify-between items-center p-4 bg-muted rounded-lg">
+                    <span className="font-medium">Investment Type</span>
+                    <span className="font-bold text-accent">Series Seed</span>
+                  </div>
+                </div>
               </CardContent>
-            </Card>)}
+            </Card>
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <Card className="bg-white border border-border shadow-elevated">
+              <CardContent className="p-8">
+                <h4 className="text-2xl font-bold mb-6 text-primary">Use of Investment Funds</h4>
+                <div className="space-y-4">
+                  {[
+                    { category: "Infrastructure Expansion", amount: "₹40L", percentage: "40%", purpose: "Advanced tools, cloud infrastructure, office expansion" },
+                    { category: "Team Scaling", amount: "₹30L", percentage: "30%", purpose: "Hire 15+ professionals, training programs" },
+                    { category: "International Market Entry", amount: "₹20L", percentage: "20%", purpose: "Market research, legal compliance, partnerships" },
+                    { category: "Technology & Marketing", amount: "₹10L", percentage: "10%", purpose: "R&D for SaaS products, automation tools" }
+                  ].map((item, i) => (
+                    <div key={i} className="p-4 border border-border rounded-lg">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="font-semibold text-foreground">{item.category}</span>
+                        <div className="text-right">
+                          <div className="font-bold text-accent">{item.amount}</div>
+                          <div className="text-sm text-muted-foreground">{item.percentage}</div>
+                        </div>
+                      </div>
+                      <p className="text-sm text-muted-foreground">{item.purpose}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
+
+        <motion.div className="mt-12" variants={itemVariants}>
+          <Card className="bg-white border border-border shadow-elevated">
+            <CardContent className="p-8">
+              <h4 className="text-2xl font-bold mb-6 text-center text-primary">Investor Return Projections</h4>
+              <div className="grid lg:grid-cols-3 gap-6">
+                <div className="text-center p-6 bg-muted rounded-lg">
+                  <div className="text-3xl font-bold text-success mb-2">15-20x</div>
+                  <div className="text-lg font-semibold mb-2">Conservative Scenario</div>
+                  <p className="text-sm text-muted-foreground">Return over 5-7 years</p>
+                </div>
+                <div className="text-center p-6 bg-accent/10 rounded-lg">
+                  <div className="text-3xl font-bold text-accent mb-2">25-35x</div>
+                  <div className="text-lg font-semibold mb-2">Base Case Scenario</div>
+                  <p className="text-sm text-muted-foreground">Return over 5-7 years</p>
+                </div>
+                <div className="text-center p-6 bg-primary/10 rounded-lg">
+                  <div className="text-3xl font-bold text-primary mb-2">40-60x</div>
+                  <div className="text-lg font-semibold mb-2">Optimistic Scenario</div>
+                  <p className="text-sm text-muted-foreground">Return over 5-7 years</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
       </div>
-    </div>;
+    </motion.div>
+  );
   const ContactSlide = () => <div className="pitch-slide bg-background">
       <div className="pitch-content text-center">
         <h2 className="section-title">Let's Build the Future Together</h2>
@@ -1008,28 +1043,297 @@ const PitchDeck = () => {
         </div>
       </div>
     </div>;
+  // New comprehensive slides
+  const ExecutiveSummarySlide = () => (
+    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+      <div className="pitch-content">
+        <motion.h2 className="section-title" variants={itemVariants}>Executive Summary & Investment Highlights</motion.h2>
+        
+        <motion.div className="text-center mb-12" variants={itemVariants}>
+          <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+            COMPLETRIX represents a unique investment opportunity in India's rapidly growing technology services sector
+          </p>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-8 mb-12">
+          <motion.div variants={itemVariants}>
+            <Card className="bg-white border border-border shadow-elevated">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-6 text-primary">Key Investment Thesis</h3>
+                <div className="space-y-4">
+                  {[
+                    "Unique Market Position: Only company in India offering both enterprise-grade technology development AND comprehensive digital marketing services",
+                    "Proven Business Model: Bootstrapped to ₹14.4 crores annual revenue with 25-30% profit margins",
+                    "Experienced Leadership: Combined 47+ years of industry experience",
+                    "Massive Market Opportunity: Targeting $244B AI services market and $780B digital marketing sector"
+                  ].map((point, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-foreground">{point}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <Card className="bg-white border border-border shadow-elevated">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-6 text-primary">Growth Path</h3>
+                <div className="text-center mb-6">
+                  <div className="text-4xl font-bold text-accent mb-2">8.3x</div>
+                  <p className="text-muted-foreground">Revenue Growth to ₹120 crores by 2028</p>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="text-center p-3 bg-accent/10 rounded-lg">
+                    <div className="text-xl font-bold text-accent">₹14.4Cr</div>
+                    <div className="text-xs text-muted-foreground">Current Revenue</div>
+                  </div>
+                  <div className="text-center p-3 bg-success/10 rounded-lg">
+                    <div className="text-xl font-bold text-success">₹120Cr</div>
+                    <div className="text-xs text-muted-foreground">Target by 2028</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  const MarketAnalysisSlide = () => (
+    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+      <div className="pitch-content">
+        <motion.h2 className="section-title" variants={itemVariants}>Detailed Market Analysis & Opportunity</motion.h2>
+        
+        <motion.div className="mb-12" variants={itemVariants}>
+          <Card className="bg-white border border-border shadow-elevated">
+            <CardContent className="p-8">
+              <h3 className="text-2xl font-bold mb-6 text-center text-primary">Total Addressable Market (TAM)</h3>
+              <div className="h-64">
+                <ResponsiveContainer width="100%" height="100%">
+                  <RechartsBarChart data={marketSizeData}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                    <XAxis dataKey="sector" stroke="#64748b" />
+                    <YAxis stroke="#64748b" />
+                    <Tooltip />
+                    <Bar dataKey="size" fill="#14b8a6" name="Market Size ($B)" />
+                  </RechartsBarChart>
+                </ResponsiveContainer>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-3 gap-6">
+          {[
+            { market: "India IT Services", size: "$39.83B → $75.03B", growth: "7.30% CAGR" },
+            { market: "Global Digital Marketing", size: "$780B → $1,501B", growth: "11.66% CAGR" },
+            { market: "Global AI Services", size: "$244.22B → $1,010B", growth: "26.60% CAGR" }
+          ].map((data, i) => (
+            <motion.div key={i} variants={itemVariants}>
+              <Card className="bg-white border border-border shadow-elevated">
+                <CardContent className="p-6 text-center">
+                  <h4 className="font-bold text-primary mb-3">{data.market}</h4>
+                  <div className="text-2xl font-bold text-accent mb-2">{data.size}</div>
+                  <div className="text-success font-semibold">{data.growth}</div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  const FinancialProjectionsSlide = () => (
+    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+      <div className="pitch-content">
+        <motion.h2 className="section-title" variants={itemVariants}>Financial Projections & Investment Analysis</motion.h2>
+        
+        <div className="grid lg:grid-cols-2 gap-8 mb-12">
+          <motion.div variants={itemVariants}>
+            <Card className="bg-white border border-border shadow-elevated">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-6 text-center text-primary">5-Year Revenue Projections</h3>
+                <div className="h-64">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <RechartsLineChart data={revenueProjectionData}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                      <XAxis dataKey="year" stroke="#64748b" />
+                      <YAxis stroke="#64748b" />
+                      <Tooltip />
+                      <Line type="monotone" dataKey="revenue" stroke="#10b981" strokeWidth={3} name="Revenue (₹Cr)" />
+                    </RechartsLineChart>
+                  </ResponsiveContainer>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <Card className="bg-white border border-border shadow-elevated">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-6 text-center text-primary">Cash Flow Projections</h3>
+                <div className="h-64">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <RechartsBarChart data={cashFlowData}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                      <XAxis dataKey="year" stroke="#64748b" />
+                      <YAxis stroke="#64748b" />
+                      <Tooltip />
+                      <Bar dataKey="cashFlow" fill="#14b8a6" name="Cash Flow (₹Cr)" />
+                    </RechartsBarChart>
+                  </ResponsiveContainer>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+
+        <motion.div variants={itemVariants}>
+          <Card className="bg-white border border-border shadow-elevated">
+            <CardContent className="p-8">
+              <h3 className="text-2xl font-bold mb-6 text-center text-primary">Comprehensive 5-Year Financial Model</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b">
+                      <th className="text-left py-2">Metric</th>
+                      {revenueProjectionData.map(d => <th key={d.year} className="text-center py-2">{d.year}</th>)}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b">
+                      <td className="py-2 font-medium">Annual Revenue (₹ Cr)</td>
+                      {revenueProjectionData.map(d => <td key={d.year} className="text-center py-2">{d.revenue}</td>)}
+                    </tr>
+                    <tr className="border-b">
+                      <td className="py-2 font-medium">Team Size</td>
+                      {revenueProjectionData.map(d => <td key={d.year} className="text-center py-2">{d.teamSize}</td>)}
+                    </tr>
+                    <tr>
+                      <td className="py-2 font-medium">Revenue/Employee (₹ L)</td>
+                      {revenueProjectionData.map(d => <td key={d.year} className="text-center py-2">{d.revenuePer}</td>)}
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+
+  const CompetitiveAnalysisSlide = () => (
+    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+      <div className="pitch-content">
+        <motion.h2 className="section-title" variants={itemVariants}>Competitive Analysis & Market Positioning</motion.h2>
+        
+        <motion.div className="mb-12" variants={itemVariants}>
+          <Card className="bg-white border border-border shadow-elevated">
+            <CardContent className="p-8">
+              <h3 className="text-2xl font-bold mb-6 text-center text-primary">Competitive Positioning Analysis</h3>
+              <div className="h-80">
+                <ResponsiveContainer width="100%" height="100%">
+                  <RechartsBarChart data={competitiveData} layout="horizontal">
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                    <XAxis type="number" stroke="#64748b" domain={[0, 10]} />
+                    <YAxis dataKey="aspect" type="category" stroke="#64748b" width={120} />
+                    <Tooltip />
+                    <Bar dataKey="completrix" fill="#10b981" name="COMPLETRIX" />
+                    <Bar dataKey="large" fill="#3b82f6" name="Large IT Companies" />
+                    <Bar dataKey="local" fill="#f59e0b" name="Local IT Agencies" />
+                    <Bar dataKey="marketing" fill="#ef4444" name="Marketing Agencies" />
+                  </RechartsBarChart>
+                </ResponsiveContainer>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-8">
+          <motion.div variants={itemVariants}>
+            <Card className="bg-white border border-border shadow-elevated">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-6 text-primary">Key Competitive Advantages</h3>
+                <div className="space-y-4">
+                  {[
+                    "Unique Service Integration: Only company offering both technology AND marketing expertise",
+                    "Cost Effectiveness: 8/10 rating vs. 3/10 for large IT companies",
+                    "Agility & Speed: 9/10 rating enabling rapid client response",
+                    "Dual Expertise: 8/10 technical + 9/10 marketing expertise"
+                  ].map((advantage, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-success rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-foreground">{advantage}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <Card className="bg-white border border-border shadow-elevated">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-6 text-primary">Competitive Landscape</h3>
+                <div className="space-y-4">
+                  {[
+                    { type: "Large IT Companies", desc: "High technical capability but limited marketing expertise and high costs" },
+                    { type: "Local IT Agencies", desc: "Cost-effective but limited service range and technical depth" },
+                    { type: "Marketing Agencies", desc: "Strong marketing focus but no technical development capabilities" },
+                    { type: "COMPLETRIX", desc: "Unique position combining both technical and marketing excellence" }
+                  ].map((comp, i) => (
+                    <div key={i} className="p-4 bg-muted rounded-lg">
+                      <div className="font-semibold text-primary mb-2">{comp.type}</div>
+                      <p className="text-sm text-muted-foreground">{comp.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+      </div>
+    </motion.div>
+  );
+
   const renderSlide = () => {
     switch (slides[currentSlide]) {
       case 'hero':
         return <HeroSlide />;
-      case 'problem':
-        return <ProblemSlide />;
-      case 'solution':
-        return <SolutionSlide />;
-      case 'services-cmt':
-        return <ServicesCMTSlide />;
-      case 'services-wmy':
-        return <ServicesWMYSlide />;
+      case 'executive-summary':
+        return <ExecutiveSummarySlide />;
+      case 'market-analysis':
+        return <MarketAnalysisSlide />;
       case 'business-model':
         return <BusinessModelSlide />;
-      case 'traction':
-        return <TractionSlide />;
-      case 'projections':
-        return <ProjectionsSlide />;
+      case 'financial-projections':
+        return <FinancialProjectionsSlide />;
+      case 'competitive-analysis':
+        return <CompetitiveAnalysisSlide />;
       case 'team':
         return <TeamSlide />;
-      case 'investment':
+      case 'technology':
+        return <ServicesCMTSlide />;
+      case 'growth-strategy':
+        return <ServicesWMYSlide />;
+      case 'risk-analysis':
+        return <ProblemSlide />;
+      case 'investment-ask':
         return <InvestmentSlide />;
+      case 'exit-strategy':
+        return <ProjectionsSlide />;
+      case 'esg':
+        return <SolutionSlide />;
+      case 'recognition':
+        return <TractionSlide />;
+      case 'next-steps':
+        return <ContactSlide />;
       case 'contact':
         return <ContactSlide />;
       default:
