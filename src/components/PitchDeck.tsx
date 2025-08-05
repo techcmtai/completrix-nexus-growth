@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ChevronDown, ChevronRight, ArrowRight, TrendingUp, Users, DollarSign, Zap, Globe, Shield, Brain, Smartphone, BarChart3, Target, Award, Mail, Phone, PieChart, LineChart, Activity, Building } from 'lucide-react';
+import { ChevronDown, ChevronRight, ArrowRight, TrendingUp, Users, DollarSign, Zap, Globe, Shield, Brain, Smartphone, BarChart3, Target, Award, Mail, Phone, PieChart, LineChart, Activity, Building, Calendar, Star, Briefcase, Rocket } from 'lucide-react';
+import { LineChart as RechartsLineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart as RechartsBarChart, Bar, PieChart as RechartsPieChart, Cell, Pie, Legend } from 'recharts';
+import weMarketYouLogo from '@/assets/we-market-you-logo.png';
+import cmtAiLogo from '@/assets/cmt-ai-logo.png';
 
 const PitchDeck = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -19,6 +23,35 @@ const PitchDeck = () => {
     'team',
     'investment',
     'contact'
+  ];
+
+  // Chart data
+  const revenueData = [
+    { month: 'Jan', revenue: 8, projection: 12 },
+    { month: 'Feb', revenue: 9, projection: 15 },
+    { month: 'Mar', revenue: 10, projection: 18 },
+    { month: 'Apr', revenue: 11, projection: 22 },
+    { month: 'May', revenue: 12, projection: 26 },
+    { month: 'Jun', revenue: 11, projection: 30 },
+    { month: 'Jul', revenue: 10, projection: 35 },
+    { month: 'Aug', revenue: 12, projection: 40 },
+    { month: 'Sep', revenue: 11, projection: 50 },
+    { month: 'Oct', revenue: 10, projection: 60 },
+    { month: 'Nov', revenue: 12, projection: 75 },
+    { month: 'Dec', revenue: 11, projection: 100 }
+  ];
+
+  const marketShareData = [
+    { name: 'CMT AI', value: 40, color: '#14b8a6' },
+    { name: 'We Market You', value: 35, color: '#0d9488' },
+    { name: 'Partnership Revenue', value: 25, color: '#0f766e' }
+  ];
+
+  const growthMetrics = [
+    { metric: 'Client Acquisition', current: 50, target: 200 },
+    { metric: 'Team Size', current: 20, target: 50 },
+    { metric: 'Monthly Revenue', current: 12, target: 100 },
+    { metric: 'Market Presence', current: 2, target: 8 }
   ];
 
   const nextSlide = () => {
@@ -40,79 +73,307 @@ const PitchDeck = () => {
     }
   }, [isAutoPlay]);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.1
+      }
+    },
+    exit: {
+      opacity: 0,
+      transition: { duration: 0.3 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.6 }
+    }
+  };
+
   const HeroSlide = () => (
-    <div className="pitch-slide bg-background text-foreground relative overflow-hidden">
-      <div className="pitch-content text-center">
-        <div className="mb-8">
-          <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tight text-primary">
+    <motion.div 
+      className="pitch-slide bg-background text-foreground relative overflow-hidden"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
+      {/* Animated Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-primary/5"></div>
+      <div className="absolute inset-0">
+        {[...Array(50)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-accent/20 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [-20, 20],
+              opacity: [0.2, 0.8, 0.2],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              repeatType: "reverse",
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="pitch-content text-center relative z-10">
+        <motion.div className="mb-8" variants={itemVariants}>
+          <motion.h1 
+            className="text-6xl md:text-8xl font-black mb-6 tracking-tight text-primary"
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             COMPLETRIX
-          </h1>
-          <p className="text-2xl md:text-3xl font-light mb-4 text-muted-foreground">
+          </motion.h1>
+          <motion.p 
+            className="text-2xl md:text-3xl font-light mb-4 text-muted-foreground"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             MICROTECHNOLOGIES PRIVATE LIMITED
-          </p>
-          <div className="w-32 h-1 bg-accent mx-auto mb-8"></div>
-          <p className="text-xl md:text-2xl font-medium max-w-4xl mx-auto leading-relaxed text-foreground">
+          </motion.p>
+          <motion.div 
+            className="w-32 h-1 bg-accent mx-auto mb-8"
+            initial={{ width: 0 }}
+            animate={{ width: 128 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          ></motion.div>
+          <motion.p 
+            className="text-xl md:text-2xl font-medium max-w-4xl mx-auto leading-relaxed text-foreground"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+          >
             Transforming Businesses Through <span className="text-accent font-bold">AI Innovation</span> 
             {' '}& <span className="text-accent font-bold">Strategic Marketing</span>
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
         
-        <div className="grid md:grid-cols-2 gap-8 mt-16">
-          <Card className="bg-white border border-border hover:shadow-elevated transition-smooth">
-            <CardContent className="p-8 text-center">
-              <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                <Brain className="w-10 h-10 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold mb-2 text-primary">CMT AI</h3>
-              <p className="text-lg text-muted-foreground">Advanced Technology Solutions</p>
-            </CardContent>
-          </Card>
+        <motion.div 
+          className="grid md:grid-cols-2 gap-8 mt-16"
+          variants={itemVariants}
+        >
+          <motion.div
+            whileHover={{ scale: 1.05, y: -10 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <Card className="bg-white border border-border shadow-elevated hover:shadow-glow transition-spring overflow-hidden">
+              <CardContent className="p-8 text-center relative">
+                <motion.div
+                  className="absolute inset-0 bg-accent/5"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.6, delay: 1 }}
+                />
+                <div className="relative z-10">
+                  <div className="w-32 h-32 mx-auto mb-6 relative">
+                    <img 
+                      src={cmtAiLogo} 
+                      alt="CMT AI Logo" 
+                      className="w-full h-full object-contain rounded-2xl shadow-card"
+                    />
+                    <motion.div
+                      className="absolute inset-0 bg-accent/20 rounded-2xl"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: [0, 0.3, 0] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    />
+                  </div>
+                  <h3 className="text-3xl font-bold mb-4 text-primary">CMT AI</h3>
+                  <p className="text-lg text-muted-foreground mb-4">Advanced Technology Solutions</p>
+                  <div className="flex justify-center gap-2">
+                    {[Brain, Smartphone, Globe, Rocket].map((Icon, i) => (
+                      <motion.div
+                        key={i}
+                        className="w-8 h-8 bg-accent/10 rounded-full flex items-center justify-center"
+                        whileHover={{ scale: 1.2 }}
+                        transition={{ delay: i * 0.1 }}
+                      >
+                        <Icon className="w-4 h-4 text-accent" />
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
           
-          <Card className="bg-white border border-border hover:shadow-elevated transition-smooth">
-            <CardContent className="p-8 text-center">
-              <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                <Target className="w-10 h-10 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold mb-2 text-primary">We Market You</h3>
-              <p className="text-lg text-muted-foreground">Strategic Digital Marketing</p>
-            </CardContent>
-          </Card>
-        </div>
+          <motion.div
+            whileHover={{ scale: 1.05, y: -10 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <Card className="bg-white border border-border shadow-elevated hover:shadow-glow transition-spring overflow-hidden">
+              <CardContent className="p-8 text-center relative">
+                <motion.div
+                  className="absolute inset-0 bg-accent/5"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.6, delay: 1.2 }}
+                />
+                <div className="relative z-10">
+                  <div className="w-32 h-32 mx-auto mb-6 relative">
+                    <img 
+                      src={weMarketYouLogo} 
+                      alt="We Market You Logo" 
+                      className="w-full h-full object-contain rounded-2xl shadow-card"
+                    />
+                    <motion.div
+                      className="absolute inset-0 bg-accent/20 rounded-2xl"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: [0, 0.3, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                    />
+                  </div>
+                  <h3 className="text-3xl font-bold mb-4 text-primary">We Market You</h3>
+                  <p className="text-lg text-muted-foreground mb-4">Strategic Digital Marketing</p>
+                  <div className="flex justify-center gap-2">
+                    {[Target, TrendingUp, BarChart3, Award].map((Icon, i) => (
+                      <motion.div
+                        key={i}
+                        className="w-8 h-8 bg-accent/10 rounded-full flex items-center justify-center"
+                        whileHover={{ scale: 1.2 }}
+                        transition={{ delay: i * 0.1 }}
+                      >
+                        <Icon className="w-4 h-4 text-accent" />
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </motion.div>
+
+        {/* Animated Stats Bar */}
+        <motion.div 
+          className="mt-16 bg-white border border-border rounded-2xl shadow-elevated p-6"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.5 }}
+        >
+          <div className="grid grid-cols-3 gap-8 text-center">
+            {[
+              { value: "₹1.2Cr+", label: "Annual Revenue", icon: DollarSign },
+              { value: "50+", label: "Clients Served", icon: Users },
+              { value: "20+", label: "Team Members", icon: Briefcase }
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                className="flex flex-col items-center"
+                whileHover={{ scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <stat.icon className="w-8 h-8 text-accent mb-2" />
+                <motion.div 
+                  className="text-2xl font-bold text-primary"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.5, delay: 1.8 + i * 0.2 }}
+                >
+                  {stat.value}
+                </motion.div>
+                <div className="text-sm text-muted-foreground">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 
   const ProblemSlide = () => (
-    <div className="pitch-slide bg-background">
+    <motion.div 
+      className="pitch-slide bg-background"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
       <div className="pitch-content">
-        <h2 className="section-title">The Challenge</h2>
+        <motion.h2 className="section-title" variants={itemVariants}>The Challenge</motion.h2>
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
+          <motion.div variants={itemVariants}>
             <h3 className="subsection-title text-primary">Market Pain Points</h3>
             <div className="space-y-6">
               {[
-                "70% of businesses struggle with digital transformation",
-                "Small-medium businesses lack access to enterprise-grade AI solutions",
-                "Marketing ROI remains unpredictable for most companies",
-                "Technical expertise gap prevents innovation adoption"
+                { text: "70% of businesses struggle with digital transformation", stat: "70%" },
+                { text: "Small-medium businesses lack access to enterprise-grade AI solutions", stat: "85%" },
+                { text: "Marketing ROI remains unpredictable for most companies", stat: "60%" },
+                { text: "Technical expertise gap prevents innovation adoption", stat: "90%" }
               ].map((point, index) => (
-                <div key={index} className="flex items-start gap-4 p-4 bg-white rounded-lg shadow-card border border-border">
-                  <div className="w-8 h-8 bg-destructive rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white font-bold text-sm">{index + 1}</span>
+                <motion.div 
+                  key={index} 
+                  className="flex items-start gap-4 p-6 bg-white rounded-lg shadow-card border border-border hover:shadow-elevated transition-spring group"
+                  initial={{ x: -50, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <div className="w-12 h-12 bg-destructive rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-spring">
+                    <span className="text-white font-bold">{point.stat}</span>
                   </div>
-                  <p className="text-lg text-foreground">{point}</p>
-                </div>
+                  <div>
+                    <p className="text-lg text-foreground font-medium">{point.text}</p>
+                    <div className="w-full bg-muted rounded-full h-2 mt-3">
+                      <motion.div 
+                        className="h-2 bg-destructive rounded-full"
+                        initial={{ width: 0 }}
+                        animate={{ width: point.stat }}
+                        transition={{ duration: 1, delay: 0.5 + index * 0.1 }}
+                      />
+                    </div>
+                  </div>
+                </motion.div>
               ))}
             </div>
-          </div>
-          <div className="relative">
-            <div className="bg-white p-8 rounded-2xl shadow-elevated border border-border">
-              <div className="w-32 h-32 mx-auto mb-6 relative">
-                <PieChart className="w-full h-full text-accent" />
+          </motion.div>
+          
+          <motion.div 
+            className="relative"
+            variants={itemVariants}
+          >
+            <motion.div 
+              className="bg-white p-8 rounded-2xl shadow-elevated border border-border"
+              whileHover={{ scale: 1.05, rotateY: 5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <div className="w-48 h-48 mx-auto mb-6 relative">
+                <motion.div
+                  className="absolute inset-0"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                >
+                  <PieChart className="w-full h-full text-accent" />
+                </motion.div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-accent">70%</div>
-                    <div className="text-xs text-muted-foreground">Struggling</div>
+                  <div className="text-center bg-white rounded-full p-4 shadow-card">
+                    <motion.div 
+                      className="text-4xl font-bold text-accent"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 0.8, delay: 0.5 }}
+                    >
+                      70%
+                    </motion.div>
+                    <div className="text-sm text-muted-foreground">Struggling</div>
                   </div>
                 </div>
               </div>
@@ -121,12 +382,27 @@ const PitchDeck = () => {
                 <p className="text-lg text-muted-foreground">
                   ₹2.3 Trillion Indian IT market with growing demand for integrated AI & marketing solutions
                 </p>
+                <motion.div 
+                  className="mt-6 grid grid-cols-2 gap-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1 }}
+                >
+                  <div className="text-center p-3 bg-accent/10 rounded-lg">
+                    <div className="text-xl font-bold text-accent">₹2.3T</div>
+                    <div className="text-xs text-muted-foreground">Market Size</div>
+                  </div>
+                  <div className="text-center p-3 bg-success/10 rounded-lg">
+                    <div className="text-xl font-bold text-success">15%</div>
+                    <div className="text-xs text-muted-foreground">Growth Rate</div>
+                  </div>
+                </motion.div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 
   const SolutionSlide = () => (
@@ -425,53 +701,164 @@ const PitchDeck = () => {
   );
 
   const ProjectionsSlide = () => (
-    <div className="pitch-slide bg-background">
+    <motion.div 
+      className="pitch-slide bg-background"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
       <div className="pitch-content">
-        <h2 className="section-title">Financial Projections</h2>
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <Card className="bg-white border border-border shadow-elevated">
+        <motion.h2 className="section-title" variants={itemVariants}>Financial Projections & Charts</motion.h2>
+        
+        <div className="grid lg:grid-cols-2 gap-12 mb-12">
+          {/* Revenue Chart */}
+          <motion.div variants={itemVariants}>
+            <Card className="bg-white border border-border shadow-elevated h-full">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-6 text-center text-primary">Revenue Growth</h3>
-                <div className="space-y-6">
-                  <div className="flex justify-between items-center p-4 bg-muted rounded-lg border border-border">
-                    <span className="font-semibold text-foreground">Current (Monthly)</span>
-                    <span className="text-xl font-bold text-success">₹10-12L</span>
-                  </div>
-                  <div className="flex justify-between items-center p-4 bg-accent/10 rounded-lg border border-accent/20">
-                    <span className="font-semibold text-foreground">Target (Monthly)</span>
-                    <span className="text-2xl font-bold text-accent">₹1Cr</span>
-                  </div>
-                  <div className="flex justify-between items-center p-4 bg-primary/10 rounded-lg border border-primary/20">
-                    <span className="font-semibold text-foreground">Growth Multiple</span>
-                    <span className="text-xl font-bold text-primary">8-10x</span>
-                  </div>
+                <h3 className="text-2xl font-bold mb-6 text-center text-primary">Revenue Growth Trajectory</h3>
+                <div className="h-80">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <RechartsLineChart data={revenueData}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                      <XAxis dataKey="month" stroke="#64748b" />
+                      <YAxis stroke="#64748b" />
+                      <Tooltip 
+                        contentStyle={{ 
+                          backgroundColor: 'white', 
+                          border: '1px solid #e2e8f0',
+                          borderRadius: '8px',
+                          boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'
+                        }}
+                      />
+                      <Line 
+                        type="monotone" 
+                        dataKey="revenue" 
+                        stroke="#10b981" 
+                        strokeWidth={3}
+                        name="Current Revenue (₹L)"
+                        dot={{ fill: '#10b981', strokeWidth: 2, r: 6 }}
+                      />
+                      <Line 
+                        type="monotone" 
+                        dataKey="projection" 
+                        stroke="#14b8a6" 
+                        strokeWidth={3}
+                        strokeDasharray="5 5"
+                        name="Projected Revenue (₹L)"
+                        dot={{ fill: '#14b8a6', strokeWidth: 2, r: 6 }}
+                      />
+                    </RechartsLineChart>
+                  </ResponsiveContainer>
                 </div>
               </CardContent>
             </Card>
-          </div>
-          
-          <div>
-            <h3 className="text-2xl font-bold mb-6 text-primary">Growth Strategy</h3>
-            <div className="space-y-4">
-              {[
-                { title: "Infrastructure Expansion", desc: "Scale team to 50+ professionals" },
-                { title: "International Markets", desc: "Enter US, UK, and European markets" },
-                { title: "Product Development", desc: "Launch proprietary AI platforms" },
-                { title: "Strategic Partnerships", desc: "Global technology partnerships" }
-              ].map((strategy, index) => (
-                <Card key={index} className="bg-white border border-border hover:shadow-card transition-smooth">
-                  <CardContent className="p-6">
-                    <h4 className="font-bold text-primary mb-2">{strategy.title}</h4>
-                    <p className="text-muted-foreground">{strategy.desc}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
+          </motion.div>
+
+          {/* Market Share Chart */}
+          <motion.div variants={itemVariants}>
+            <Card className="bg-white border border-border shadow-elevated h-full">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-6 text-center text-primary">Revenue Distribution</h3>
+                <div className="h-80">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <RechartsPieChart>
+                      <Pie
+                        data={marketShareData}
+                        cx="50%"
+                        cy="50%"
+                        outerRadius={100}
+                        innerRadius={40}
+                        dataKey="value"
+                        startAngle={90}
+                        endAngle={-270}
+                      >
+                        {marketShareData.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={entry.color} />
+                        ))}
+                      </Pie>
+                      <Tooltip 
+                        contentStyle={{ 
+                          backgroundColor: 'white', 
+                          border: '1px solid #e2e8f0',
+                          borderRadius: '8px',
+                          boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'
+                        }}
+                        formatter={(value) => [`${value}%`, 'Share']}
+                      />
+                      <Legend />
+                    </RechartsPieChart>
+                  </ResponsiveContainer>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
+
+        {/* Growth Metrics Bar Chart */}
+        <motion.div variants={itemVariants}>
+          <Card className="bg-white border border-border shadow-elevated">
+            <CardContent className="p-8">
+              <h3 className="text-2xl font-bold mb-6 text-center text-primary">Growth Metrics (Current vs Target)</h3>
+              <div className="h-80">
+                <ResponsiveContainer width="100%" height="100%">
+                  <RechartsBarChart data={growthMetrics} margin={{ top: 20, right: 30, left: 20, bottom: 60 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                    <XAxis 
+                      dataKey="metric" 
+                      stroke="#64748b"
+                      angle={-45}
+                      textAnchor="end"
+                      height={100}
+                      interval={0}
+                    />
+                    <YAxis stroke="#64748b" />
+                    <Tooltip 
+                      contentStyle={{ 
+                        backgroundColor: 'white', 
+                        border: '1px solid #e2e8f0',
+                        borderRadius: '8px',
+                        boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'
+                      }}
+                    />
+                    <Bar dataKey="current" fill="#10b981" name="Current" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="target" fill="#14b8a6" name="Target" radius={[4, 4, 0, 0]} />
+                  </RechartsBarChart>
+                </ResponsiveContainer>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        {/* Financial Summary */}
+        <motion.div 
+          className="grid md:grid-cols-4 gap-6 mt-12"
+          variants={itemVariants}
+        >
+          {[
+            { label: "Current ARR", value: "₹1.2Cr", growth: "+45%", icon: TrendingUp },
+            { label: "Target ARR", value: "₹12Cr", growth: "10x", icon: Target },
+            { label: "Break-even", value: "18 Months", growth: "Post-funding", icon: Calendar },
+            { label: "ROI Timeline", value: "3-5 Years", growth: "8-10x", icon: Star }
+          ].map((metric, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.05, y: -5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <Card className="bg-white border border-border shadow-card hover:shadow-elevated transition-spring">
+                <CardContent className="p-6 text-center">
+                  <metric.icon className="w-8 h-8 text-accent mx-auto mb-3" />
+                  <div className="text-2xl font-bold text-primary mb-1">{metric.value}</div>
+                  <div className="text-sm text-muted-foreground mb-2">{metric.label}</div>
+                  <div className="text-sm font-semibold text-success">{metric.growth}</div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 
   const TeamSlide = () => (
@@ -638,23 +1025,38 @@ const PitchDeck = () => {
 
   return (
     <div className="relative">
-      {renderSlide()}
+      <AnimatePresence mode="wait">
+        <motion.div 
+          key={currentSlide}
+          initial={{ opacity: 0, x: 300 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -300 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
+          {renderSlide()}
+        </motion.div>
+      </AnimatePresence>
       
       {/* Navigation */}
-      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
+      <motion.div 
+        className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50"
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+      >
         <div className="bg-white/90 backdrop-blur-sm rounded-full p-4 shadow-elevated flex items-center gap-4">
           <Button
             variant="outline"
             size="sm"
             onClick={prevSlide}
-            className="rounded-full"
+            className="rounded-full hover:scale-110 transition-transform"
           >
             ←
           </Button>
           
           <div className="flex gap-2">
             {slides.map((_, index) => (
-              <button
+              <motion.button
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={`w-3 h-3 rounded-full transition-smooth ${
@@ -662,6 +1064,8 @@ const PitchDeck = () => {
                     ? 'bg-primary' 
                     : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
                 }`}
+                whileHover={{ scale: 1.3 }}
+                whileTap={{ scale: 0.9 }}
               />
             ))}
           </div>
@@ -670,7 +1074,7 @@ const PitchDeck = () => {
             variant="outline"
             size="sm"
             onClick={nextSlide}
-            className="rounded-full"
+            className="rounded-full hover:scale-110 transition-transform"
           >
             →
           </Button>
@@ -679,19 +1083,24 @@ const PitchDeck = () => {
             variant={isAutoPlay ? "default" : "outline"}
             size="sm"
             onClick={() => setIsAutoPlay(!isAutoPlay)}
-            className="rounded-full"
+            className="rounded-full hover:scale-110 transition-transform"
           >
             {isAutoPlay ? "⏸" : "▶"}
           </Button>
         </div>
-      </div>
+      </motion.div>
       
       {/* Slide Counter */}
-      <div className="fixed top-8 right-8 z-50 bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 shadow-card">
+      <motion.div 
+        className="fixed top-8 right-8 z-50 bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 shadow-card"
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+      >
         <span className="text-sm font-medium">
           {currentSlide + 1} / {slides.length}
         </span>
-      </div>
+      </motion.div>
     </div>
   );
 };
