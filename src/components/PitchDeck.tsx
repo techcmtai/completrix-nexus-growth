@@ -2401,8 +2401,8 @@ const PitchDeck = () => {
       duration: 0.4,
       delay: 0.3
     }}>
-        <Button onClick={prevSlide} size="lg" variant="ghost" className="h-12 w-12 sm:h-14 sm:w-14 rounded-full bg-white/95 backdrop-blur-md shadow-glow border border-border/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110">
-          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+        <Button onClick={prevSlide} size="sm" variant="ghost" className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-white/95 backdrop-blur-md shadow-glow border border-border/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110">
+          <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
         </Button>
       </motion.div>
 
@@ -2417,8 +2417,8 @@ const PitchDeck = () => {
       duration: 0.4,
       delay: 0.3
     }}>
-        <Button onClick={nextSlide} size="lg" variant="ghost" className="h-12 w-12 sm:h-14 sm:w-14 rounded-full bg-white/95 backdrop-blur-md shadow-glow border border-border/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110">
-          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+        <Button onClick={nextSlide} size="sm" variant="ghost" className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-white/95 backdrop-blur-md shadow-glow border border-border/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110">
+          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
         </Button>
       </motion.div>
 
