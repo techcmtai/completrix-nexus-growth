@@ -6,76 +6,165 @@ import { ChevronLeft, ChevronRight, ArrowRight, TrendingUp, Users, DollarSign, Z
 import { LineChart as RechartsLineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart as RechartsBarChart, Bar, PieChart as RechartsPieChart, Cell, Pie, Legend } from 'recharts';
 import weMarketYouLogo from '/lovable-uploads/2ba6b31a-4757-4d6a-9d5a-3fd490fce4c9.png';
 import cmtAiLogo from '/lovable-uploads/a576a2c2-c473-4314-a9a6-a3f11e45253c.png';
-
 const PitchDeck = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(false);
-  
-  const slides = [
-    'cover', 'problem', 'solution', 'market-opportunity', 'products-services', 
-    'business-model', 'go-to-market', 'traction', 'competitive-landscape',
-    'technology-stack', 'case-studies', 'team-leadership', 'financials', 
-    'funding-ask', 'risk-mitigation', 'expansion-strategy', 'social-impact', 'vision-closing'
-  ];
+  const slides = ['cover', 'problem', 'solution', 'market-opportunity', 'products-services', 'business-model', 'go-to-market', 'traction', 'competitive-landscape', 'technology-stack', 'case-studies', 'team-leadership', 'financials', 'funding-ask', 'risk-mitigation', 'expansion-strategy', 'social-impact', 'vision-closing'];
 
   // Enhanced data sets for interactive visualizations
-  const financialData = [
-    { year: '2024-25', revenue: 1, grossMargin: 40, netProfit: 15, clients: 200, teamSize: 30, expenses: 0.85 },
-    { year: '2025-26', revenue: 5, grossMargin: 45, netProfit: 20, clients: 400, teamSize: 50, expenses: 4.0 },
-    { year: '2026-27', revenue: 12, grossMargin: 50, netProfit: 25, clients: 800, teamSize: 80, expenses: 9.0 },
-    { year: '2027-28', revenue: 25, grossMargin: 55, netProfit: 30, clients: 1500, teamSize: 120, expenses: 17.5 }
-  ];
-
-  const marketData = [
-    { name: 'Digital Marketing', value: 5.15, color: '#14b8a6', growth: 16.2 },
-    { name: 'Cloud Market', value: 17.9, color: '#0d9488', growth: 26.5 },
-    { name: 'AI Market', value: 6.8, color: '#0f766e', growth: 19.0 }
-  ];
-
-  const competitorData = [
-    { name: 'CMT', tech: true, marketing: true, fullStack: true, price: 'Affordable', target: 'Startups + SMEs', score: 95 },
-    { name: 'Infosys', tech: true, marketing: false, fullStack: false, price: 'High', target: 'Large Enterprises', score: 70 },
-    { name: 'TCS', tech: true, marketing: false, fullStack: false, price: 'High', target: 'Government', score: 65 },
-    { name: 'Mindtree', tech: true, marketing: false, fullStack: false, price: 'High', target: 'MNCs', score: 60 }
-  ];
-
-  const monthlyGrowthData = [
-    { month: 'Jan', revenue: 50, clients: 15 },
-    { month: 'Feb', revenue: 65, clients: 18 },
-    { month: 'Mar', revenue: 80, clients: 22 },
-    { month: 'Apr', revenue: 95, clients: 28 },
-    { month: 'May', revenue: 120, clients: 35 },
-    { month: 'Jun', revenue: 140, clients: 42 }
-  ];
-
-  const serviceBreakdown = [
-    { service: 'Web Development', percentage: 35, revenue: 420 },
-    { service: 'AI/ML Services', percentage: 25, revenue: 300 },
-    { service: 'Digital Marketing', percentage: 20, revenue: 240 },
-    { service: 'Cloud Services', percentage: 15, revenue: 180 },
-    { service: 'Mobile Apps', percentage: 5, revenue: 60 }
-  ];
-
-  const clientSatisfactionData = [
-    { metric: 'Overall Satisfaction', score: 4.8 },
-    { metric: 'Delivery Time', score: 4.6 },
-    { metric: 'Quality', score: 4.9 },
-    { metric: 'Communication', score: 4.7 },
-    { metric: 'Value for Money', score: 4.8 }
-  ];
-
+  const financialData = [{
+    year: '2024-25',
+    revenue: 1,
+    grossMargin: 40,
+    netProfit: 15,
+    clients: 200,
+    teamSize: 30,
+    expenses: 0.85
+  }, {
+    year: '2025-26',
+    revenue: 5,
+    grossMargin: 45,
+    netProfit: 20,
+    clients: 400,
+    teamSize: 50,
+    expenses: 4.0
+  }, {
+    year: '2026-27',
+    revenue: 12,
+    grossMargin: 50,
+    netProfit: 25,
+    clients: 800,
+    teamSize: 80,
+    expenses: 9.0
+  }, {
+    year: '2027-28',
+    revenue: 25,
+    grossMargin: 55,
+    netProfit: 30,
+    clients: 1500,
+    teamSize: 120,
+    expenses: 17.5
+  }];
+  const marketData = [{
+    name: 'Digital Marketing',
+    value: 5.15,
+    color: '#14b8a6',
+    growth: 16.2
+  }, {
+    name: 'Cloud Market',
+    value: 17.9,
+    color: '#0d9488',
+    growth: 26.5
+  }, {
+    name: 'AI Market',
+    value: 6.8,
+    color: '#0f766e',
+    growth: 19.0
+  }];
+  const competitorData = [{
+    name: 'CMT',
+    tech: true,
+    marketing: true,
+    fullStack: true,
+    price: 'Affordable',
+    target: 'Startups + SMEs',
+    score: 95
+  }, {
+    name: 'Infosys',
+    tech: true,
+    marketing: false,
+    fullStack: false,
+    price: 'High',
+    target: 'Large Enterprises',
+    score: 70
+  }, {
+    name: 'TCS',
+    tech: true,
+    marketing: false,
+    fullStack: false,
+    price: 'High',
+    target: 'Government',
+    score: 65
+  }, {
+    name: 'Mindtree',
+    tech: true,
+    marketing: false,
+    fullStack: false,
+    price: 'High',
+    target: 'MNCs',
+    score: 60
+  }];
+  const monthlyGrowthData = [{
+    month: 'Jan',
+    revenue: 50,
+    clients: 15
+  }, {
+    month: 'Feb',
+    revenue: 65,
+    clients: 18
+  }, {
+    month: 'Mar',
+    revenue: 80,
+    clients: 22
+  }, {
+    month: 'Apr',
+    revenue: 95,
+    clients: 28
+  }, {
+    month: 'May',
+    revenue: 120,
+    clients: 35
+  }, {
+    month: 'Jun',
+    revenue: 140,
+    clients: 42
+  }];
+  const serviceBreakdown = [{
+    service: 'Web Development',
+    percentage: 35,
+    revenue: 420
+  }, {
+    service: 'AI/ML Services',
+    percentage: 25,
+    revenue: 300
+  }, {
+    service: 'Digital Marketing',
+    percentage: 20,
+    revenue: 240
+  }, {
+    service: 'Cloud Services',
+    percentage: 15,
+    revenue: 180
+  }, {
+    service: 'Mobile Apps',
+    percentage: 5,
+    revenue: 60
+  }];
+  const clientSatisfactionData = [{
+    metric: 'Overall Satisfaction',
+    score: 4.8
+  }, {
+    metric: 'Delivery Time',
+    score: 4.6
+  }, {
+    metric: 'Quality',
+    score: 4.9
+  }, {
+    metric: 'Communication',
+    score: 4.7
+  }, {
+    metric: 'Value for Money',
+    score: 4.8
+  }];
   const nextSlide = () => {
     setCurrentSlide(prev => (prev + 1) % slides.length);
   };
-
   const prevSlide = () => {
     setCurrentSlide(prev => (prev - 1 + slides.length) % slides.length);
   };
-
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
   };
-
   useEffect(() => {
     if (isAutoPlay) {
       const interval = setInterval(nextSlide, 8000);
@@ -93,69 +182,88 @@ const PitchDeck = () => {
         setIsAutoPlay(!isAutoPlay);
       }
     };
-
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, [isAutoPlay]);
-
   const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1,
-      transition: { duration: 0.6, staggerChildren: 0.1 }
+    hidden: {
+      opacity: 0
     },
-    exit: { opacity: 0, transition: { duration: 0.3 } }
-  };
-
-  const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
       opacity: 1,
-      transition: { duration: 0.6 }
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.1
+      }
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 0.3
+      }
+    }
+  };
+  const itemVariants = {
+    hidden: {
+      y: 30,
+      opacity: 0
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6
+      }
     }
   };
 
   // Slide 1: Cover
-  const CoverSlide = () => (
-    <motion.div 
-      className="pitch-slide bg-background text-foreground relative overflow-hidden"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
+  const CoverSlide = () => <motion.div className="pitch-slide bg-background text-foreground relative overflow-hidden" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-primary/5"></div>
       <div className="pitch-content text-center relative z-10">
         <motion.div className="mb-8" variants={itemVariants}>
-          <motion.h1 
-            className="text-5xl md:text-7xl font-black mb-6 tracking-tight text-primary"
-            initial={{ scale: 0.5, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
+          <motion.h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight text-primary" initial={{
+          scale: 0.5,
+          opacity: 0
+        }} animate={{
+          scale: 1,
+          opacity: 1
+        }} transition={{
+          duration: 0.8,
+          ease: "easeOut"
+        }}>
             COMPLETRIX
           </motion.h1>
-          <motion.p 
-            className="text-xl md:text-2xl font-light mb-4 text-muted-foreground"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
+          <motion.p className="text-xl md:text-2xl font-light mb-4 text-muted-foreground" initial={{
+          y: 20,
+          opacity: 0
+        }} animate={{
+          y: 0,
+          opacity: 1
+        }} transition={{
+          duration: 0.6,
+          delay: 0.3
+        }}>
             MICROTECHNOLOGIES PRIVATE LIMITED
           </motion.p>
-          <motion.div 
-            className="w-32 h-1 bg-accent mx-auto mb-8"
-            initial={{ width: 0 }}
-            animate={{ width: 128 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          />
-          <motion.p 
-            className="text-3xl md:text-4xl font-bold max-w-4xl mx-auto leading-relaxed text-accent mb-12"
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-          >
+          <motion.div className="w-32 h-1 bg-accent mx-auto mb-8" initial={{
+          width: 0
+        }} animate={{
+          width: 128
+        }} transition={{
+          duration: 0.8,
+          delay: 0.5
+        }} />
+          <motion.p className="text-3xl md:text-4xl font-bold max-w-4xl mx-auto leading-relaxed text-accent mb-12" initial={{
+          y: 30,
+          opacity: 0
+        }} animate={{
+          y: 0,
+          opacity: 1
+        }} transition={{
+          duration: 0.6,
+          delay: 0.7
+        }}>
             "Start. Scale. Succeed."
           </motion.p>
         </motion.div>
@@ -182,12 +290,16 @@ const PitchDeck = () => {
           </Card>
         </motion.div>
 
-        <motion.div 
-          className="mt-16 text-center"
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.5 }}
-        >
+        <motion.div className="mt-16 text-center" initial={{
+        y: 50,
+        opacity: 0
+      }} animate={{
+        y: 0,
+        opacity: 1
+      }} transition={{
+        duration: 0.8,
+        delay: 1.5
+      }}>
           <p className="text-xl text-muted-foreground mb-4">Contact</p>
           <div className="text-lg">
             <p className="font-bold text-primary">Anurag Singh, Founder & CEO</p>
@@ -204,75 +316,51 @@ const PitchDeck = () => {
           </div>
         </motion.div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Slide 2: Problem
-  const ProblemSlide = () => (
-    <motion.div 
-      className="pitch-slide bg-background"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
+  const ProblemSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
           The Problem
         </motion.h2>
         
         <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {[
-            {
-              title: "Technical Expertise Gap",
-              description: "85% of startups fail due to lack of technical co-founders. Entrepreneurs struggle to find reliable, full-stack tech partners who understand modern frameworks, AI/ML, and scalable cloud infrastructure.",
-              stats: "85% startup failure rate",
-              icon: Brain,
-              color: "text-red-500"
-            },
-            {
-              title: "Fragmented Service Ecosystem",
-              description: "Traditional agencies focus on single domains - either technology OR marketing. This creates coordination challenges, inconsistent branding, and project delays for growing businesses.",
-              stats: "60% project delays",
-              icon: Target,
-              color: "text-orange-500"
-            },
-            {
-              title: "High Cost Barriers",
-              description: "Enterprise-grade tech and marketing services are priced for large corporations. SMEs and startups can't afford ₹50L+ budgets that traditional providers demand.",
-              stats: "₹50L+ typical cost",
-              icon: DollarSign,
-              color: "text-yellow-500"
-            }
-          ].map((problem, index) => (
-            <motion.div
-              key={index}
-              className="p-8 bg-white rounded-xl shadow-elevated border border-border hover:shadow-glow transition-spring"
-              variants={itemVariants}
-              whileHover={{ scale: 1.05, y: -10 }}
-            >
+          {[{
+          title: "Technical Expertise Gap",
+          description: "85% of startups fail due to lack of technical co-founders. Entrepreneurs struggle to find reliable, full-stack tech partners who understand modern frameworks, AI/ML, and scalable cloud infrastructure.",
+          stats: "85% startup failure rate",
+          icon: Brain,
+          color: "text-red-500"
+        }, {
+          title: "Fragmented Service Ecosystem",
+          description: "Traditional agencies focus on single domains - either technology OR marketing. This creates coordination challenges, inconsistent branding, and project delays for growing businesses.",
+          stats: "60% project delays",
+          icon: Target,
+          color: "text-orange-500"
+        }, {
+          title: "High Cost Barriers",
+          description: "Enterprise-grade tech and marketing services are priced for large corporations. SMEs and startups can't afford ₹50L+ budgets that traditional providers demand.",
+          stats: "₹50L+ typical cost",
+          icon: DollarSign,
+          color: "text-yellow-500"
+        }].map((problem, index) => <motion.div key={index} className="p-8 bg-white rounded-xl shadow-elevated border border-border hover:shadow-glow transition-spring" variants={itemVariants} whileHover={{
+          scale: 1.05,
+          y: -10
+        }}>
               <problem.icon className={`w-16 h-16 ${problem.color} mb-6`} />
               <h3 className="text-xl font-bold text-primary mb-4">{problem.title}</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">{problem.description}</p>
               <div className="bg-accent/10 p-3 rounded-lg">
                 <p className="font-bold text-accent text-sm">{problem.stats}</p>
               </div>
-            </motion.div>
-          ))}
+            </motion.div>)}
         </div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Slide 3: Our Solution
-  const SolutionSlide = () => (
-    <motion.div 
-      className="pitch-slide bg-background"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
+  const SolutionSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
           Our Solution
@@ -313,34 +401,31 @@ const PitchDeck = () => {
               </p>
               
               <div className="grid grid-cols-2 gap-4">
-                {[
-                  { label: "Modern", icon: Rocket },
-                  { label: "Scalable", icon: TrendingUp },
-                  { label: "Affordable", icon: DollarSign },
-                  { label: "Expert-Led", icon: Award }
-                ].map((feature, index) => (
-                  <div key={index} className="p-4 bg-accent/10 rounded-lg">
+                {[{
+                label: "Modern",
+                icon: Rocket
+              }, {
+                label: "Scalable",
+                icon: TrendingUp
+              }, {
+                label: "Affordable",
+                icon: DollarSign
+              }, {
+                label: "Expert-Led",
+                icon: Award
+              }].map((feature, index) => <div key={index} className="p-4 bg-accent/10 rounded-lg">
                     <feature.icon className="w-8 h-8 text-accent mx-auto mb-2" />
                     <p className="font-semibold text-primary">{feature.label}</p>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </div>
           </motion.div>
         </div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Slide 4: Enhanced Market Opportunity with Interactive Charts
-  const MarketOpportunitySlide = () => (
-    <motion.div 
-      className="pitch-slide bg-background"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
+  const MarketOpportunitySlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
           Market Opportunity
@@ -354,37 +439,31 @@ const PitchDeck = () => {
                 <ResponsiveContainer width="100%" height="100%">
                   <RechartsBarChart data={marketData}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                    <XAxis dataKey="name" tick={{ fontSize: 12 }} />
-                    <YAxis tick={{ fontSize: 12 }} />
-                    <Tooltip 
-                      formatter={(value, name) => [`$${value}B`, 'Market Size']}
-                      labelFormatter={(label) => `${label} Market`}
-                      contentStyle={{ 
-                        backgroundColor: 'white', 
-                        border: '1px solid #e0e0e0', 
-                        borderRadius: '8px',
-                        boxShadow: '0 4px 6px rgba(0,0,0,0.1)' 
-                      }}
-                    />
+                    <XAxis dataKey="name" tick={{
+                    fontSize: 12
+                  }} />
+                    <YAxis tick={{
+                    fontSize: 12
+                  }} />
+                    <Tooltip formatter={(value, name) => [`$${value}B`, 'Market Size']} labelFormatter={label => `${label} Market`} contentStyle={{
+                    backgroundColor: 'white',
+                    border: '1px solid #e0e0e0',
+                    borderRadius: '8px',
+                    boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+                  }} />
                     <Bar dataKey="value" fill="#14b8a6" radius={[4, 4, 0, 0]}>
-                      {marketData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
-                      ))}
+                      {marketData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.color} />)}
                     </Bar>
                   </RechartsBarChart>
                 </ResponsiveContainer>
               </div>
               <div className="mt-4 grid grid-cols-3 gap-4">
-                {marketData.map((market, index) => (
-                  <motion.div 
-                    key={index}
-                    className="text-center p-3 bg-accent/5 rounded-lg"
-                    whileHover={{ scale: 1.05 }}
-                  >
+                {marketData.map((market, index) => <motion.div key={index} className="text-center p-3 bg-accent/5 rounded-lg" whileHover={{
+                scale: 1.05
+              }}>
                     <div className="text-lg font-bold text-accent">{market.growth}%</div>
                     <div className="text-xs text-muted-foreground">CAGR</div>
-                  </motion.div>
-                ))}
+                  </motion.div>)}
               </div>
             </Card>
           </motion.div>
@@ -392,20 +471,24 @@ const PitchDeck = () => {
           <motion.div variants={itemVariants} className="space-y-6">
             <Card className="p-8 bg-white shadow-elevated border border-border">
               <div className="text-center mb-6">
-                <motion.div
-                  className="w-24 h-24 mx-auto mb-4 bg-gradient-primary rounded-full flex items-center justify-center"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                >
+                <motion.div className="w-24 h-24 mx-auto mb-4 bg-gradient-primary rounded-full flex items-center justify-center" animate={{
+                rotate: 360
+              }} transition={{
+                duration: 20,
+                repeat: Infinity,
+                ease: "linear"
+              }}>
                   <Globe className="w-12 h-12 text-white" />
                 </motion.div>
                 <h3 className="text-3xl font-bold text-primary mb-2">Total Addressable Market</h3>
-                <motion.div 
-                  className="text-6xl font-bold text-accent mb-2"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
-                >
+                <motion.div className="text-6xl font-bold text-accent mb-2" initial={{
+                scale: 0
+              }} animate={{
+                scale: 1
+              }} transition={{
+                duration: 0.8,
+                delay: 0.5
+              }}>
                   ~$100B
                 </motion.div>
                 <p className="text-lg text-muted-foreground">
@@ -420,40 +503,39 @@ const PitchDeck = () => {
                 Key Growth Drivers
               </h4>
               <div className="space-y-3">
-                {[
-                  { driver: "Digital-first business models", impact: "85%" },
-                  { driver: "AI adoption acceleration", impact: "75%" },
-                  { driver: "Cloud migration mandate", impact: "90%" },
-                  { driver: "SME digitalization", impact: "65%" }
-                ].map((item, index) => (
-                  <motion.div 
-                    key={index}
-                    className="flex justify-between items-center p-3 bg-accent/5 rounded-lg"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
+                {[{
+                driver: "Digital-first business models",
+                impact: "85%"
+              }, {
+                driver: "AI adoption acceleration",
+                impact: "75%"
+              }, {
+                driver: "Cloud migration mandate",
+                impact: "90%"
+              }, {
+                driver: "SME digitalization",
+                impact: "65%"
+              }].map((item, index) => <motion.div key={index} className="flex justify-between items-center p-3 bg-accent/5 rounded-lg" initial={{
+                opacity: 0,
+                x: -20
+              }} animate={{
+                opacity: 1,
+                x: 0
+              }} transition={{
+                delay: index * 0.1
+              }}>
                     <span className="text-sm text-muted-foreground">{item.driver}</span>
                     <span className="font-bold text-accent">{item.impact}</span>
-                  </motion.div>
-                ))}
+                  </motion.div>)}
               </div>
             </Card>
           </motion.div>
         </div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Slide 5: Products & Services Overview
-  const ProductsServicesSlide = () => (
-    <motion.div 
-      className="pitch-slide bg-background"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
+  const ProductsServicesSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
           Products & Services Overview
@@ -470,19 +552,10 @@ const PitchDeck = () => {
               </div>
               
               <div className="space-y-4">
-                {[
-                  "Web Development: Websites, e-commerce, CMS, PWAs",
-                  "App Development: Android, iOS, cross-platform, hybrid",
-                  "AI & ML: Chatbots, analytics, NLP, computer vision", 
-                  "Cloud Services: Migration, DevOps, backups, security",
-                  "Custom Software: SaaS, ERP, CRM, POS, enterprise tools",
-                  "Ongoing Support: Bug fixes, upgrades, maintenance, SLA"
-                ].map((service, index) => (
-                  <div key={index} className="flex items-start gap-3">
+                {["Web Development: Websites, e-commerce, CMS, PWAs", "App Development: Android, iOS, cross-platform, hybrid", "AI & ML: Chatbots, analytics, NLP, computer vision", "Cloud Services: Migration, DevOps, backups, security", "Custom Software: SaaS, ERP, CRM, POS, enterprise tools", "Ongoing Support: Bug fixes, upgrades, maintenance, SLA"].map((service, index) => <div key={index} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
                     <span className="text-muted-foreground">{service}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </Card>
           </motion.div>
@@ -497,35 +570,19 @@ const PitchDeck = () => {
               </div>
               
               <div className="space-y-4">
-                {[
-                  "Digital Marketing: SEO, SEM, social media, paid ads",
-                  "Email & Content Strategy: Campaigns, blog/short-form",
-                  "Analytics: Customer insights, ROI tracking",
-                  "Public Relations: Crisis comms, media, reputation mgmt",
-                  "Advocacy & Lobbying: Election campaigns, messaging"
-                ].map((service, index) => (
-                  <div key={index} className="flex items-start gap-3">
+                {["Digital Marketing: SEO, SEM, social media, paid ads", "Email & Content Strategy: Campaigns, blog/short-form", "Analytics: Customer insights, ROI tracking", "Public Relations: Crisis comms, media, reputation mgmt", "Advocacy & Lobbying: Election campaigns, messaging"].map((service, index) => <div key={index} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
                     <span className="text-muted-foreground">{service}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </Card>
           </motion.div>
         </div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Slide 6: Business Model
-  const BusinessModelSlide = () => (
-    <motion.div 
-      className="pitch-slide bg-background"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
+  const BusinessModelSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
           Business Model
@@ -558,11 +615,9 @@ const PitchDeck = () => {
               <Users className="w-16 h-16 text-accent mx-auto mb-6" />
               <h3 className="text-xl font-bold text-primary mb-4">Target Audience</h3>
               <div className="space-y-3">
-                {["Startups", "SMBs", "Corporations", "Political Entities", "NGOs"].map((audience, index) => (
-                  <div key={index} className="p-3 bg-accent/10 rounded-lg">
+                {["Startups", "SMBs", "Corporations", "Political Entities", "NGOs"].map((audience, index) => <div key={index} className="p-3 bg-accent/10 rounded-lg">
                     <span className="font-semibold text-primary">{audience}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </Card>
           </motion.div>
@@ -591,18 +646,10 @@ const PitchDeck = () => {
           </motion.div>
         </div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Slide 7: Go-To-Market Strategy
-  const GoToMarketSlide = () => (
-    <motion.div 
-      className="pitch-slide bg-background"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
+  const GoToMarketSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
           Go-To-Market Strategy
@@ -619,15 +666,10 @@ const PitchDeck = () => {
               </div>
               
               <div className="space-y-4">
-                {[
-                  "Content marketing, SEO, partnerships, PR",
-                  "Collaboration with incubators & VC firms for referrals"
-                ].map((strategy, index) => (
-                  <div key={index} className="flex items-start gap-3 p-4 bg-accent/5 rounded-lg">
+                {["Content marketing, SEO, partnerships, PR", "Collaboration with incubators & VC firms for referrals"].map((strategy, index) => <div key={index} className="flex items-start gap-3 p-4 bg-accent/5 rounded-lg">
                     <ArrowRight className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
                     <span className="text-muted-foreground">{strategy}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </Card>
           </motion.div>
@@ -642,15 +684,10 @@ const PitchDeck = () => {
               </div>
               
               <div className="space-y-4">
-                {[
-                  "Localized outreach in UK, Germany, France",
-                  "Online advertising + partnerships with consultants"
-                ].map((strategy, index) => (
-                  <div key={index} className="flex items-start gap-3 p-4 bg-primary/5 rounded-lg">
+                {["Localized outreach in UK, Germany, France", "Online advertising + partnerships with consultants"].map((strategy, index) => <div key={index} className="flex items-start gap-3 p-4 bg-primary/5 rounded-lg">
                     <ArrowRight className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                     <span className="text-muted-foreground">{strategy}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </Card>
           </motion.div>
@@ -666,18 +703,10 @@ const PitchDeck = () => {
           </Card>
         </motion.div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Slide 8: Enhanced Traction & Milestones with Interactive Charts
-  const TractionSlide = () => (
-    <motion.div 
-      className="pitch-slide bg-background"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
+  const TractionSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
           Traction & Milestones
@@ -686,24 +715,44 @@ const PitchDeck = () => {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Key Metrics */}
           <motion.div variants={itemVariants} className="space-y-6">
-            {[
-              { icon: Users, title: "Clients Served", value: "200+", subtitle: "domestic + international", color: "accent" },
-              { icon: DollarSign, title: "Annual Revenue", value: "₹1Cr", subtitle: "2024", color: "success" },
-              { icon: Briefcase, title: "Team", value: "25+", subtitle: "expert professionals", color: "primary" },
-              { icon: Award, title: "Success Rate", value: "98%", subtitle: "client satisfaction", color: "accent" }
-            ].map((metric, index) => (
-              <motion.div
-                key={index}
-                className="p-6 bg-white rounded-xl shadow-elevated border border-border group hover:shadow-glow"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.02, y: -2 }}
-              >
+            {[{
+            icon: Users,
+            title: "Clients Served",
+            value: "200+",
+            subtitle: "domestic + international",
+            color: "accent"
+          }, {
+            icon: DollarSign,
+            title: "Annual Revenue",
+            value: "₹1Cr",
+            subtitle: "2024",
+            color: "success"
+          }, {
+            icon: Briefcase,
+            title: "Team",
+            value: "25+",
+            subtitle: "expert professionals",
+            color: "primary"
+          }, {
+            icon: Award,
+            title: "Success Rate",
+            value: "98%",
+            subtitle: "client satisfaction",
+            color: "accent"
+          }].map((metric, index) => <motion.div key={index} className="p-6 bg-white rounded-xl shadow-elevated border border-border group hover:shadow-glow" initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            delay: index * 0.1
+          }} whileHover={{
+            scale: 1.02,
+            y: -2
+          }}>
                 <div className="flex items-center gap-4">
-                  <motion.div 
-                    className={`w-12 h-12 bg-${metric.color}/10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-spring`}
-                  >
+                  <motion.div className={`w-12 h-12 bg-${metric.color}/10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-spring`}>
                     <metric.icon className={`w-6 h-6 text-${metric.color}`} />
                   </motion.div>
                   <div className="flex-1">
@@ -712,8 +761,7 @@ const PitchDeck = () => {
                     <p className="text-xs text-muted-foreground">{metric.subtitle}</p>
                   </div>
                 </div>
-              </motion.div>
-            ))}
+              </motion.div>)}
           </motion.div>
 
           {/* Growth Chart */}
@@ -728,32 +776,32 @@ const PitchDeck = () => {
                 <ResponsiveContainer width="100%" height="100%">
                   <RechartsLineChart data={monthlyGrowthData}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                    <XAxis dataKey="month" tick={{ fontSize: 12 }} />
-                    <YAxis tick={{ fontSize: 12 }} />
-                    <Tooltip 
-                      contentStyle={{ 
-                        backgroundColor: 'white', 
-                        border: '1px solid #e0e0e0', 
-                        borderRadius: '8px',
-                        boxShadow: '0 4px 6px rgba(0,0,0,0.1)' 
-                      }}
-                    />
-                    <Line 
-                      type="monotone" 
-                      dataKey="revenue" 
-                      stroke="#14b8a6" 
-                      strokeWidth={3}
-                      dot={{ fill: '#14b8a6', strokeWidth: 2, r: 4 }}
-                      activeDot={{ r: 6, stroke: '#14b8a6', strokeWidth: 2 }}
-                    />
-                    <Line 
-                      type="monotone" 
-                      dataKey="clients" 
-                      stroke="#0d9488" 
-                      strokeWidth={2}
-                      dot={{ fill: '#0d9488', strokeWidth: 2, r: 3 }}
-                      strokeDasharray="5 5"
-                    />
+                    <XAxis dataKey="month" tick={{
+                    fontSize: 12
+                  }} />
+                    <YAxis tick={{
+                    fontSize: 12
+                  }} />
+                    <Tooltip contentStyle={{
+                    backgroundColor: 'white',
+                    border: '1px solid #e0e0e0',
+                    borderRadius: '8px',
+                    boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+                  }} />
+                    <Line type="monotone" dataKey="revenue" stroke="#14b8a6" strokeWidth={3} dot={{
+                    fill: '#14b8a6',
+                    strokeWidth: 2,
+                    r: 4
+                  }} activeDot={{
+                    r: 6,
+                    stroke: '#14b8a6',
+                    strokeWidth: 2
+                  }} />
+                    <Line type="monotone" dataKey="clients" stroke="#0d9488" strokeWidth={2} dot={{
+                    fill: '#0d9488',
+                    strokeWidth: 2,
+                    r: 3
+                  }} strokeDasharray="5 5" />
                   </RechartsLineChart>
                 </ResponsiveContainer>
               </div>
@@ -766,17 +814,13 @@ const PitchDeck = () => {
                     Client Satisfaction
                   </h4>
                   <div className="space-y-2">
-                    {clientSatisfactionData.map((item, index) => (
-                      <div key={index} className="flex justify-between items-center">
+                    {clientSatisfactionData.map((item, index) => <div key={index} className="flex justify-between items-center">
                         <span className="text-xs text-muted-foreground">{item.metric}</span>
                         <div className="flex items-center gap-1">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} className={`w-3 h-3 ${i < item.score ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} />
-                          ))}
+                          {[...Array(5)].map((_, i) => <Star key={i} className={`w-3 h-3 ${i < item.score ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} />)}
                           <span className="text-xs font-medium ml-1">{item.score}</span>
                         </div>
-                      </div>
-                    ))}
+                      </div>)}
                   </div>
                 </div>
 
@@ -786,17 +830,22 @@ const PitchDeck = () => {
                     Key Achievements
                   </h4>
                   <div className="space-y-2">
-                    {[
-                      { milestone: "Scaled 50+ startups", status: "completed" },
-                      { milestone: "International expansion", status: "completed" },
-                      { milestone: "₹1Cr ARR achieved", status: "completed" },
-                      { milestone: "25+ team members", status: "completed" }
-                    ].map((achievement, index) => (
-                      <div key={index} className="flex items-center gap-2">
+                    {[{
+                    milestone: "Scaled 50+ startups",
+                    status: "completed"
+                  }, {
+                    milestone: "International expansion",
+                    status: "completed"
+                  }, {
+                    milestone: "₹1Cr ARR achieved",
+                    status: "completed"
+                  }, {
+                    milestone: "25+ team members",
+                    status: "completed"
+                  }].map((achievement, index) => <div key={index} className="flex items-center gap-2">
                         <CheckCircle className="w-3 h-3 text-success" />
                         <span className="text-xs text-muted-foreground">{achievement.milestone}</span>
-                      </div>
-                    ))}
+                      </div>)}
                   </div>
                 </div>
               </div>
@@ -804,18 +853,10 @@ const PitchDeck = () => {
           </motion.div>
         </div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Slide 9: Competitive Landscape
-  const CompetitiveLandscapeSlide = () => (
-    <motion.div 
-      className="pitch-slide bg-background"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
+  const CompetitiveLandscapeSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
           Competitive Landscape
@@ -835,37 +876,20 @@ const PitchDeck = () => {
                 </tr>
               </thead>
               <tbody>
-                {competitorData.map((competitor, index) => (
-                  <tr 
-                    key={index} 
-                    className={`border-b border-border ${competitor.name === 'CMT' ? 'bg-accent/10' : ''}`}
-                  >
+                {competitorData.map((competitor, index) => <tr key={index} className={`border-b border-border ${competitor.name === 'CMT' ? 'bg-accent/10' : ''}`}>
                     <td className="p-4 font-bold text-primary">{competitor.name}</td>
                     <td className="text-center p-4">
-                      {competitor.tech ? (
-                        <Check className="w-6 h-6 text-success mx-auto" />
-                      ) : (
-                        <X className="w-6 h-6 text-destructive mx-auto" />
-                      )}
+                      {competitor.tech ? <Check className="w-6 h-6 text-success mx-auto" /> : <X className="w-6 h-6 text-destructive mx-auto" />}
                     </td>
                     <td className="text-center p-4">
-                      {competitor.marketing ? (
-                        <Check className="w-6 h-6 text-success mx-auto" />
-                      ) : (
-                        <X className="w-6 h-6 text-destructive mx-auto" />
-                      )}
+                      {competitor.marketing ? <Check className="w-6 h-6 text-success mx-auto" /> : <X className="w-6 h-6 text-destructive mx-auto" />}
                     </td>
                     <td className="text-center p-4">
-                      {competitor.fullStack ? (
-                        <Check className="w-6 h-6 text-success mx-auto" />
-                      ) : (
-                        <X className="w-6 h-6 text-destructive mx-auto" />
-                      )}
+                      {competitor.fullStack ? <Check className="w-6 h-6 text-success mx-auto" /> : <X className="w-6 h-6 text-destructive mx-auto" />}
                     </td>
                     <td className="text-center p-4 text-muted-foreground">{competitor.price}</td>
                     <td className="text-center p-4 text-muted-foreground">{competitor.target}</td>
-                  </tr>
-                ))}
+                  </tr>)}
               </tbody>
             </table>
           </div>
@@ -882,49 +906,35 @@ const PitchDeck = () => {
           </Card>
         </motion.div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Slide 10: Team & Leadership
-  const TeamLeadershipSlide = () => (
-    <motion.div 
-      className="pitch-slide bg-background"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
+  const TeamLeadershipSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
           Team & Leadership
         </motion.h2>
         
         <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {[
-            {
-              name: "Anurag Singh",
-              title: "Founder & CEO",
-              experience: "7+ years in tech, marketing, and AI. Ex-HSBC/UWE. Scaled 50+ startups.",
-              icon: Rocket
-            },
-            {
-              name: "Shailesh Sinha",
-              title: "Co-founder & Mentor",
-              experience: "25+ years in media (Times of India, Aaj Tak). Veteran in comms strategy.",
-              icon: Star
-            },
-            {
-              name: "Dharmendra Singh",
-              title: "Co-founder & CMO",
-              experience: "15+ years in marketing (Club Mahindra, Axis Bank). Founded 3 startups.",
-              icon: Target
-            }
-          ].map((member, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              whileHover={{ scale: 1.05, y: -10 }}
-            >
+          {[{
+          name: "Anurag Singh",
+          title: "Founder & CEO",
+          experience: "7+ years in tech, marketing, and AI. Ex-HSBC/UWE. Scaled 50+ startups.",
+          icon: Rocket
+        }, {
+          name: "Shailesh Sinha",
+          title: "Co-founder & Mentor",
+          experience: "25+ years in media (Times of India, Aaj Tak). Veteran in comms strategy.",
+          icon: Star
+        }, {
+          name: "Dharmendra Singh",
+          title: "Co-founder & CMO",
+          experience: "15+ years in marketing (Club Mahindra, Axis Bank). Founded 3 startups.",
+          icon: Target
+        }].map((member, index) => <motion.div key={index} variants={itemVariants} whileHover={{
+          scale: 1.05,
+          y: -10
+        }}>
               <Card className="p-8 bg-white shadow-elevated border border-border text-center h-full">
                 <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
                   <member.icon className="w-10 h-10 text-accent" />
@@ -933,8 +943,7 @@ const PitchDeck = () => {
                 <h4 className="text-lg font-semibold text-accent mb-4">{member.title}</h4>
                 <p className="text-muted-foreground leading-relaxed">{member.experience}</p>
               </Card>
-            </motion.div>
-          ))}
+            </motion.div>)}
         </div>
 
         <motion.div variants={itemVariants}>
@@ -948,18 +957,10 @@ const PitchDeck = () => {
           </Card>
         </motion.div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Slide 11: Enhanced Financials & Projections with Interactive Charts
-  const FinancialsSlide = () => (
-    <motion.div 
-      className="pitch-slide bg-background"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
+  const FinancialsSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
           Financials & Projections
@@ -977,37 +978,33 @@ const PitchDeck = () => {
                 <ResponsiveContainer width="100%" height="100%">
                   <RechartsLineChart data={financialData}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                    <XAxis dataKey="year" tick={{ fontSize: 12 }} />
-                    <YAxis tick={{ fontSize: 12 }} />
-                    <Tooltip 
-                      formatter={(value, name) => {
-                        if (name === 'revenue') return [`₹${value}Cr`, 'Revenue'];
-                        if (name === 'expenses') return [`₹${value}Cr`, 'Expenses'];
-                        if (name === 'netProfit') return [`${value}%`, 'Net Profit Margin'];
-                        return [value, name];
-                      }}
-                      contentStyle={{ 
-                        backgroundColor: 'white', 
-                        border: '1px solid #e0e0e0', 
-                        borderRadius: '8px',
-                        boxShadow: '0 4px 6px rgba(0,0,0,0.1)' 
-                      }}
-                    />
-                    <Line 
-                      type="monotone" 
-                      dataKey="revenue" 
-                      stroke="#14b8a6" 
-                      strokeWidth={3}
-                      dot={{ fill: '#14b8a6', strokeWidth: 2, r: 5 }}
-                    />
-                    <Line 
-                      type="monotone" 
-                      dataKey="expenses" 
-                      stroke="#f59e0b" 
-                      strokeWidth={2}
-                      strokeDasharray="5 5"
-                      dot={{ fill: '#f59e0b', strokeWidth: 2, r: 4 }}
-                    />
+                    <XAxis dataKey="year" tick={{
+                    fontSize: 12
+                  }} />
+                    <YAxis tick={{
+                    fontSize: 12
+                  }} />
+                    <Tooltip formatter={(value, name) => {
+                    if (name === 'revenue') return [`₹${value}Cr`, 'Revenue'];
+                    if (name === 'expenses') return [`₹${value}Cr`, 'Expenses'];
+                    if (name === 'netProfit') return [`${value}%`, 'Net Profit Margin'];
+                    return [value, name];
+                  }} contentStyle={{
+                    backgroundColor: 'white',
+                    border: '1px solid #e0e0e0',
+                    borderRadius: '8px',
+                    boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+                  }} />
+                    <Line type="monotone" dataKey="revenue" stroke="#14b8a6" strokeWidth={3} dot={{
+                    fill: '#14b8a6',
+                    strokeWidth: 2,
+                    r: 5
+                  }} />
+                    <Line type="monotone" dataKey="expenses" stroke="#f59e0b" strokeWidth={2} strokeDasharray="5 5" dot={{
+                    fill: '#f59e0b',
+                    strokeWidth: 2,
+                    r: 4
+                  }} />
                   </RechartsLineChart>
                 </ResponsiveContainer>
               </div>
@@ -1034,39 +1031,26 @@ const PitchDeck = () => {
               <div className="h-48">
                 <ResponsiveContainer width="100%" height="100%">
                   <RechartsPieChart>
-                    <Pie
-                      data={serviceBreakdown}
-                      cx="50%"
-                      cy="50%"
-                      innerRadius={40}
-                      outerRadius={80}
-                      paddingAngle={2}
-                      dataKey="percentage"
-                    >
-                      {serviceBreakdown.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={`hsl(${180 + index * 20}, 68%, ${42 + index * 5}%)`} />
-                      ))}
+                    <Pie data={serviceBreakdown} cx="50%" cy="50%" innerRadius={40} outerRadius={80} paddingAngle={2} dataKey="percentage">
+                      {serviceBreakdown.map((entry, index) => <Cell key={`cell-${index}`} fill={`hsl(${180 + index * 20}, 68%, ${42 + index * 5}%)`} />)}
                     </Pie>
-                    <Tooltip formatter={(value) => [`${value}%`, 'Share']} />
+                    <Tooltip formatter={value => [`${value}%`, 'Share']} />
                   </RechartsPieChart>
                 </ResponsiveContainer>
               </div>
               <div className="space-y-2 mt-4">
-                {serviceBreakdown.map((service, index) => (
-                  <div key={index} className="flex justify-between items-center text-sm">
+                {serviceBreakdown.map((service, index) => <div key={index} className="flex justify-between items-center text-sm">
                     <div className="flex items-center gap-2">
-                      <div 
-                        className="w-3 h-3 rounded-full" 
-                        style={{ backgroundColor: `hsl(${180 + index * 20}, 68%, ${42 + index * 5}%)` }}
-                      />
+                      <div className="w-3 h-3 rounded-full" style={{
+                    backgroundColor: `hsl(${180 + index * 20}, 68%, ${42 + index * 5}%)`
+                  }} />
                       <span className="text-muted-foreground">{service.service}</span>
                     </div>
                     <div className="flex gap-2">
                       <span className="font-medium">{service.percentage}%</span>
                       <span className="text-accent">₹{service.revenue}K</span>
                     </div>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </Card>
           </motion.div>
@@ -1088,28 +1072,40 @@ const PitchDeck = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {[
-                    { metric: 'Revenue (₹)', values: ['1 Cr', '5 Cr', '12 Cr', '25 Cr'], highlight: 'accent' },
-                    { metric: 'Gross Margin (%)', values: ['40%', '45%', '50%', '55%'], highlight: 'primary' },
-                    { metric: 'Net Profit (%)', values: ['15%', '20%', '25%', '30%'], highlight: 'success' },
-                    { metric: 'Clients', values: ['200+', '400+', '800+', '1500+'], highlight: 'accent' },
-                    { metric: 'Team Size', values: ['30', '50', '80', '120'], highlight: 'primary' }
-                  ].map((row, index) => (
-                    <motion.tr 
-                      key={index} 
-                      className="border-b border-border hover:bg-accent/5 transition-colors"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
+                  {[{
+                  metric: 'Revenue (₹)',
+                  values: ['1 Cr', '5 Cr', '12 Cr', '25 Cr'],
+                  highlight: 'accent'
+                }, {
+                  metric: 'Gross Margin (%)',
+                  values: ['40%', '45%', '50%', '55%'],
+                  highlight: 'primary'
+                }, {
+                  metric: 'Net Profit (%)',
+                  values: ['15%', '20%', '25%', '30%'],
+                  highlight: 'success'
+                }, {
+                  metric: 'Clients',
+                  values: ['200+', '400+', '800+', '1500+'],
+                  highlight: 'accent'
+                }, {
+                  metric: 'Team Size',
+                  values: ['30', '50', '80', '120'],
+                  highlight: 'primary'
+                }].map((row, index) => <motion.tr key={index} className="border-b border-border hover:bg-accent/5 transition-colors" initial={{
+                  opacity: 0,
+                  x: -20
+                }} animate={{
+                  opacity: 1,
+                  x: 0
+                }} transition={{
+                  delay: index * 0.1
+                }}>
                       <td className="p-3 font-semibold text-primary">{row.metric}</td>
-                      {row.values.map((value, i) => (
-                        <td key={i} className={`text-center p-3 font-medium text-${row.highlight}`}>
+                      {row.values.map((value, i) => <td key={i} className={`text-center p-3 font-medium text-${row.highlight}`}>
                           {value}
-                        </td>
-                      ))}
-                    </motion.tr>
-                  ))}
+                        </td>)}
+                    </motion.tr>)}
                 </tbody>
               </table>
             </div>
@@ -1146,18 +1142,10 @@ const PitchDeck = () => {
           </motion.div>
         </div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Slide 12: Ask – Funding Requirements
-  const FundingAskSlide = () => (
-    <motion.div 
-      className="pitch-slide bg-background"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
+  const FundingAskSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
           Ask – Funding Requirements
@@ -1177,15 +1165,31 @@ const PitchDeck = () => {
             <Card className="p-8 bg-white shadow-elevated border border-border">
               <h3 className="text-2xl font-bold text-primary mb-6 text-center">Use of Funds</h3>
               <div className="space-y-4">
-                {[
-                  { percentage: "10%", use: "Infra (build tech & content studios)", amount: "₹10L" },
-                  { percentage: "20%", use: "EU Market Expansion", amount: "₹20L" },
-                  { percentage: "30%", use: "Team Hiring (devs, PMs, marketers)", amount: "₹30L" },
-                  { percentage: "20%", use: "National-level marketing campaigns", amount: "₹20L" },
-                  { percentage: "10%", use: "R&D/Product Development", amount: "₹10L" },
-                  { percentage: "10%", use: "Risk & Emergency Fund", amount: "₹10L" }
-                ].map((item, index) => (
-                  <div key={index} className="flex items-center justify-between p-4 bg-accent/5 rounded-lg">
+                {[{
+                percentage: "10%",
+                use: "Infra (build tech & content studios)",
+                amount: "₹10L"
+              }, {
+                percentage: "20%",
+                use: "EU Market Expansion",
+                amount: "₹20L"
+              }, {
+                percentage: "30%",
+                use: "Team Hiring (devs, PMs, marketers)",
+                amount: "₹30L"
+              }, {
+                percentage: "20%",
+                use: "National-level marketing campaigns",
+                amount: "₹20L"
+              }, {
+                percentage: "10%",
+                use: "R&D/Product Development",
+                amount: "₹10L"
+              }, {
+                percentage: "10%",
+                use: "Risk & Emergency Fund",
+                amount: "₹10L"
+              }].map((item, index) => <div key={index} className="flex items-center justify-between p-4 bg-accent/5 rounded-lg">
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center text-white font-bold">
                         {item.percentage}
@@ -1193,25 +1197,16 @@ const PitchDeck = () => {
                       <span className="text-muted-foreground">{item.use}</span>
                     </div>
                     <span className="font-bold text-primary">{item.amount}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </Card>
           </motion.div>
         </div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Slide 10: Technology Stack
-  const TechnologyStackSlide = () => (
-    <motion.div 
-      className="pitch-slide bg-background"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
+  const TechnologyStackSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
           Technology Stack & Infrastructure
@@ -1229,22 +1224,18 @@ const PitchDeck = () => {
                 <div>
                   <h4 className="font-bold text-primary mb-3">Frontend Development</h4>
                   <div className="grid grid-cols-2 gap-3">
-                    {["React.js", "Next.js", "Vue.js", "Angular", "TypeScript", "Tailwind CSS"].map((tech, index) => (
-                      <div key={index} className="p-3 bg-accent/10 rounded-lg text-center">
+                    {["React.js", "Next.js", "Vue.js", "Angular", "TypeScript", "Tailwind CSS"].map((tech, index) => <div key={index} className="p-3 bg-accent/10 rounded-lg text-center">
                         <span className="text-muted-foreground font-medium">{tech}</span>
-                      </div>
-                    ))}
+                      </div>)}
                   </div>
                 </div>
                 
                 <div>
                   <h4 className="font-bold text-primary mb-3">Backend Development</h4>
                   <div className="grid grid-cols-2 gap-3">
-                    {["Node.js", "Python", "Java", "PHP", "Express.js", "Django"].map((tech, index) => (
-                      <div key={index} className="p-3 bg-primary/10 rounded-lg text-center">
+                    {["Node.js", "Python", "Java", "PHP", "Express.js", "Django"].map((tech, index) => <div key={index} className="p-3 bg-primary/10 rounded-lg text-center">
                         <span className="text-muted-foreground font-medium">{tech}</span>
-                      </div>
-                    ))}
+                      </div>)}
                   </div>
                 </div>
               </div>
@@ -1259,11 +1250,9 @@ const PitchDeck = () => {
               </div>
               
               <div className="grid grid-cols-2 gap-3">
-                {["MongoDB", "PostgreSQL", "MySQL", "Redis", "Firebase", "AWS S3"].map((tech, index) => (
-                  <div key={index} className="p-3 bg-primary/10 rounded-lg text-center">
+                {["MongoDB", "PostgreSQL", "MySQL", "Redis", "Firebase", "AWS S3"].map((tech, index) => <div key={index} className="p-3 bg-primary/10 rounded-lg text-center">
                     <span className="text-muted-foreground font-medium">{tech}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </Card>
 
@@ -1274,11 +1263,9 @@ const PitchDeck = () => {
               </div>
               
               <div className="grid grid-cols-2 gap-3">
-                {["AWS", "Azure", "Docker", "Kubernetes", "Jenkins", "GitLab CI"].map((tech, index) => (
-                  <div key={index} className="p-3 bg-accent/10 rounded-lg text-center">
+                {["AWS", "Azure", "Docker", "Kubernetes", "Jenkins", "GitLab CI"].map((tech, index) => <div key={index} className="p-3 bg-accent/10 rounded-lg text-center">
                     <span className="text-muted-foreground font-medium">{tech}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </Card>
           </motion.div>
@@ -1289,73 +1276,64 @@ const PitchDeck = () => {
             <Brain className="w-16 h-16 text-accent mx-auto mb-6" />
             <h3 className="text-2xl font-bold text-primary mb-4">AI/ML Capabilities</h3>
             <div className="grid md:grid-cols-4 gap-4">
-              {[
-                { name: "Natural Language Processing", icon: Brain },
-                { name: "Computer Vision", icon: Eye },
-                { name: "Predictive Analytics", icon: TrendingUp },
-                { name: "Machine Learning Models", icon: Cpu }
-              ].map((capability, index) => (
-                <div key={index} className="p-4 bg-accent/10 rounded-lg">
+              {[{
+              name: "Natural Language Processing",
+              icon: Brain
+            }, {
+              name: "Computer Vision",
+              icon: Eye
+            }, {
+              name: "Predictive Analytics",
+              icon: TrendingUp
+            }, {
+              name: "Machine Learning Models",
+              icon: Cpu
+            }].map((capability, index) => <div key={index} className="p-4 bg-accent/10 rounded-lg">
                   <capability.icon className="w-8 h-8 text-accent mx-auto mb-2" />
                   <p className="font-medium text-primary text-sm">{capability.name}</p>
-                </div>
-              ))}
+                </div>)}
             </div>
           </Card>
         </motion.div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Slide 11: Case Studies & Success Stories
-  const CaseStudiesSlide = () => (
-    <motion.div 
-      className="pitch-slide bg-background"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
+  const CaseStudiesSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
           Case Studies & Success Stories
         </motion.h2>
         
         <div className="grid md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "E-commerce Platform",
-              client: "Retail Startup",
-              challenge: "Needed a scalable e-commerce solution with AI recommendations",
-              solution: "Built MERN stack platform with ML-powered product recommendations",
-              results: ["300% increase in sales", "50% better user engagement", "Deployed in 8 weeks"],
-              icon: Smartphone,
-              color: "accent"
-            },
-            {
-              title: "Digital Marketing Campaign",
-              client: "Tech Company",
-              challenge: "Low brand awareness and poor online presence",
-              solution: "Comprehensive SEO, content marketing, and social media strategy",
-              results: ["400% increase in web traffic", "200% growth in leads", "10x social media reach"],
-              icon: TrendingUp,
-              color: "primary"
-            },
-            {
-              title: "Healthcare Management System",
-              client: "Medical Clinic Chain",
-              challenge: "Manual processes and poor patient data management",
-              solution: "Custom ERP with patient management, scheduling, and analytics",
-              results: ["80% reduction in admin time", "99.9% uptime", "Improved patient satisfaction"],
-              icon: Heart,
-              color: "success"
-            }
-          ].map((study, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              whileHover={{ scale: 1.05, y: -10 }}
-            >
+          {[{
+          title: "E-commerce Platform",
+          client: "Retail Startup",
+          challenge: "Needed a scalable e-commerce solution with AI recommendations",
+          solution: "Built MERN stack platform with ML-powered product recommendations",
+          results: ["300% increase in sales", "50% better user engagement", "Deployed in 8 weeks"],
+          icon: Smartphone,
+          color: "accent"
+        }, {
+          title: "Digital Marketing Campaign",
+          client: "Tech Company",
+          challenge: "Low brand awareness and poor online presence",
+          solution: "Comprehensive SEO, content marketing, and social media strategy",
+          results: ["400% increase in web traffic", "200% growth in leads", "10x social media reach"],
+          icon: TrendingUp,
+          color: "primary"
+        }, {
+          title: "Healthcare Management System",
+          client: "Medical Clinic Chain",
+          challenge: "Manual processes and poor patient data management",
+          solution: "Custom ERP with patient management, scheduling, and analytics",
+          results: ["80% reduction in admin time", "99.9% uptime", "Improved patient satisfaction"],
+          icon: Heart,
+          color: "success"
+        }].map((study, index) => <motion.div key={index} variants={itemVariants} whileHover={{
+          scale: 1.05,
+          y: -10
+        }}>
               <Card className="p-8 bg-white shadow-elevated border border-border h-full">
                 <div className={`w-16 h-16 bg-${study.color}/10 rounded-xl flex items-center justify-center mb-6 mx-auto`}>
                   <study.icon className={`w-8 h-8 text-${study.color}`} />
@@ -1378,18 +1356,15 @@ const PitchDeck = () => {
                   <div>
                     <h4 className="font-bold text-primary mb-2">Results</h4>
                     <ul className="space-y-1">
-                      {study.results.map((result, idx) => (
-                        <li key={idx} className="flex items-center gap-2">
+                      {study.results.map((result, idx) => <li key={idx} className="flex items-center gap-2">
                           <CheckCircle className={`w-4 h-4 text-${study.color} flex-shrink-0`} />
                           <span className="text-muted-foreground text-sm">{result}</span>
-                        </li>
-                      ))}
+                        </li>)}
                     </ul>
                   </div>
                 </div>
               </Card>
-            </motion.div>
-          ))}
+            </motion.div>)}
         </div>
 
         <motion.div variants={itemVariants} className="mt-12">
@@ -1413,18 +1388,10 @@ const PitchDeck = () => {
           </Card>
         </motion.div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Slide 15: Risk Mitigation & Contingency
-  const RiskMitigationSlide = () => (
-    <motion.div 
-      className="pitch-slide bg-background"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
+  const RiskMitigationSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
           Risk Mitigation & Contingency Planning
@@ -1439,35 +1406,29 @@ const PitchDeck = () => {
               </div>
               
               <div className="space-y-6">
-                {[
-                  {
-                    risk: "Market Competition",
-                    impact: "Medium",
-                    probability: "High",
-                    mitigation: "Differentiation through integrated services and competitive pricing"
-                  },
-                  {
-                    risk: "Talent Retention",
-                    impact: "High", 
-                    probability: "Medium",
-                    mitigation: "Competitive compensation, equity participation, growth opportunities"
-                  },
-                  {
-                    risk: "Economic Downturn",
-                    impact: "High",
-                    probability: "Low",
-                    mitigation: "Diversified client base, flexible cost structure, recession-proof services"
-                  }
-                ].map((riskItem, index) => (
-                  <div key={index} className="p-4 border border-border rounded-lg">
+                {[{
+                risk: "Market Competition",
+                impact: "Medium",
+                probability: "High",
+                mitigation: "Differentiation through integrated services and competitive pricing"
+              }, {
+                risk: "Talent Retention",
+                impact: "High",
+                probability: "Medium",
+                mitigation: "Competitive compensation, equity participation, growth opportunities"
+              }, {
+                risk: "Economic Downturn",
+                impact: "High",
+                probability: "Low",
+                mitigation: "Diversified client base, flexible cost structure, recession-proof services"
+              }].map((riskItem, index) => <div key={index} className="p-4 border border-border rounded-lg">
                     <h4 className="font-bold text-primary mb-2">{riskItem.risk}</h4>
                     <div className="flex gap-4 text-sm mb-2">
                       <span className="text-muted-foreground">Impact: <span className="font-medium">{riskItem.impact}</span></span>
                       <span className="text-muted-foreground">Probability: <span className="font-medium">{riskItem.probability}</span></span>
                     </div>
                     <p className="text-muted-foreground text-sm">{riskItem.mitigation}</p>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </Card>
           </motion.div>
@@ -1480,19 +1441,10 @@ const PitchDeck = () => {
               </div>
               
               <div className="space-y-4">
-                {[
-                  "Emergency fund (10% of raised capital)",
-                  "Flexible team structure for scaling up/down",
-                  "Multiple revenue streams for stability",
-                  "Strong client relationships and contracts",
-                  "Backup partnerships and vendor relationships",
-                  "Insurance coverage for key personnel"
-                ].map((measure, index) => (
-                  <div key={index} className="flex items-start gap-3">
+                {["Emergency fund (10% of raised capital)", "Flexible team structure for scaling up/down", "Multiple revenue streams for stability", "Strong client relationships and contracts", "Backup partnerships and vendor relationships", "Insurance coverage for key personnel"].map((measure, index) => <div key={index} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-success mt-1 flex-shrink-0" />
                     <span className="text-muted-foreground">{measure}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </Card>
 
@@ -1507,52 +1459,38 @@ const PitchDeck = () => {
           </motion.div>
         </div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Slide 16: Expansion Strategy & Global Vision
-  const ExpansionStrategySlide = () => (
-    <motion.div 
-      className="pitch-slide bg-background"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
+  const ExpansionStrategySlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
           Expansion Strategy & Global Vision
         </motion.h2>
         
         <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {[
-            {
-              phase: "Phase 1 (Year 1)",
-              title: "Market Consolidation",
-              goals: ["Establish strong presence in India", "Build core team to 50+ members", "Achieve ₹5Cr revenue"],
-              icon: Building,
-              color: "accent"
-            },
-            {
-              phase: "Phase 2 (Year 2)",
-              title: "EU Market Entry",
-              goals: ["Launch operations in UK & Germany", "Partnerships with local firms", "International team of 25+ members"],
-              icon: Globe,
-              color: "primary"
-            },
-            {
-              phase: "Phase 3 (Year 3+)",
-              title: "Global Scale",
-              goals: ["Expand to US and Asia-Pacific", "Franchise/licensing model", "100+ team members globally"],
-              icon: Rocket,
-              color: "success"
-            }
-          ].map((phase, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              whileHover={{ scale: 1.05, y: -10 }}
-            >
+          {[{
+          phase: "Phase 1 (Year 1)",
+          title: "Market Consolidation",
+          goals: ["Establish strong presence in India", "Build core team to 50+ members", "Achieve ₹5Cr revenue"],
+          icon: Building,
+          color: "accent"
+        }, {
+          phase: "Phase 2 (Year 2)",
+          title: "EU Market Entry",
+          goals: ["Launch operations in UK & Germany", "Partnerships with local firms", "International team of 25+ members"],
+          icon: Globe,
+          color: "primary"
+        }, {
+          phase: "Phase 3 (Year 3+)",
+          title: "Global Scale",
+          goals: ["Expand to US and Asia-Pacific", "Franchise/licensing model", "100+ team members globally"],
+          icon: Rocket,
+          color: "success"
+        }].map((phase, index) => <motion.div key={index} variants={itemVariants} whileHover={{
+          scale: 1.05,
+          y: -10
+        }}>
               <Card className="p-8 bg-white shadow-elevated border border-border h-full text-center">
                 <div className={`w-20 h-20 bg-${phase.color}/10 rounded-full flex items-center justify-center mx-auto mb-6`}>
                   <phase.icon className={`w-10 h-10 text-${phase.color}`} />
@@ -1562,16 +1500,13 @@ const PitchDeck = () => {
                 <h4 className="text-xl font-bold text-accent mb-4">{phase.title}</h4>
                 
                 <ul className="space-y-2 text-left">
-                  {phase.goals.map((goal, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
+                  {phase.goals.map((goal, idx) => <li key={idx} className="flex items-start gap-2">
                       <CheckCircle className={`w-4 h-4 text-${phase.color} mt-1 flex-shrink-0`} />
                       <span className="text-muted-foreground text-sm">{goal}</span>
-                    </li>
-                  ))}
+                    </li>)}
                 </ul>
               </Card>
-            </motion.div>
-          ))}
+            </motion.div>)}
         </div>
 
         <motion.div variants={itemVariants}>
@@ -1596,18 +1531,10 @@ const PitchDeck = () => {
           </Card>
         </motion.div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Slide 17: Social Impact & Sustainability
-  const SocialImpactSlide = () => (
-    <motion.div 
-      className="pitch-slide bg-background"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
+  const SocialImpactSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
           Social Impact & Sustainability
@@ -1622,29 +1549,23 @@ const PitchDeck = () => {
               </div>
               
               <div className="space-y-6">
-                {[
-                  {
-                    title: "Skill Development Programs",
-                    description: "Free coding bootcamps for underprivileged youth",
-                    impact: "500+ students trained annually"
-                  },
-                  {
-                    title: "Startup Ecosystem Support",
-                    description: "Mentorship and discounted services for early-stage startups",
-                    impact: "100+ startups supported"
-                  },
-                  {
-                    title: "Digital Literacy Campaigns",
-                    description: "Community workshops on digital marketing and basic tech skills",
-                    impact: "1000+ individuals reached"
-                  }
-                ].map((initiative, index) => (
-                  <div key={index} className="p-4 border border-border rounded-lg">
+                {[{
+                title: "Skill Development Programs",
+                description: "Free coding bootcamps for underprivileged youth",
+                impact: "500+ students trained annually"
+              }, {
+                title: "Startup Ecosystem Support",
+                description: "Mentorship and discounted services for early-stage startups",
+                impact: "100+ startups supported"
+              }, {
+                title: "Digital Literacy Campaigns",
+                description: "Community workshops on digital marketing and basic tech skills",
+                impact: "1000+ individuals reached"
+              }].map((initiative, index) => <div key={index} className="p-4 border border-border rounded-lg">
                     <h4 className="font-bold text-primary mb-2">{initiative.title}</h4>
                     <p className="text-muted-foreground text-sm mb-2">{initiative.description}</p>
                     <p className="text-accent font-medium text-sm">{initiative.impact}</p>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </Card>
           </motion.div>
@@ -1657,19 +1578,10 @@ const PitchDeck = () => {
               </div>
               
               <div className="space-y-4">
-                {[
-                  "Carbon-neutral hosting and cloud services",
-                  "Paperless operations and digital workflows",
-                  "Remote-first culture reducing commute emissions",
-                  "Green technology recommendations for clients",
-                  "Sustainable supplier partnerships",
-                  "Employee environmental awareness programs"
-                ].map((practice, index) => (
-                  <div key={index} className="flex items-start gap-3">
+                {["Carbon-neutral hosting and cloud services", "Paperless operations and digital workflows", "Remote-first culture reducing commute emissions", "Green technology recommendations for clients", "Sustainable supplier partnerships", "Employee environmental awareness programs"].map((practice, index) => <div key={index} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-success mt-1 flex-shrink-0" />
                     <span className="text-muted-foreground">{practice}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </Card>
 
@@ -1677,33 +1589,18 @@ const PitchDeck = () => {
               <Globe className="w-16 h-16 text-accent mx-auto mb-6" />
               <h3 className="text-2xl font-bold text-primary mb-4">UN SDG Alignment</h3>
               <div className="grid grid-cols-2 gap-4">
-                {[
-                  "Quality Education (SDG 4)",
-                  "Decent Work (SDG 8)", 
-                  "Industry Innovation (SDG 9)",
-                  "Reduced Inequalities (SDG 10)"
-                ].map((sdg, index) => (
-                  <div key={index} className="p-3 bg-accent/10 rounded-lg">
+                {["Quality Education (SDG 4)", "Decent Work (SDG 8)", "Industry Innovation (SDG 9)", "Reduced Inequalities (SDG 10)"].map((sdg, index) => <div key={index} className="p-3 bg-accent/10 rounded-lg">
                     <span className="text-muted-foreground text-sm font-medium">{sdg}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </Card>
           </motion.div>
         </div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Slide 18: Vision & Closing
-  const VisionClosingSlide = () => (
-    <motion.div 
-      className="pitch-slide bg-background text-foreground relative overflow-hidden"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
+  const VisionClosingSlide = () => <motion.div className="pitch-slide bg-background text-foreground relative overflow-hidden" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-primary/5"></div>
       <div className="pitch-content text-center relative z-10">
         <motion.div variants={itemVariants} className="mb-12">
@@ -1733,10 +1630,7 @@ const PitchDeck = () => {
           </Card>
         </motion.div>
 
-        <motion.div 
-          variants={itemVariants}
-          className="bg-white p-8 rounded-2xl shadow-elevated border border-border"
-        >
+        <motion.div variants={itemVariants} className="bg-white p-8 rounded-2xl shadow-elevated border border-border">
           <h3 className="text-2xl font-bold text-primary mb-6">Contact Information</h3>
           <div className="space-y-4">
             <div className="text-xl">
@@ -1760,144 +1654,92 @@ const PitchDeck = () => {
           </div>
         </motion.div>
       </div>
-    </motion.div>
-  );
-
+    </motion.div>;
   const renderSlide = () => {
     switch (slides[currentSlide]) {
-      case 'cover': return <CoverSlide />;
-      case 'problem': return <ProblemSlide />;
-      case 'solution': return <SolutionSlide />;
-      case 'market-opportunity': return <MarketOpportunitySlide />;
-      case 'products-services': return <ProductsServicesSlide />;
-      case 'business-model': return <BusinessModelSlide />;
-      case 'go-to-market': return <GoToMarketSlide />;
-      case 'traction': return <TractionSlide />;
-      case 'competitive-landscape': return <CompetitiveLandscapeSlide />;
-      case 'technology-stack': return <TechnologyStackSlide />;
-      case 'case-studies': return <CaseStudiesSlide />;
-      case 'team-leadership': return <TeamLeadershipSlide />;
-      case 'financials': return <FinancialsSlide />;
-      case 'funding-ask': return <FundingAskSlide />;
-      case 'risk-mitigation': return <RiskMitigationSlide />;
-      case 'expansion-strategy': return <ExpansionStrategySlide />;
-      case 'social-impact': return <SocialImpactSlide />;
-      case 'vision-closing': return <VisionClosingSlide />;
-      default: return <CoverSlide />;
+      case 'cover':
+        return <CoverSlide />;
+      case 'problem':
+        return <ProblemSlide />;
+      case 'solution':
+        return <SolutionSlide />;
+      case 'market-opportunity':
+        return <MarketOpportunitySlide />;
+      case 'products-services':
+        return <ProductsServicesSlide />;
+      case 'business-model':
+        return <BusinessModelSlide />;
+      case 'go-to-market':
+        return <GoToMarketSlide />;
+      case 'traction':
+        return <TractionSlide />;
+      case 'competitive-landscape':
+        return <CompetitiveLandscapeSlide />;
+      case 'technology-stack':
+        return <TechnologyStackSlide />;
+      case 'case-studies':
+        return <CaseStudiesSlide />;
+      case 'team-leadership':
+        return <TeamLeadershipSlide />;
+      case 'financials':
+        return <FinancialsSlide />;
+      case 'funding-ask':
+        return <FundingAskSlide />;
+      case 'risk-mitigation':
+        return <RiskMitigationSlide />;
+      case 'expansion-strategy':
+        return <ExpansionStrategySlide />;
+      case 'social-impact':
+        return <SocialImpactSlide />;
+      case 'vision-closing':
+        return <VisionClosingSlide />;
+      default:
+        return <CoverSlide />;
     }
   };
-
-  return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
+  return <div className="min-h-screen bg-background relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="fixed inset-0 z-0">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-96 h-96 rounded-full"
-            style={{
-              background: `radial-gradient(circle, hsl(180 68% ${30 + i * 5}% / 0.02), transparent)`,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.1, 0.2, 0.1],
-              x: [0, 50, 0],
-              y: [0, 30, 0],
-            }}
-            transition={{
-              duration: 20 + i * 2,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
-        ))}
+        {[...Array(6)].map((_, i) => <motion.div key={i} className="absolute w-96 h-96 rounded-full" style={{
+        background: `radial-gradient(circle, hsl(180 68% ${30 + i * 5}% / 0.02), transparent)`,
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`
+      }} animate={{
+        scale: [1, 1.2, 1],
+        opacity: [0.1, 0.2, 0.1],
+        x: [0, 50, 0],
+        y: [0, 30, 0]
+      }} transition={{
+        duration: 20 + i * 2,
+        repeat: Infinity,
+        ease: "linear"
+      }} />)}
       </div>
 
       {/* Enhanced Multi-Level Navigation */}
       <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
-        <motion.div 
-          className="bg-white/95 backdrop-blur-md rounded-2xl shadow-glow border border-border/50 p-3"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          {/* Navigation Controls */}
-          <div className="flex items-center gap-4 mb-2">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={prevSlide}
-              className="h-10 w-10 rounded-xl hover:bg-accent/20 transition-spring group bg-accent/5"
-            >
-              <ChevronLeft className="h-5 w-5 text-accent group-hover:scale-110 transition-spring" />
-            </Button>
-            
-            <div className="flex gap-2 px-3">
-              {slides.map((_, index) => (
-                <motion.button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-spring relative ${
-                    index === currentSlide 
-                      ? 'bg-accent shadow-md' 
-                      : 'bg-muted hover:bg-accent/60'
-                  }`}
-                  whileHover={{ scale: 1.3 }}
-                  whileTap={{ scale: 0.8 }}
-                  animate={{
-                    scale: index === currentSlide ? 1.4 : 1,
-                    opacity: index === currentSlide ? 1 : 0.6
-                  }}
-                >
-                  {index === currentSlide && (
-                    <motion.div
-                      className="absolute inset-0 bg-accent rounded-full"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: [1, 1.5, 1] }}
-                      transition={{ duration: 0.6, repeat: Infinity }}
-                    />
-                  )}
-                </motion.button>
-              ))}
-            </div>
-            
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={nextSlide}
-              className="h-10 w-10 rounded-xl hover:bg-accent/20 transition-spring group bg-accent/5"
-            >
-              <ChevronRight className="h-5 w-5 text-accent group-hover:scale-110 transition-spring" />
-            </Button>
-          </div>
-
-          {/* Progress Bar */}
-          <div className="w-full bg-muted/30 rounded-full h-1.5 overflow-hidden">
-            <motion.div 
-              className="h-full bg-gradient-to-r from-accent to-accent-light rounded-full"
-              initial={{ width: 0 }}
-              animate={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            />
-          </div>
-        </motion.div>
+        
       </div>
 
       {/* Enhanced Slide Counter with Animation */}
-      <motion.div 
-        className="fixed top-6 right-6 z-50 bg-white/95 backdrop-blur-md rounded-2xl px-4 py-2 shadow-glow border border-border/50"
-        initial={{ opacity: 0, scale: 0.8, x: 20 }}
-        animate={{ opacity: 1, scale: 1, x: 0 }}
-        transition={{ duration: 0.4 }}
-      >
+      <motion.div className="fixed top-6 right-6 z-50 bg-white/95 backdrop-blur-md rounded-2xl px-4 py-2 shadow-glow border border-border/50" initial={{
+      opacity: 0,
+      scale: 0.8,
+      x: 20
+    }} animate={{
+      opacity: 1,
+      scale: 1,
+      x: 0
+    }} transition={{
+      duration: 0.4
+    }}>
         <div className="flex items-center gap-3">
-          <motion.div 
-            className="w-2 h-2 bg-accent rounded-full"
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
+          <motion.div className="w-2 h-2 bg-accent rounded-full" animate={{
+          scale: [1, 1.2, 1]
+        }} transition={{
+          duration: 2,
+          repeat: Infinity
+        }} />
           <span className="text-sm font-semibold text-primary">
             {currentSlide + 1} <span className="text-muted-foreground">of</span> {slides.length}
           </span>
@@ -1905,54 +1747,51 @@ const PitchDeck = () => {
       </motion.div>
 
       {/* Enhanced Control Panel */}
-      <motion.div 
-        className="fixed top-6 left-6 z-50 bg-white/95 backdrop-blur-md rounded-2xl p-3 shadow-glow border border-border/50"
-        initial={{ opacity: 0, scale: 0.8, x: -20 }}
-        animate={{ opacity: 1, scale: 1, x: 0 }}
-        transition={{ duration: 0.4, delay: 0.1 }}
-      >
+      <motion.div className="fixed top-6 left-6 z-50 bg-white/95 backdrop-blur-md rounded-2xl p-3 shadow-glow border border-border/50" initial={{
+      opacity: 0,
+      scale: 0.8,
+      x: -20
+    }} animate={{
+      opacity: 1,
+      scale: 1,
+      x: 0
+    }} transition={{
+      duration: 0.4,
+      delay: 0.1
+    }}>
         <div className="flex flex-col gap-2">
-          <Button
-            variant={isAutoPlay ? "default" : "ghost"}
-            size="sm"
-            onClick={() => setIsAutoPlay(!isAutoPlay)}
-            className="h-9 px-3 text-xs font-medium transition-spring relative overflow-hidden"
-          >
-            <motion.div
-              className="flex items-center gap-2"
-              animate={{ x: isAutoPlay ? 0 : 2 }}
-            >
+          <Button variant={isAutoPlay ? "default" : "ghost"} size="sm" onClick={() => setIsAutoPlay(!isAutoPlay)} className="h-9 px-3 text-xs font-medium transition-spring relative overflow-hidden">
+            <motion.div className="flex items-center gap-2" animate={{
+            x: isAutoPlay ? 0 : 2
+          }}>
               {isAutoPlay ? "⏸️" : "▶️"} 
               <span>{isAutoPlay ? "Pause" : "Auto"}</span>
             </motion.div>
-            {isAutoPlay && (
-              <motion.div
-                className="absolute bottom-0 left-0 h-0.5 bg-accent"
-                initial={{ width: 0 }}
-                animate={{ width: "100%" }}
-                transition={{ duration: 8, repeat: Infinity }}
-              />
-            )}
+            {isAutoPlay && <motion.div className="absolute bottom-0 left-0 h-0.5 bg-accent" initial={{
+            width: 0
+          }} animate={{
+            width: "100%"
+          }} transition={{
+            duration: 8,
+            repeat: Infinity
+          }} />}
           </Button>
           
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => window.print()}
-            className="h-9 px-3 text-xs font-medium hover:bg-accent/10 transition-spring"
-          >
+          <Button variant="ghost" size="sm" onClick={() => window.print()} className="h-9 px-3 text-xs font-medium hover:bg-accent/10 transition-spring">
             🖨️ Print
           </Button>
         </div>
       </motion.div>
 
       {/* Keyboard Shortcuts Indicator */}
-      <motion.div 
-        className="fixed bottom-4 right-6 z-40 bg-white/90 backdrop-blur-sm rounded-xl p-2 shadow-card border border-border/30 text-xs text-muted-foreground"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 0.3 }}
-      >
+      <motion.div className="fixed bottom-4 right-6 z-40 bg-white/90 backdrop-blur-sm rounded-xl p-2 shadow-card border border-border/30 text-xs text-muted-foreground" initial={{
+      opacity: 0
+    }} animate={{
+      opacity: 1
+    }} transition={{
+      delay: 2,
+      duration: 0.3
+    }}>
         <div className="flex gap-2">
           <kbd className="px-1.5 py-0.5 bg-muted rounded">←</kbd>
           <kbd className="px-1.5 py-0.5 bg-muted rounded">→</kbd>
@@ -1967,8 +1806,6 @@ const PitchDeck = () => {
         </div>
       </AnimatePresence>
 
-    </div>
-  );
+    </div>;
 };
-
 export default PitchDeck;
