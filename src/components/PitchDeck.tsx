@@ -1746,11 +1746,33 @@ const PitchDeck = () => {
         </div>
       </motion.div>
 
-      {/* Enhanced Control Panel */}
-      
+      {/* Enhanced Control Panel - Small Navigation Buttons Bottom Right */}
+      <motion.div 
+        className="fixed bottom-6 right-6 z-50 flex gap-2"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.4, delay: 0.5 }}
+      >
+        <Button
+          onClick={prevSlide}
+          size="sm"
+          variant="outline"
+          className="w-10 h-10 p-0 bg-white/90 backdrop-blur-sm border-border/50 hover:bg-accent hover:text-accent-foreground shadow-lg"
+        >
+          <ChevronLeft className="w-4 h-4" />
+        </Button>
+        <Button
+          onClick={nextSlide}
+          size="sm"
+          variant="outline"
+          className="w-10 h-10 p-0 bg-white/90 backdrop-blur-sm border-border/50 hover:bg-accent hover:text-accent-foreground shadow-lg"
+        >
+          <ChevronRight className="w-4 h-4" />
+        </Button>
+      </motion.div>
 
       {/* Keyboard Shortcuts Indicator */}
-      <motion.div className="fixed bottom-4 right-6 z-40 bg-white/90 backdrop-blur-sm rounded-xl p-2 shadow-card border border-border/30 text-xs text-muted-foreground" initial={{
+      <motion.div className="fixed bottom-6 right-32 z-40 bg-white/90 backdrop-blur-sm rounded-xl p-2 shadow-card border border-border/30 text-xs text-muted-foreground" initial={{
       opacity: 0
     }} animate={{
       opacity: 1
