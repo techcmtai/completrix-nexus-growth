@@ -2612,10 +2612,43 @@ const PitchDeck = () => {
       }} />)}
       </div>
 
-      {/* Enhanced Multi-Level Navigation */}
-      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
-        
-      </div>
+      {/* Central Navigation Controls */}
+      <motion.div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50" initial={{
+        opacity: 0,
+        y: 20
+      }} animate={{
+        opacity: 1,
+        y: 0
+      }} transition={{
+        duration: 0.4,
+        delay: 0.3
+      }}>
+        <div className="flex items-center gap-4 bg-white/95 backdrop-blur-md rounded-2xl px-6 py-3 shadow-glow border border-border/50">
+          <Button onClick={prevSlide} size="sm" variant="ghost" className="h-10 px-3 hover:bg-accent hover:text-accent-foreground">
+            <ChevronLeft className="w-4 h-4 mr-1" />
+            Previous
+          </Button>
+          
+          <div className="flex items-center gap-2">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentSlide 
+                    ? 'bg-accent w-6' 
+                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                }`}
+              />
+            ))}
+          </div>
+
+          <Button onClick={nextSlide} size="sm" variant="ghost" className="h-10 px-3 hover:bg-accent hover:text-accent-foreground">
+            Next
+            <ChevronRight className="w-4 h-4 ml-1" />
+          </Button>
+        </div>
+      </motion.div>
 
       {/* Enhanced Slide Counter with Animation */}
       <motion.div className="fixed top-6 right-6 z-50 bg-white/95 backdrop-blur-md rounded-2xl px-4 py-2 shadow-glow border border-border/50" initial={{
@@ -2642,27 +2675,38 @@ const PitchDeck = () => {
         </div>
       </motion.div>
 
-      {/* Enhanced Control Panel - Small Navigation Buttons Bottom Right */}
-      <motion.div className="fixed bottom-6 right-6 z-50 flex gap-2" initial={{
-      opacity: 0,
-      scale: 0.8
-    }} animate={{
-      opacity: 1,
-      scale: 1
-    }} transition={{
-      duration: 0.4,
-      delay: 0.5
-    }}>
-        <Button onClick={prevSlide} size="sm" variant="outline" className="w-10 h-10 p-0 bg-white/90 backdrop-blur-sm border-border/50 hover:bg-accent hover:text-accent-foreground shadow-lg">
-          <ChevronLeft className="w-4 h-4" />
-        </Button>
-        <Button onClick={nextSlide} size="sm" variant="outline" className="w-10 h-10 p-0 bg-white/90 backdrop-blur-sm border-border/50 hover:bg-accent hover:text-accent-foreground shadow-lg">
-          <ChevronRight className="w-4 h-4" />
+      {/* AutoPlay Toggle */}
+      <motion.div className="fixed top-6 left-6 z-50" initial={{
+        opacity: 0,
+        scale: 0.8,
+        x: -20
+      }} animate={{
+        opacity: 1,
+        scale: 1,
+        x: 0
+      }} transition={{
+        duration: 0.4,
+        delay: 0.2
+      }}>
+        <Button 
+          onClick={() => setIsAutoPlay(!isAutoPlay)}
+          size="sm" 
+          variant={isAutoPlay ? "default" : "outline"}
+          className="bg-white/90 backdrop-blur-sm border-border/50 hover:bg-accent hover:text-accent-foreground shadow-lg"
+        >
+          {isAutoPlay ? (
+            <>
+              <Zap className="w-4 h-4 mr-2" />
+              Auto
+            </>
+          ) : (
+            <>
+              <Zap className="w-4 h-4 mr-2" />
+              Manual
+            </>
+          )}
         </Button>
       </motion.div>
-
-      {/* Keyboard Shortcuts Indicator */}
-      
 
       {/* Main content with enhanced spacing */}
       <AnimatePresence mode="wait">

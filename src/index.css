@@ -196,8 +196,8 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding: 2rem;
-    padding-bottom: 8rem; /* Extra space for navigation */
+    padding: 2rem 1rem;
+    padding-bottom: 12rem; /* Extra space for navigation */
     overflow-x: hidden;
     overflow-y: auto;
     /* Hide scrollbar */
@@ -214,12 +214,48 @@
     width: 100%;
     margin: 0 auto;
     overflow-x: hidden;
+    padding: 0 1rem;
   }
   
   /* Ensure no horizontal scrolling anywhere */
   .pitch-slide * {
     max-width: 100%;
     box-sizing: border-box;
+  }
+
+  /* Grid improvements to prevent overlapping */
+  .pitch-content .grid {
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  .pitch-content .grid > * {
+    min-height: fit-content;
+    height: auto;
+  }
+
+  /* Card spacing improvements */
+  .pitch-content .grid .card,
+  .pitch-content .grid [class*="card"] {
+    margin-bottom: 0;
+    break-inside: avoid;
+  }
+
+  /* Responsive grid adjustments */
+  @media (max-width: 768px) {
+    .pitch-content .grid {
+      grid-template-columns: 1fr !important;
+      gap: 1rem;
+    }
+    
+    .pitch-slide {
+      padding: 1rem 0.5rem;
+      padding-bottom: 10rem;
+    }
+    
+    .pitch-content {
+      padding: 0 0.5rem;
+    }
   }
   
   .transition-spring {
