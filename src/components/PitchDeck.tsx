@@ -910,12 +910,12 @@ const PitchDeck = () => {
 
   // Slide 10: Team & Leadership
   const TeamLeadershipSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
-      <div className="pitch-content">
-        <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
+      <div className="pitch-content max-h-screen flex flex-col justify-center">
+        <motion.h2 className="text-3xl md:text-4xl font-bold text-primary mb-6 text-center" variants={itemVariants}>
           Team & Leadership
         </motion.h2>
         
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-3 gap-6 mb-6">
           {[{
           name: "Anurag Singh",
           title: "Founder & CEO",
@@ -932,26 +932,26 @@ const PitchDeck = () => {
           experience: "15+ years in marketing (Club Mahindra, Axis Bank). Founded 3 startups.",
           icon: Target
         }].map((member, index) => <motion.div key={index} variants={itemVariants} whileHover={{
-          scale: 1.05,
-          y: -10
+          scale: 1.02,
+          y: -5
         }}>
-              <Card className="p-8 bg-white shadow-elevated border border-border text-center h-full">
-                <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <member.icon className="w-10 h-10 text-accent" />
+              <Card className="p-4 bg-white shadow-elevated border border-border text-center h-full">
+                <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <member.icon className="w-6 h-6 text-accent" />
                 </div>
-                <h3 className="text-xl font-bold text-primary mb-2">{member.name}</h3>
-                <h4 className="text-lg font-semibold text-accent mb-4">{member.title}</h4>
-                <p className="text-muted-foreground leading-relaxed">{member.experience}</p>
+                <h3 className="text-lg font-bold text-primary mb-1">{member.name}</h3>
+                <h4 className="text-sm font-semibold text-accent mb-2">{member.title}</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed">{member.experience}</p>
               </Card>
             </motion.div>)}
         </div>
 
         <motion.div variants={itemVariants}>
-          <Card className="p-8 bg-white shadow-elevated border border-border text-center">
-            <Users className="w-16 h-16 text-accent mx-auto mb-6" />
-            <h3 className="text-2xl font-bold text-primary mb-4">Team Strength</h3>
-            <div className="text-4xl font-bold text-accent mb-4">25+</div>
-            <p className="text-xl text-muted-foreground">
+          <Card className="p-6 bg-white shadow-elevated border border-border text-center">
+            <Users className="w-12 h-12 text-accent mx-auto mb-4" />
+            <h3 className="text-xl font-bold text-primary mb-2">Team Strength</h3>
+            <div className="text-3xl font-bold text-accent mb-2">25+</div>
+            <p className="text-lg text-muted-foreground">
               Software developers, project managers, editors, and marketers
             </p>
           </Card>
@@ -961,183 +961,114 @@ const PitchDeck = () => {
 
   // Slide 11: Enhanced Financials & Projections with Interactive Charts
   const FinancialsSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
-      <div className="pitch-content">
-        <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
+      <div className="pitch-content max-h-screen flex flex-col justify-center">
+        <motion.h2 className="text-3xl md:text-4xl font-bold text-primary mb-6 text-center" variants={itemVariants}>
           Financials & Projections
         </motion.h2>
         
-        <div className="grid lg:grid-cols-2 gap-8 mb-8">
+        <div className="grid lg:grid-cols-2 gap-6 mb-4">
           {/* Revenue Growth Chart */}
           <motion.div variants={itemVariants}>
-            <Card className="p-6 bg-white shadow-elevated border border-border h-full">
-              <div className="flex items-center gap-3 mb-6">
-                <TrendingUp className="w-6 h-6 text-accent" />
-                <h3 className="text-xl font-bold text-primary">Revenue Growth Projection</h3>
+            <Card className="p-4 bg-white shadow-elevated border border-border h-full">
+              <div className="flex items-center gap-2 mb-3">
+                <TrendingUp className="w-5 h-5 text-accent" />
+                <h3 className="text-lg font-bold text-primary">Revenue Growth</h3>
               </div>
-              <div className="h-64">
+              <div className="h-40">
                 <ResponsiveContainer width="100%" height="100%">
                   <RechartsLineChart data={financialData}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
                     <XAxis dataKey="year" tick={{
-                    fontSize: 12
+                    fontSize: 10
                   }} />
                     <YAxis tick={{
-                    fontSize: 12
+                    fontSize: 10
                   }} />
                     <Tooltip formatter={(value, name) => {
                     if (name === 'revenue') return [`₹${value}Cr`, 'Revenue'];
                     if (name === 'expenses') return [`₹${value}Cr`, 'Expenses'];
-                    if (name === 'netProfit') return [`${value}%`, 'Net Profit Margin'];
                     return [value, name];
                   }} contentStyle={{
                     backgroundColor: 'white',
                     border: '1px solid #e0e0e0',
                     borderRadius: '8px',
-                    boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+                    fontSize: '12px'
                   }} />
-                    <Line type="monotone" dataKey="revenue" stroke="#14b8a6" strokeWidth={3} dot={{
+                    <Line type="monotone" dataKey="revenue" stroke="#14b8a6" strokeWidth={2} dot={{
                     fill: '#14b8a6',
-                    strokeWidth: 2,
-                    r: 5
-                  }} />
-                    <Line type="monotone" dataKey="expenses" stroke="#f59e0b" strokeWidth={2} strokeDasharray="5 5" dot={{
-                    fill: '#f59e0b',
-                    strokeWidth: 2,
-                    r: 4
+                    strokeWidth: 1,
+                    r: 3
                   }} />
                   </RechartsLineChart>
                 </ResponsiveContainer>
               </div>
-              <div className="grid grid-cols-2 gap-4 mt-4">
-                <div className="text-center p-3 bg-accent/5 rounded-lg">
-                  <div className="text-2xl font-bold text-accent">₹25Cr</div>
-                  <div className="text-xs text-muted-foreground">2027-28 Target</div>
+              <div className="grid grid-cols-2 gap-2 mt-2">
+                <div className="text-center p-2 bg-accent/5 rounded">
+                  <div className="text-lg font-bold text-accent">₹25Cr</div>
+                  <div className="text-xs text-muted-foreground">2027-28</div>
                 </div>
-                <div className="text-center p-3 bg-primary/5 rounded-lg">
-                  <div className="text-2xl font-bold text-primary">70%+</div>
-                  <div className="text-xs text-muted-foreground">Revenue CAGR</div>
+                <div className="text-center p-2 bg-primary/5 rounded">
+                  <div className="text-lg font-bold text-primary">70%+</div>
+                  <div className="text-xs text-muted-foreground">CAGR</div>
                 </div>
               </div>
             </Card>
           </motion.div>
 
-          {/* Service Revenue Breakdown */}
+          {/* Financial Summary Table */}
           <motion.div variants={itemVariants}>
-            <Card className="p-6 bg-white shadow-elevated border border-border h-full">
-              <div className="flex items-center gap-3 mb-6">
-                <PieChart className="w-6 h-6 text-primary" />
-                <h3 className="text-xl font-bold text-primary">Revenue by Service (2024)</h3>
-              </div>
-              <div className="h-48">
-                <ResponsiveContainer width="100%" height="100%">
-                  <RechartsPieChart>
-                    <Pie data={serviceBreakdown} cx="50%" cy="50%" innerRadius={40} outerRadius={80} paddingAngle={2} dataKey="percentage">
-                      {serviceBreakdown.map((entry, index) => <Cell key={`cell-${index}`} fill={`hsl(${180 + index * 20}, 68%, ${42 + index * 5}%)`} />)}
-                    </Pie>
-                    <Tooltip formatter={value => [`${value}%`, 'Share']} />
-                  </RechartsPieChart>
-                </ResponsiveContainer>
-              </div>
-              <div className="space-y-2 mt-4">
-                {serviceBreakdown.map((service, index) => <div key={index} className="flex justify-between items-center text-sm">
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 rounded-full" style={{
-                    backgroundColor: `hsl(${180 + index * 20}, 68%, ${42 + index * 5}%)`
-                  }} />
-                      <span className="text-muted-foreground">{service.service}</span>
-                    </div>
-                    <div className="flex gap-2">
-                      <span className="font-medium">{service.percentage}%</span>
-                      <span className="text-accent">₹{service.revenue}K</span>
-                    </div>
+            <Card className="p-4 bg-white shadow-elevated border border-border h-full">
+              <h3 className="text-lg font-bold text-primary mb-3 text-center">Key Metrics</h3>
+              <div className="space-y-2">
+                {[{
+                metric: 'Revenue (₹)',
+                values: ['1 Cr', '5 Cr', '12 Cr', '25 Cr']
+              }, {
+                metric: 'Margin (%)',
+                values: ['40%', '45%', '50%', '55%']
+              }, {
+                metric: 'Clients',
+                values: ['200+', '400+', '800+', '1500+']
+              }].map((row, index) => <div key={index} className="grid grid-cols-5 gap-2 text-sm">
+                    <div className="font-semibold text-primary text-xs">{row.metric}</div>
+                    {row.values.map((value, i) => <div key={i} className="text-center font-medium text-xs">
+                        {value}
+                      </div>)}
                   </div>)}
+              </div>
+              <div className="grid grid-cols-4 gap-1 mt-3 text-xs text-muted-foreground">
+                <div className="text-center">2024</div>
+                <div className="text-center">2025</div>
+                <div className="text-center">2026</div>
+                <div className="text-center">2027</div>
               </div>
             </Card>
           </motion.div>
         </div>
 
-        {/* Key Financial Metrics */}
-        <motion.div variants={itemVariants}>
-          <Card className="p-6 bg-white shadow-elevated border border-border">
-            <h3 className="text-xl font-bold text-primary mb-6 text-center">Financial Projections Summary</h3>
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b border-border">
-                    <th className="text-left p-3 font-semibold text-primary">Metric</th>
-                    <th className="text-center p-3 font-semibold text-primary">2024-25</th>
-                    <th className="text-center p-3 font-semibold text-primary">2025-26</th>
-                    <th className="text-center p-3 font-semibold text-primary">2026-27</th>
-                    <th className="text-center p-3 font-semibold text-primary">2027-28</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[{
-                  metric: 'Revenue (₹)',
-                  values: ['1 Cr', '5 Cr', '12 Cr', '25 Cr'],
-                  highlight: 'accent'
-                }, {
-                  metric: 'Gross Margin (%)',
-                  values: ['40%', '45%', '50%', '55%'],
-                  highlight: 'primary'
-                }, {
-                  metric: 'Net Profit (%)',
-                  values: ['15%', '20%', '25%', '30%'],
-                  highlight: 'success'
-                }, {
-                  metric: 'Clients',
-                  values: ['200+', '400+', '800+', '1500+'],
-                  highlight: 'accent'
-                }, {
-                  metric: 'Team Size',
-                  values: ['30', '50', '80', '120'],
-                  highlight: 'primary'
-                }].map((row, index) => <motion.tr key={index} className="border-b border-border hover:bg-accent/5 transition-colors" initial={{
-                  opacity: 0,
-                  x: -20
-                }} animate={{
-                  opacity: 1,
-                  x: 0
-                }} transition={{
-                  delay: index * 0.1
-                }}>
-                      <td className="p-3 font-semibold text-primary">{row.metric}</td>
-                      {row.values.map((value, i) => <td key={i} className={`text-center p-3 font-medium text-${row.highlight}`}>
-                          {value}
-                        </td>)}
-                    </motion.tr>)}
-                </tbody>
-              </table>
-            </div>
-          </Card>
-        </motion.div>
-
-        {/* Additional Financial Insights */}
-        <div className="grid md:grid-cols-3 gap-6 mt-8">
+        {/* Bottom Summary Cards */}
+        <div className="grid md:grid-cols-3 gap-4">
           <motion.div variants={itemVariants}>
-            <Card className="p-6 bg-gradient-to-br from-accent/5 to-accent/10 border border-border text-center">
-              <LineChart className="w-12 h-12 text-accent mx-auto mb-4" />
-              <div className="text-3xl font-bold text-accent mb-2">70%+</div>
-              <div className="text-sm font-medium text-primary">Revenue CAGR</div>
-              <div className="text-xs text-muted-foreground mt-1">Aggressive growth target</div>
+            <Card className="p-4 bg-gradient-to-br from-accent/5 to-accent/10 border border-border text-center">
+              <LineChart className="w-8 h-8 text-accent mx-auto mb-2" />
+              <div className="text-2xl font-bold text-accent mb-1">70%+</div>
+              <div className="text-xs font-medium text-primary">Revenue CAGR</div>
             </Card>
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            <Card className="p-6 bg-gradient-to-br from-primary/5 to-primary/10 border border-border text-center">
-              <Target className="w-12 h-12 text-primary mx-auto mb-4" />
-              <div className="text-3xl font-bold text-primary mb-2">55%</div>
-              <div className="text-sm font-medium text-primary">Target Margin</div>
-              <div className="text-xs text-muted-foreground mt-1">By 2027-28</div>
+            <Card className="p-4 bg-gradient-to-br from-primary/5 to-primary/10 border border-border text-center">
+              <Target className="w-8 h-8 text-primary mx-auto mb-2" />
+              <div className="text-2xl font-bold text-primary mb-1">55%</div>
+              <div className="text-xs font-medium text-primary">Target Margin</div>
             </Card>
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            <Card className="p-6 bg-gradient-to-br from-success/5 to-success/10 border border-border text-center">
-              <Users className="w-12 h-12 text-success mx-auto mb-4" />
-              <div className="text-3xl font-bold text-success mb-2">1500+</div>
-              <div className="text-sm font-medium text-primary">Client Target</div>
-              <div className="text-xs text-muted-foreground mt-1">Cross-segment portfolio</div>
+            <Card className="p-4 bg-gradient-to-br from-success/5 to-success/10 border border-border text-center">
+              <Users className="w-8 h-8 text-success mx-auto mb-2" />
+              <div className="text-2xl font-bold text-success mb-1">1500+</div>
+              <div className="text-xs font-medium text-primary">Client Target</div>
             </Card>
           </motion.div>
         </div>
@@ -1392,8 +1323,8 @@ const PitchDeck = () => {
 
   // Slide 15: Risk Mitigation & Contingency
   const RiskMitigationSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
-      <div className="pitch-content">
-        <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
+      <div className="pitch-content max-h-screen flex flex-col justify-center">
+        <motion.h2 className="text-3xl md:text-4xl font-bold text-primary mb-6 text-center" variants={itemVariants}>
           Risk Mitigation & Contingency Planning
         </motion.h2>
         
@@ -1602,52 +1533,52 @@ const PitchDeck = () => {
   // Slide 18: Vision & Closing
   const VisionClosingSlide = () => <motion.div className="pitch-slide bg-background text-foreground relative overflow-hidden" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-primary/5"></div>
-      <div className="pitch-content text-center relative z-10">
-        <motion.div variants={itemVariants} className="mb-12">
-          <Rocket className="w-24 h-24 text-accent mx-auto mb-8" />
-          <h2 className="text-4xl md:text-6xl font-bold text-primary mb-8">Our Vision</h2>
-          <div className="max-w-4xl mx-auto p-8 bg-white rounded-2xl shadow-elevated border border-border">
-            <p className="text-2xl md:text-3xl text-muted-foreground leading-relaxed italic">
+      <div className="pitch-content text-center relative z-10 max-h-screen flex flex-col justify-center">
+        <motion.div variants={itemVariants} className="mb-6">
+          <Rocket className="w-16 h-16 text-accent mx-auto mb-4" />
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Our Vision</h2>
+          <div className="max-w-3xl mx-auto p-6 bg-white rounded-xl shadow-elevated border border-border">
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed italic">
               "We aim to be the most trusted digital partner for entrepreneurs worldwide — 
               enabling them to start, scale, and succeed with world-class tech and marketing support."
             </p>
           </div>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="grid md:grid-cols-2 gap-8 mb-12">
-          <Card className="p-8 bg-white shadow-elevated border border-border">
-            <div className="w-24 h-18 mx-auto mb-4">
+        <motion.div variants={itemVariants} className="grid md:grid-cols-2 gap-6 mb-6">
+          <Card className="p-6 bg-white shadow-elevated border border-border">
+            <div className="w-20 h-14 mx-auto mb-3">
               <img src={cmtAiLogo} alt="CMT AI" className="w-full h-full object-contain" />
             </div>
-            <h3 className="text-xl font-bold text-primary text-center">Technology Excellence</h3>
+            <h3 className="text-lg font-bold text-primary text-center">Technology Excellence</h3>
           </Card>
           
-          <Card className="p-8 bg-white shadow-elevated border border-border">
-            <div className="w-24 h-18 mx-auto mb-4">
+          <Card className="p-6 bg-white shadow-elevated border border-border">
+            <div className="w-20 h-14 mx-auto mb-3">
               <img src={weMarketYouLogo} alt="We Market You" className="w-full h-full object-contain" />
             </div>
-            <h3 className="text-xl font-bold text-primary text-center">Marketing Mastery</h3>
+            <h3 className="text-lg font-bold text-primary text-center">Marketing Mastery</h3>
           </Card>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="bg-white p-8 rounded-2xl shadow-elevated border border-border">
-          <h3 className="text-2xl font-bold text-primary mb-6">Contact Information</h3>
-          <div className="space-y-4">
-            <div className="text-xl">
+        <motion.div variants={itemVariants} className="bg-white p-6 rounded-xl shadow-elevated border border-border">
+          <h3 className="text-xl font-bold text-primary mb-4">Contact Information</h3>
+          <div className="space-y-3">
+            <div className="text-lg">
               <p className="font-bold text-primary">Anurag Singh</p>
-              <p className="text-muted-foreground">Founder & CEO – Completrix MicroTechnologies Pvt. Ltd.</p>
+              <p className="text-muted-foreground text-sm">Founder & CEO – Completrix MicroTechnologies Pvt. Ltd.</p>
             </div>
-            <div className="flex justify-center gap-8 text-lg">
-              <div className="flex items-center gap-2">
-                <Phone className="w-5 h-5 text-accent" />
+            <div className="flex justify-center gap-6 text-sm">
+              <div className="flex items-center gap-1">
+                <Phone className="w-4 h-4 text-accent" />
                 <span>[Phone]</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Mail className="w-5 h-5 text-accent" />
+              <div className="flex items-center gap-1">
+                <Mail className="w-4 h-4 text-accent" />
                 <span>[Email]</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Globe className="w-5 h-5 text-accent" />
+              <div className="flex items-center gap-1">
+                <Globe className="w-4 h-4 text-accent" />
                 <span>[LinkedIn]</span>
               </div>
             </div>
