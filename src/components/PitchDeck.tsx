@@ -910,12 +910,12 @@ const PitchDeck = () => {
 
   // Slide 10: Team & Leadership
   const TeamLeadershipSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
-      <div className="pitch-content max-h-screen flex flex-col justify-center">
-        <motion.h2 className="text-3xl md:text-4xl font-bold text-primary mb-6 text-center" variants={itemVariants}>
+      <div className="pitch-content">
+        <motion.h2 className="text-4xl md:text-5xl font-bold text-primary mb-8 text-center" variants={itemVariants}>
           Team & Leadership
         </motion.h2>
         
-        <div className="grid md:grid-cols-3 gap-6 mb-6">
+        <div className="grid md:grid-cols-3 gap-8 mb-8">
           {[{
           name: "Anurag Singh",
           title: "Founder & CEO",
@@ -932,26 +932,26 @@ const PitchDeck = () => {
           experience: "15+ years in marketing (Club Mahindra, Axis Bank). Founded 3 startups.",
           icon: Target
         }].map((member, index) => <motion.div key={index} variants={itemVariants} whileHover={{
-          scale: 1.02,
-          y: -5
+          scale: 1.05,
+          y: -10
         }}>
-              <Card className="p-4 bg-white shadow-elevated border border-border text-center h-full">
-                <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <member.icon className="w-6 h-6 text-accent" />
+              <Card className="p-6 bg-white shadow-elevated border border-border text-center h-full">
+                <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <member.icon className="w-8 h-8 text-accent" />
                 </div>
-                <h3 className="text-lg font-bold text-primary mb-1">{member.name}</h3>
-                <h4 className="text-sm font-semibold text-accent mb-2">{member.title}</h4>
-                <p className="text-xs text-muted-foreground leading-relaxed">{member.experience}</p>
+                <h3 className="text-xl font-bold text-primary mb-2">{member.name}</h3>
+                <h4 className="text-lg font-semibold text-accent mb-3">{member.title}</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">{member.experience}</p>
               </Card>
             </motion.div>)}
         </div>
 
         <motion.div variants={itemVariants}>
-          <Card className="p-6 bg-white shadow-elevated border border-border text-center">
-            <Users className="w-12 h-12 text-accent mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-primary mb-2">Team Strength</h3>
-            <div className="text-3xl font-bold text-accent mb-2">25+</div>
-            <p className="text-lg text-muted-foreground">
+          <Card className="p-8 bg-white shadow-elevated border border-border text-center">
+            <Users className="w-16 h-16 text-accent mx-auto mb-6" />
+            <h3 className="text-2xl font-bold text-primary mb-4">Team Strength</h3>
+            <div className="text-4xl font-bold text-accent mb-4">25+</div>
+            <p className="text-xl text-muted-foreground">
               Software developers, project managers, editors, and marketers
             </p>
           </Card>
