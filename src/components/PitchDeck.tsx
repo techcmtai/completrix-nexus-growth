@@ -9,7 +9,43 @@ import cmtAiLogo from '/lovable-uploads/a576a2c2-c473-4314-a9a6-a3f11e45253c.png
 const PitchDeck = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(false);
-  const slides = ['cover', 'problem', 'solution', 'market-opportunity', 'products-services', 'business-model', 'go-to-market', 'traction', 'competitive-landscape', 'technology-stack', 'case-studies', 'team-leadership', 'financials', 'funding-ask', 'risk-mitigation', 'expansion-strategy', 'social-impact', 'vision-closing'];
+  const slides = [
+    'cover', 
+    'company-overview',
+    'problem', 
+    'market-research',
+    'target-customers',
+    'solution', 
+    'cmt-ai-products',
+    'we-market-you-services',
+    'technology-architecture',
+    'development-process',
+    'business-model', 
+    'revenue-streams',
+    'pricing-strategy',
+    'go-to-market', 
+    'marketing-sales-funnel',
+    'partnership-strategy',
+    'competitive-landscape',
+    'swot-analysis', 
+    'customer-acquisition',
+    'case-studies',
+    'traction', 
+    'team-leadership',
+    'advisory-board',
+    'organizational-structure',
+    'financials',
+    'unit-economics',
+    'funding-ask',
+    'use-of-funds',
+    'risk-mitigation', 
+    'expansion-strategy',
+    'social-impact',
+    'milestones-roadmap',
+    'exit-strategy',
+    'qa-preparation',
+    'vision-closing'
+  ];
 
   // Enhanced data sets for interactive visualizations
   const financialData = [{
@@ -317,6 +353,65 @@ const PitchDeck = () => {
         </motion.div>
       </div>
     </motion.div>;
+
+  // Slide 2: Company Overview
+  const CompanyOverviewSlide = () => (
+    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+      <div className="pitch-content">
+        <motion.h2 className="text-4xl font-bold text-primary mb-8 text-center" variants={itemVariants}>
+          About Completrix Microtechnologies
+        </motion.h2>
+        
+        <div className="grid md:grid-cols-2 gap-8 mb-8">
+          <motion.div variants={itemVariants}>
+            <Card className="p-6 bg-white shadow-elevated border border-border">
+              <h3 className="text-2xl font-bold text-primary mb-4">Our Mission</h3>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                To democratize technology and marketing services for startups and SMEs, enabling them to compete with enterprise-level capabilities at affordable costs.
+              </p>
+              <div className="flex items-center gap-2">
+                <Rocket className="w-5 h-5 text-accent" />
+                <span className="font-semibold text-accent">Start. Scale. Succeed.</span>
+              </div>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <Card className="p-6 bg-white shadow-elevated border border-border">
+              <h3 className="text-2xl font-bold text-primary mb-4">Our Vision</h3>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                To become the go-to technology and marketing partner for emerging businesses across India and globally, fostering innovation and growth.
+              </p>
+              <div className="flex items-center gap-2">
+                <Globe className="w-5 h-5 text-accent" />
+                <span className="font-semibold text-accent">Global Innovation Partner</span>
+              </div>
+            </Card>
+          </motion.div>
+        </div>
+
+        <motion.div variants={itemVariants}>
+          <Card className="p-8 bg-white shadow-elevated border border-border">
+            <h3 className="text-2xl font-bold text-primary mb-6 text-center">Company Highlights</h3>
+            <div className="grid md:grid-cols-4 gap-6">
+              {[
+                { label: "Founded", value: "2024", icon: Calendar },
+                { label: "Headquarters", value: "India", icon: MapPin },
+                { label: "Team Size", value: "30+", icon: Users },
+                { label: "Active Clients", value: "200+", icon: Briefcase }
+              ].map((stat, index) => (
+                <div key={index} className="text-center">
+                  <stat.icon className="w-12 h-12 text-accent mx-auto mb-3" />
+                  <div className="text-2xl font-bold text-primary">{stat.value}</div>
+                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
 
   // Slide 2: Problem
   const ProblemSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
@@ -1735,42 +1830,773 @@ const PitchDeck = () => {
         </motion.div>
       </div>
     </motion.div>;
+
+  // Market Research Slide
+  const MarketResearchSlide = () => (
+    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+      <div className="pitch-content">
+        <motion.h2 className="text-4xl font-bold text-primary mb-8 text-center" variants={itemVariants}>
+          Market Research & Validation
+        </motion.h2>
+        
+        <div className="grid md:grid-cols-2 gap-8">
+          <motion.div variants={itemVariants}>
+            <Card className="p-6 bg-white shadow-elevated border border-border h-full">
+              <h3 className="text-xl font-bold text-primary mb-4">Primary Research Findings</h3>
+              <div className="space-y-4">
+                {[
+                  "78% of SMEs lack dedicated tech teams",
+                  "65% struggle with digital marketing ROI",
+                  "Market size growing at 23% CAGR",
+                  "Average project cost reduced by 40% with our model"
+                ].map((finding, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <BarChart3 className="w-5 h-5 text-accent mt-1" />
+                    <span className="text-muted-foreground">{finding}</span>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <Card className="p-6 bg-white shadow-elevated border border-border h-full">
+              <h3 className="text-xl font-bold text-primary mb-4">Market Validation</h3>
+              <div className="space-y-6">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-accent">200+</div>
+                  <div className="text-sm text-muted-foreground">Early Adopters</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-accent">4.8/5</div>
+                  <div className="text-sm text-muted-foreground">Customer Satisfaction</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-accent">85%</div>
+                  <div className="text-sm text-muted-foreground">Client Retention Rate</div>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  // Target Customers Slide
+  const TargetCustomersSlide = () => (
+    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+      <div className="pitch-content">
+        <motion.h2 className="text-4xl font-bold text-primary mb-8 text-center" variants={itemVariants}>
+          Target Customer Profiles
+        </motion.h2>
+        
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            {
+              title: "Early-Stage Startups",
+              description: "Pre-seed to Series A companies needing MVP development and market entry strategy",
+              size: "40%",
+              revenue: "₹0-50L",
+              needs: ["MVP Development", "Digital Presence", "Growth Strategy"],
+              icon: Rocket,
+              color: "text-blue-500"
+            },
+            {
+              title: "SMEs & Growing Businesses", 
+              description: "Established businesses looking to digitize operations and scale marketing efforts",
+              size: "45%",
+              revenue: "₹50L-10Cr",
+              needs: ["Digital Transformation", "Marketing Automation", "System Integration"],
+              icon: Building,
+              color: "text-green-500"
+            },
+            {
+              title: "Enterprise Clients",
+              description: "Large corporations needing specialized tech solutions and strategic marketing",
+              size: "15%", 
+              revenue: "₹10Cr+",
+              needs: ["Custom Solutions", "Strategic Consulting", "Large-scale Implementation"],
+              icon: Briefcase,
+              color: "text-purple-500"
+            }
+          ].map((segment, index) => (
+            <motion.div
+              key={index}
+              className="p-6 bg-white rounded-xl shadow-elevated border border-border"
+              variants={itemVariants}
+              whileHover={{ scale: 1.02, y: -5 }}
+            >
+              <segment.icon className={`w-12 h-12 ${segment.color} mb-4`} />
+              <h3 className="text-xl font-bold text-primary mb-2">{segment.title}</h3>
+              <p className="text-muted-foreground text-sm mb-4">{segment.description}</p>
+              
+              <div className="space-y-3">
+                <div className="flex justify-between">
+                  <span className="text-sm text-muted-foreground">Market Share:</span>
+                  <span className="font-semibold text-accent">{segment.size}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-sm text-muted-foreground">Revenue Range:</span>
+                  <span className="font-semibold text-accent">{segment.revenue}</span>
+                </div>
+                
+                <div className="mt-4">
+                  <h4 className="font-semibold text-primary mb-2">Key Needs:</h4>
+                  <ul className="space-y-1">
+                    {segment.needs.map((need, idx) => (
+                      <li key={idx} className="text-xs text-muted-foreground flex items-center gap-2">
+                        <Check className="w-3 h-3 text-accent" />
+                        {need}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  // We Market You Services Detailed Slide
+  const WeMarketYouServicesSlide = () => (
+    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+      <div className="pitch-content">
+        <motion.div className="flex items-center gap-4 mb-8" variants={itemVariants}>
+          <div className="w-16 h-12">
+            <img src={weMarketYouLogo} alt="We Market You" className="w-full h-full object-contain" />
+          </div>
+          <h2 className="text-4xl font-bold text-primary">We Market You - Service Portfolio</h2>
+        </motion.div>
+        
+        <div className="grid md:grid-cols-2 gap-8">
+          {[
+            {
+              category: "Digital Marketing",
+              services: [
+                "Search Engine Optimization", 
+                "Pay-Per-Click Advertising",
+                "Social Media Marketing",
+                "Content Marketing Strategy"
+              ],
+              metrics: "Average 3x ROI increase",
+              icon: TrendingUp,
+              color: "text-pink-500"
+            },
+            {
+              category: "Brand Strategy",
+              services: [
+                "Brand Identity Development",
+                "Corporate Communications",
+                "Crisis Management",
+                "Reputation Building"
+              ],
+              metrics: "95% brand recall improvement",
+              icon: Target,
+              color: "text-indigo-500"
+            },
+            {
+              category: "Analytics & Insights",
+              services: [
+                "Customer Journey Mapping",
+                "ROI Tracking & Reporting",
+                "Market Research",
+                "Competitive Analysis"
+              ],
+              metrics: "40% better decision making",
+              icon: BarChart3,
+              color: "text-yellow-500"
+            },
+            {
+              category: "Public Relations",
+              services: [
+                "Media Relations",
+                "Press Release Distribution",
+                "Event Management",
+                "Influencer Partnerships"
+              ],
+              metrics: "200% media coverage increase",
+              icon: Users,
+              color: "text-teal-500"
+            }
+          ].map((category, index) => (
+            <motion.div
+              key={index}
+              className="p-6 bg-white rounded-xl shadow-elevated border border-border"
+              variants={itemVariants}
+              whileHover={{ scale: 1.02 }}
+            >
+              <category.icon className={`w-10 h-10 ${category.color} mb-4`} />
+              <h3 className="text-xl font-bold text-primary mb-2">{category.category}</h3>
+              <p className="text-sm text-accent font-semibold mb-4">{category.metrics}</p>
+              <ul className="space-y-2">
+                {category.services.map((service, idx) => (
+                  <li key={idx} className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-accent" />
+                    <span className="text-muted-foreground text-sm">{service}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  // Technology Architecture Slide
+  const TechnologyArchitectureSlide = () => (
+    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+      <div className="pitch-content">
+        <motion.h2 className="text-4xl font-bold text-primary mb-8 text-center" variants={itemVariants}>
+          Technology Architecture & Stack
+        </motion.h2>
+        
+        <div className="grid md:grid-cols-3 gap-8">
+          <motion.div variants={itemVariants}>
+            <Card className="p-6 bg-white shadow-elevated border border-border h-full">
+              <Server className="w-12 h-12 text-blue-500 mb-4" />
+              <h3 className="text-xl font-bold text-primary mb-4">Backend Technologies</h3>
+              <div className="space-y-2">
+                {["Node.js & Express", "Python/Django", "Java Spring Boot", "Microservices Architecture", "RESTful APIs", "GraphQL"].map((tech, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <Code className="w-4 h-4 text-accent" />
+                    <span className="text-sm text-muted-foreground">{tech}</span>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <Card className="p-6 bg-white shadow-elevated border border-border h-full">
+              <Monitor className="w-12 h-12 text-green-500 mb-4" />
+              <h3 className="text-xl font-bold text-primary mb-4">Frontend Technologies</h3>
+              <div className="space-y-2">
+                {["React.js & Next.js", "Vue.js & Nuxt.js", "Angular", "TypeScript", "Tailwind CSS", "Progressive Web Apps"].map((tech, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <Code className="w-4 h-4 text-accent" />
+                    <span className="text-sm text-muted-foreground">{tech}</span>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <Card className="p-6 bg-white shadow-elevated border border-border h-full">
+              <Database className="w-12 h-12 text-purple-500 mb-4" />
+              <h3 className="text-xl font-bold text-primary mb-4">Database & DevOps</h3>
+              <div className="space-y-2">
+                {["PostgreSQL & MongoDB", "Redis Caching", "Docker & Kubernetes", "AWS/Azure/GCP", "CI/CD Pipelines", "Monitoring & Analytics"].map((tech, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <Code className="w-4 h-4 text-accent" />
+                    <span className="text-sm text-muted-foreground">{tech}</span>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </motion.div>
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  // Revenue Streams Slide
+  const RevenueStreamsSlide = () => (
+    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+      <div className="pitch-content">
+        <motion.h2 className="text-4xl font-bold text-primary mb-8 text-center" variants={itemVariants}>
+          Revenue Streams & Business Model
+        </motion.h2>
+        
+        <div className="grid md:grid-cols-2 gap-8 mb-8">
+          {[
+            {
+              stream: "Project-Based Revenue",
+              description: "Custom development projects with fixed pricing",
+              percentage: "60%",
+              avgValue: "₹5-50L per project",
+              icon: Briefcase,
+              color: "text-blue-500"
+            },
+            {
+              stream: "Subscription Services", 
+              description: "Monthly recurring revenue for ongoing services",
+              percentage: "25%",
+              avgValue: "₹50K-5L per month",
+              icon: Activity,
+              color: "text-green-500"
+            },
+            {
+              stream: "Consulting & Strategy",
+              description: "Strategic advisory and consulting services",
+              percentage: "10%",
+              avgValue: "₹2-10L per engagement",
+              icon: Brain,
+              color: "text-purple-500"
+            },
+            {
+              stream: "Training & Support",
+              description: "Technical training and ongoing support services",
+              percentage: "5%",
+              avgValue: "₹1-5L per program",
+              icon: Award,
+              color: "text-orange-500"
+            }
+          ].map((stream, index) => (
+            <motion.div
+              key={index}
+              className="p-6 bg-white rounded-xl shadow-elevated border border-border"
+              variants={itemVariants}
+              whileHover={{ scale: 1.02 }}
+            >
+              <stream.icon className={`w-10 h-10 ${stream.color} mb-4`} />
+              <h3 className="text-xl font-bold text-primary mb-2">{stream.stream}</h3>
+              <p className="text-muted-foreground text-sm mb-4">{stream.description}</p>
+              
+              <div className="grid grid-cols-2 gap-4">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-accent">{stream.percentage}</div>
+                  <div className="text-xs text-muted-foreground">Revenue Share</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-lg font-bold text-primary">{stream.avgValue}</div>
+                  <div className="text-xs text-muted-foreground">Average Value</div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  // CMT AI Products Detailed Slide
+  const CmtAiProductsSlide = () => (
+    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+      <div className="pitch-content">
+        <motion.div className="flex items-center gap-4 mb-8" variants={itemVariants}>
+          <div className="w-16 h-12">
+            <img src={cmtAiLogo} alt="CMT AI" className="w-full h-full object-contain" />
+          </div>
+          <h2 className="text-4xl font-bold text-primary">CMT AI - Product Portfolio</h2>
+        </motion.div>
+        
+        <div className="grid md:grid-cols-2 gap-8">
+          {[
+            {
+              category: "Web Development",
+              products: [
+                "E-commerce Platforms",
+                "Content Management Systems", 
+                "Progressive Web Apps",
+                "Custom Web Applications"
+              ],
+              icon: Monitor,
+              color: "text-blue-500"
+            },
+            {
+              category: "AI/ML Solutions",
+              products: [
+                "Chatbot Development",
+                "Predictive Analytics",
+                "Computer Vision Systems",
+                "Natural Language Processing"
+              ],
+              icon: Brain,
+              color: "text-purple-500"
+            },
+            {
+              category: "Cloud Services",
+              products: [
+                "Cloud Migration",
+                "DevOps Implementation",
+                "Infrastructure Management",
+                "Security & Compliance"
+              ],
+              icon: Cloud,
+              color: "text-cyan-500"
+            },
+            {
+              category: "Mobile Development",
+              products: [
+                "Native iOS/Android Apps",
+                "Cross-platform Solutions",
+                "Hybrid Applications", 
+                "Mobile-first Design"
+              ],
+              icon: Smartphone,
+              color: "text-green-500"
+            }
+          ].map((category, index) => (
+            <motion.div
+              key={index}
+              className="p-6 bg-white rounded-xl shadow-elevated border border-border"
+              variants={itemVariants}
+              whileHover={{ scale: 1.02 }}
+            >
+              <category.icon className={`w-10 h-10 ${category.color} mb-4`} />
+              <h3 className="text-xl font-bold text-primary mb-4">{category.category}</h3>
+              <ul className="space-y-2">
+                {category.products.map((product, idx) => (
+                  <li key={idx} className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-accent" />
+                    <span className="text-muted-foreground text-sm">{product}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  // Development Process Slide
+  const DevelopmentProcessSlide = () => (
+    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+      <div className="pitch-content">
+        <motion.h2 className="text-4xl font-bold text-primary mb-8 text-center" variants={itemVariants}>
+          Development Process & Methodology
+        </motion.h2>
+        
+        <div className="grid md:grid-cols-4 gap-6 mb-8">
+          {[
+            {
+              phase: "Discovery",
+              description: "Requirements gathering, stakeholder interviews, technical assessment",
+              duration: "1-2 weeks",
+              icon: Eye,
+              color: "text-blue-500"
+            },
+            {
+              phase: "Design",
+              description: "UI/UX design, system architecture, technical specifications",
+              duration: "2-3 weeks", 
+              icon: Monitor,
+              color: "text-green-500"
+            },
+            {
+              phase: "Development",
+              description: "Agile development sprints, continuous integration, testing",
+              duration: "4-12 weeks",
+              icon: Code,
+              color: "text-purple-500"
+            },
+            {
+              phase: "Deployment",
+              description: "Production deployment, monitoring setup, training & handover",
+              duration: "1-2 weeks",
+              icon: Rocket,
+              color: "text-orange-500"
+            }
+          ].map((phase, index) => (
+            <motion.div
+              key={index}
+              className="p-6 bg-white rounded-xl shadow-elevated border border-border text-center"
+              variants={itemVariants}
+              whileHover={{ scale: 1.05, y: -5 }}
+            >
+              <phase.icon className={`w-12 h-12 ${phase.color} mx-auto mb-4`} />
+              <h3 className="text-lg font-bold text-primary mb-2">{phase.phase}</h3>
+              <p className="text-sm text-muted-foreground mb-3">{phase.description}</p>
+              <div className="text-xs font-semibold text-accent">{phase.duration}</div>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div variants={itemVariants}>
+          <Card className="p-8 bg-white shadow-elevated border border-border">
+            <h3 className="text-2xl font-bold text-primary mb-6 text-center">Quality Assurance Framework</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="text-center">
+                <Shield className="w-10 h-10 text-accent mx-auto mb-3" />
+                <h4 className="font-bold text-primary mb-2">Security First</h4>
+                <p className="text-sm text-muted-foreground">OWASP compliance, security audits, penetration testing</p>
+              </div>
+              <div className="text-center">
+                <CheckCircle className="w-10 h-10 text-accent mx-auto mb-3" />
+                <h4 className="font-bold text-primary mb-2">Automated Testing</h4>
+                <p className="text-sm text-muted-foreground">Unit tests, integration tests, end-to-end testing</p>
+              </div>
+              <div className="text-center">
+                <Activity className="w-10 h-10 text-accent mx-auto mb-3" />
+                <h4 className="font-bold text-primary mb-2">Performance</h4>
+                <p className="text-sm text-muted-foreground">Load testing, optimization, monitoring & alerts</p>
+              </div>
+            </div>
+          </Card>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+
+  // Pricing Strategy Slide
+  const PricingStrategySlide = () => (
+    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+      <div className="pitch-content">
+        <motion.h2 className="text-4xl font-bold text-primary mb-8 text-center" variants={itemVariants}>
+          Pricing Strategy & Packages
+        </motion.h2>
+        
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            {
+              tier: "Starter",
+              target: "Early-stage startups",
+              price: "₹2-10L",
+              features: [
+                "MVP Development",
+                "Basic Marketing Setup", 
+                "3 months support",
+                "Standard hosting"
+              ],
+              popular: false,
+              color: "border-gray-200"
+            },
+            {
+              tier: "Growth",
+              target: "Growing businesses",
+              price: "₹10-50L", 
+              features: [
+                "Full-stack development",
+                "Comprehensive marketing",
+                "12 months support",
+                "Premium infrastructure"
+              ],
+              popular: true,
+              color: "border-accent"
+            },
+            {
+              tier: "Enterprise",
+              target: "Large corporations",
+              price: "₹50L+",
+              features: [
+                "Custom solutions",
+                "Strategic consulting",
+                "24/7 support",
+                "Dedicated team"
+              ],
+              popular: false,
+              color: "border-gray-200"
+            }
+          ].map((tier, index) => (
+            <motion.div
+              key={index}
+              className={`p-8 bg-white rounded-xl shadow-elevated border-2 ${tier.color} relative`}
+              variants={itemVariants}
+              whileHover={{ scale: 1.02, y: -5 }}
+            >
+              {tier.popular && (
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                  <span className="bg-accent text-white px-4 py-1 rounded-full text-sm font-semibold">
+                    Most Popular
+                  </span>
+                </div>
+              )}
+              
+              <h3 className="text-2xl font-bold text-primary mb-2">{tier.tier}</h3>
+              <p className="text-muted-foreground mb-4">{tier.target}</p>
+              <div className="text-3xl font-bold text-accent mb-6">{tier.price}</div>
+              
+              <ul className="space-y-3 mb-8">
+                {tier.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-accent" />
+                    <span className="text-sm text-muted-foreground">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <Button 
+                className={`w-full ${tier.popular ? 'bg-accent hover:bg-accent/90' : 'bg-primary hover:bg-primary/90'}`}
+              >
+                Get Started
+              </Button>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  // SWOT Analysis Slide
+  const SwotAnalysisSlide = () => (
+    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+      <div className="pitch-content">
+        <motion.h2 className="text-4xl font-bold text-primary mb-8 text-center" variants={itemVariants}>
+          SWOT Analysis
+        </motion.h2>
+        
+        <div className="grid md:grid-cols-2 gap-8">
+          <motion.div variants={itemVariants}>
+            <Card className="p-6 bg-white shadow-elevated border border-border h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <TrendingUp className="w-8 h-8 text-green-500" />
+                <h3 className="text-xl font-bold text-primary">Strengths</h3>
+              </div>
+              <ul className="space-y-2">
+                {[
+                  "Dual expertise in tech + marketing",
+                  "Experienced founding team",
+                  "Cost-effective pricing model",
+                  "Proven track record with 200+ clients",
+                  "Agile development methodology"
+                ].map((strength, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-green-500 mt-1" />
+                    <span className="text-sm text-muted-foreground">{strength}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <Card className="p-6 bg-white shadow-elevated border border-border h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <AlertTriangle className="w-8 h-8 text-yellow-500" />
+                <h3 className="text-xl font-bold text-primary">Weaknesses</h3>
+              </div>
+              <ul className="space-y-2">
+                {[
+                  "Limited brand recognition vs. large players",
+                  "Scaling team capabilities",
+                  "Geographic concentration in India",
+                  "Dependency on founder expertise",
+                  "Working capital requirements"
+                ].map((weakness, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <X className="w-4 h-4 text-yellow-500 mt-1" />
+                    <span className="text-sm text-muted-foreground">{weakness}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <Card className="p-6 bg-white shadow-elevated border border-border h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <Rocket className="w-8 h-8 text-blue-500" />
+                <h3 className="text-xl font-bold text-primary">Opportunities</h3>
+              </div>
+              <ul className="space-y-2">
+                {[
+                  "Growing digital transformation market",
+                  "Post-pandemic shift to digital services",
+                  "Government digitization initiatives",
+                  "Expansion to international markets",
+                  "Strategic partnerships & acquisitions"
+                ].map((opportunity, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <ArrowRight className="w-4 h-4 text-blue-500 mt-1" />
+                    <span className="text-sm text-muted-foreground">{opportunity}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <Card className="p-6 bg-white shadow-elevated border border-border h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <Shield className="w-8 h-8 text-red-500" />
+                <h3 className="text-xl font-bold text-primary">Threats</h3>
+              </div>
+              <ul className="space-y-2">
+                {[
+                  "Competition from established players",
+                  "Economic downturns affecting SME spending",
+                  "Technology disruption & obsolescence",
+                  "Talent acquisition challenges",
+                  "Currency fluctuations in global markets"
+                ].map((threat, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <AlertTriangle className="w-4 h-4 text-red-500 mt-1" />
+                    <span className="text-sm text-muted-foreground">{threat}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          </motion.div>
+        </div>
+      </div>
+    </motion.div>
+  );
   const renderSlide = () => {
     switch (slides[currentSlide]) {
       case 'cover':
         return <CoverSlide />;
+      case 'company-overview':
+        return <CompanyOverviewSlide />;
       case 'problem':
         return <ProblemSlide />;
+      case 'market-research':
+        return <MarketResearchSlide />;
+      case 'target-customers':
+        return <TargetCustomersSlide />;
       case 'solution':
         return <SolutionSlide />;
-      case 'market-opportunity':
-        return <MarketOpportunitySlide />;
-      case 'products-services':
-        return <ProductsServicesSlide />;
+      case 'cmt-ai-products':
+        return <CmtAiProductsSlide />;
+      case 'we-market-you-services':
+        return <WeMarketYouServicesSlide />;
+      case 'technology-architecture':
+        return <TechnologyArchitectureSlide />;
+      case 'development-process':
+        return <DevelopmentProcessSlide />;
       case 'business-model':
         return <BusinessModelSlide />;
+      case 'revenue-streams':
+        return <RevenueStreamsSlide />;
+      case 'pricing-strategy':
+        return <PricingStrategySlide />;
       case 'go-to-market':
         return <GoToMarketSlide />;
-      case 'traction':
-        return <TractionSlide />;
+      case 'marketing-sales-funnel':
+        return <GoToMarketSlide />; // Will expand later
+      case 'partnership-strategy':
+        return <GoToMarketSlide />; // Will expand later
       case 'competitive-landscape':
         return <CompetitiveLandscapeSlide />;
-      case 'technology-stack':
-        return <TechnologyStackSlide />;
+      case 'swot-analysis':
+        return <SwotAnalysisSlide />;
+      case 'customer-acquisition':
+        return <GoToMarketSlide />; // Will expand later
       case 'case-studies':
         return <CaseStudiesSlide />;
+      case 'traction':
+        return <TractionSlide />;
       case 'team-leadership':
         return <TeamLeadershipSlide />;
+      case 'advisory-board':
+        return <TeamLeadershipSlide />; // Will expand later
+      case 'organizational-structure':
+        return <TeamLeadershipSlide />; // Will expand later
       case 'financials':
         return <FinancialsSlide />;
+      case 'unit-economics':
+        return <FinancialsSlide />; // Will expand later
       case 'funding-ask':
         return <FundingAskSlide />;
+      case 'use-of-funds':
+        return <FundingAskSlide />; // Will expand later
       case 'risk-mitigation':
         return <RiskMitigationSlide />;
       case 'expansion-strategy':
         return <ExpansionStrategySlide />;
       case 'social-impact':
         return <SocialImpactSlide />;
+      case 'milestones-roadmap':
+        return <ExpansionStrategySlide />; // Will expand later
+      case 'exit-strategy':
+        return <VisionClosingSlide />; // Will expand later
+      case 'qa-preparation':
+        return <VisionClosingSlide />; // Will expand later
       case 'vision-closing':
         return <VisionClosingSlide />;
       default:
