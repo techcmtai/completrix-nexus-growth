@@ -222,7 +222,7 @@ const PitchDeck = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-primary/5"></div>
       <div className="pitch-content text-center relative z-10">
         <motion.div className="mb-8" variants={itemVariants}>
-          <motion.h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight text-primary" initial={{
+          <motion.h1 className="text-4xl md:text-6xl font-black mb-4 tracking-tight text-primary" initial={{
           scale: 0.5,
           opacity: 0
         }} animate={{
@@ -234,7 +234,7 @@ const PitchDeck = () => {
         }}>
             COMPLETRIX
           </motion.h1>
-          <motion.p className="text-xl md:text-2xl font-light mb-4 text-muted-foreground" initial={{
+          <motion.p className="text-lg md:text-xl font-light mb-3 text-muted-foreground" initial={{
           y: 20,
           opacity: 0
         }} animate={{
@@ -254,7 +254,7 @@ const PitchDeck = () => {
           duration: 0.8,
           delay: 0.5
         }} />
-          <motion.p className="text-3xl md:text-4xl font-bold max-w-4xl mx-auto leading-relaxed text-accent mb-12" initial={{
+          <motion.p className="text-2xl md:text-3xl font-bold max-w-4xl mx-auto leading-relaxed text-accent mb-8" initial={{
           y: 30,
           opacity: 0
         }} animate={{
@@ -268,7 +268,7 @@ const PitchDeck = () => {
           </motion.p>
         </motion.div>
         
-        <motion.div className="grid md:grid-cols-2 gap-8 mt-16" variants={itemVariants}>
+        <motion.div className="grid md:grid-cols-2 gap-6 mt-8" variants={itemVariants}>
           <Card className="bg-white border border-border shadow-elevated hover:shadow-glow transition-spring overflow-hidden">
             <CardContent className="p-8 text-center relative">
               <div className="w-48 h-36 mx-auto mb-6 relative">
@@ -321,11 +321,11 @@ const PitchDeck = () => {
   // Slide 2: Problem
   const ProblemSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
-        <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
+        <motion.h2 className="text-4xl font-bold text-primary mb-8 text-center" variants={itemVariants}>
           The Problem
         </motion.h2>
         
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
           {[{
           title: "Technical Expertise Gap",
           description: "85% of startups fail due to lack of technical co-founders. Entrepreneurs struggle to find reliable, full-stack tech partners who understand modern frameworks, AI/ML, and scalable cloud infrastructure.",
@@ -344,15 +344,15 @@ const PitchDeck = () => {
           stats: "₹50L+ typical cost",
           icon: DollarSign,
           color: "text-yellow-500"
-        }].map((problem, index) => <motion.div key={index} className="p-8 bg-white rounded-xl shadow-elevated border border-border hover:shadow-glow transition-spring" variants={itemVariants} whileHover={{
-          scale: 1.05,
-          y: -10
+        }].map((problem, index) => <motion.div key={index} className="p-6 bg-white rounded-xl shadow-elevated border border-border hover:shadow-glow transition-spring" variants={itemVariants} whileHover={{
+          scale: 1.03,
+          y: -5
         }}>
-              <problem.icon className={`w-16 h-16 ${problem.color} mb-6`} />
-              <h3 className="text-xl font-bold text-primary mb-4">{problem.title}</h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">{problem.description}</p>
-              <div className="bg-accent/10 p-3 rounded-lg">
-                <p className="font-bold text-accent text-sm">{problem.stats}</p>
+              <problem.icon className={`w-12 h-12 ${problem.color} mb-4`} />
+              <h3 className="text-lg font-bold text-primary mb-3">{problem.title}</h3>
+              <p className="text-muted-foreground leading-relaxed mb-3 text-sm">{problem.description}</p>
+              <div className="bg-accent/10 p-2 rounded-lg">
+                <p className="font-bold text-accent text-xs">{problem.stats}</p>
               </div>
             </motion.div>)}
         </div>
@@ -362,7 +362,7 @@ const PitchDeck = () => {
   // Slide 3: Our Solution
   const SolutionSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
-        <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
+        <motion.h2 className="text-4xl font-bold text-primary mb-8 text-center" variants={itemVariants}>
           Our Solution
         </motion.h2>
         
@@ -1697,7 +1697,7 @@ const PitchDeck = () => {
         return <CoverSlide />;
     }
   };
-  return <div className="min-h-screen bg-background relative overflow-hidden">
+  return <div className="h-screen w-screen bg-background relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="fixed inset-0 z-0">
         {[...Array(6)].map((_, i) => <motion.div key={i} className="absolute w-96 h-96 rounded-full" style={{
@@ -1747,45 +1747,26 @@ const PitchDeck = () => {
       </motion.div>
 
       {/* Enhanced Control Panel - Small Navigation Buttons Bottom Right */}
-      <motion.div 
-        className="fixed bottom-6 right-6 z-50 flex gap-2"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.4, delay: 0.5 }}
-      >
-        <Button
-          onClick={prevSlide}
-          size="sm"
-          variant="outline"
-          className="w-10 h-10 p-0 bg-white/90 backdrop-blur-sm border-border/50 hover:bg-accent hover:text-accent-foreground shadow-lg"
-        >
+      <motion.div className="fixed bottom-6 right-6 z-50 flex gap-2" initial={{
+      opacity: 0,
+      scale: 0.8
+    }} animate={{
+      opacity: 1,
+      scale: 1
+    }} transition={{
+      duration: 0.4,
+      delay: 0.5
+    }}>
+        <Button onClick={prevSlide} size="sm" variant="outline" className="w-10 h-10 p-0 bg-white/90 backdrop-blur-sm border-border/50 hover:bg-accent hover:text-accent-foreground shadow-lg">
           <ChevronLeft className="w-4 h-4" />
         </Button>
-        <Button
-          onClick={nextSlide}
-          size="sm"
-          variant="outline"
-          className="w-10 h-10 p-0 bg-white/90 backdrop-blur-sm border-border/50 hover:bg-accent hover:text-accent-foreground shadow-lg"
-        >
+        <Button onClick={nextSlide} size="sm" variant="outline" className="w-10 h-10 p-0 bg-white/90 backdrop-blur-sm border-border/50 hover:bg-accent hover:text-accent-foreground shadow-lg">
           <ChevronRight className="w-4 h-4" />
         </Button>
       </motion.div>
 
       {/* Keyboard Shortcuts Indicator */}
-      <motion.div className="fixed bottom-6 right-32 z-40 bg-white/90 backdrop-blur-sm rounded-xl p-2 shadow-card border border-border/30 text-xs text-muted-foreground" initial={{
-      opacity: 0
-    }} animate={{
-      opacity: 1
-    }} transition={{
-      delay: 2,
-      duration: 0.3
-    }}>
-        <div className="flex gap-2">
-          <kbd className="px-1.5 py-0.5 bg-muted rounded">←</kbd>
-          <kbd className="px-1.5 py-0.5 bg-muted rounded">→</kbd>
-          <span className="text-xs">Navigate</span>
-        </div>
-      </motion.div>
+      
 
       {/* Main content with enhanced spacing */}
       <AnimatePresence mode="wait">
