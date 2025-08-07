@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ChevronLeft, ChevronRight, ArrowRight, TrendingUp, Users, DollarSign, Zap, Globe, Shield, Brain, Smartphone, BarChart3, Target, Award, Mail, Phone, PieChart, LineChart, Activity, Building, Calendar, Star, Briefcase, Rocket, CheckCircle, X, Check } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight, TrendingUp, Users, DollarSign, Zap, Globe, Shield, Brain, Smartphone, BarChart3, Target, Award, Mail, Phone, PieChart, LineChart, Activity, Building, Calendar, Star, Briefcase, Rocket, CheckCircle, X, Check, Code, Database, Server, Monitor, Cpu, Cloud, Heart, Leaf, MapPin, AlertTriangle, Eye, Camera } from 'lucide-react';
 import { LineChart as RechartsLineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart as RechartsBarChart, Bar, PieChart as RechartsPieChart, Cell, Pie, Legend } from 'recharts';
 import weMarketYouLogo from '/lovable-uploads/2ba6b31a-4757-4d6a-9d5a-3fd490fce4c9.png';
 import cmtAiLogo from '/lovable-uploads/a576a2c2-c473-4314-a9a6-a3f11e45253c.png';
@@ -13,8 +13,9 @@ const PitchDeck = () => {
   
   const slides = [
     'cover', 'problem', 'solution', 'market-opportunity', 'products-services', 
-    'business-model', 'go-to-market', 'traction', 'competitive-landscape', 
-    'team-leadership', 'financials', 'funding-ask', 'vision-closing'
+    'business-model', 'go-to-market', 'traction', 'competitive-landscape',
+    'technology-stack', 'case-studies', 'team-leadership', 'financials', 
+    'funding-ask', 'risk-mitigation', 'expansion-strategy', 'social-impact', 'vision-closing'
   ];
 
   // Financial projections data
@@ -179,24 +180,27 @@ const PitchDeck = () => {
           The Problem
         </motion.h2>
         
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
           {[
             {
-              title: "Technical Founders Are Rare",
-              description: "New entrepreneurs struggle to find reliable, full-stack tech partners who understand both cutting-edge frameworks (like MERN stack) and scalable infrastructure.",
+              title: "Technical Expertise Gap",
+              description: "85% of startups fail due to lack of technical co-founders. Entrepreneurs struggle to find reliable, full-stack tech partners who understand modern frameworks, AI/ML, and scalable cloud infrastructure.",
+              stats: "85% startup failure rate",
               icon: Brain,
               color: "text-red-500"
             },
             {
-              title: "Fragmented Services",
-              description: "Most service providers specialize in only one domain (either tech or marketing), leaving gaps in execution.",
+              title: "Fragmented Service Ecosystem",
+              description: "Traditional agencies focus on single domains - either technology OR marketing. This creates coordination challenges, inconsistent branding, and project delays for growing businesses.",
+              stats: "60% project delays",
               icon: Target,
               color: "text-orange-500"
             },
             {
-              title: "Early-Stage Support Lacking",
-              description: "New businesses face difficulties finding partners who can help with ideation, development, deployment, branding, and marketing — all under one roof.",
-              icon: Building,
+              title: "High Cost Barriers",
+              description: "Enterprise-grade tech and marketing services are priced for large corporations. SMEs and startups can't afford ₹50L+ budgets that traditional providers demand.",
+              stats: "₹50L+ typical cost",
+              icon: DollarSign,
               color: "text-yellow-500"
             }
           ].map((problem, index) => (
@@ -208,7 +212,10 @@ const PitchDeck = () => {
             >
               <problem.icon className={`w-16 h-16 ${problem.color} mb-6`} />
               <h3 className="text-xl font-bold text-primary mb-4">{problem.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{problem.description}</p>
+              <p className="text-muted-foreground leading-relaxed mb-4">{problem.description}</p>
+              <div className="bg-accent/10 p-3 rounded-lg">
+                <p className="font-bold text-accent text-sm">{problem.stats}</p>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -303,9 +310,10 @@ const PitchDeck = () => {
             <h3 className="text-2xl font-bold text-primary mb-6">Digital Services Boom</h3>
             <div className="space-y-6">
               {[
-                { market: "Indian Digital Marketing Market", size: "US$5.15B", year: "2024" },
-                { market: "Indian Cloud Market", size: "US$17.9B", year: "2024", projection: "US$76.4B by 2030 (CAGR ~26.5%)" },
-                { market: "Indian AI Market", size: "US$6.8B", year: "2024", projection: "CAGR ~19%" }
+                { market: "Indian Digital Marketing Market", size: "US$5.15B", year: "2024", projection: "US$8.1B by 2027 (CAGR 16.2%)", growth: "SME adoption driving growth" },
+                { market: "Indian Cloud Market", size: "US$17.9B", year: "2024", projection: "US$76.4B by 2030 (CAGR 26.5%)", growth: "Fastest growing globally" },
+                { market: "Indian AI Market", size: "US$6.8B", year: "2024", projection: "US$17B by 2027 (CAGR 19%)", growth: "Enterprise AI adoption accelerating" },
+                { market: "European Tech Services", size: "€45B", year: "2024", projection: "€65B by 2027 (CAGR 13%)", growth: "Digital transformation mandate" }
               ].map((data, index) => (
                 <Card key={index} className="p-6 bg-white shadow-elevated border border-border">
                   <h4 className="font-bold text-primary mb-2">{data.market}</h4>
@@ -313,6 +321,9 @@ const PitchDeck = () => {
                   <p className="text-muted-foreground">{data.year}</p>
                   {data.projection && (
                     <p className="text-sm text-success mt-2">{data.projection}</p>
+                  )}
+                  {data.growth && (
+                    <p className="text-xs text-accent mt-1 italic">{data.growth}</p>
                   )}
                 </Card>
               ))}
@@ -929,7 +940,499 @@ const PitchDeck = () => {
     </motion.div>
   );
 
-  // Slide 13: Vision & Closing
+  // Slide 10: Technology Stack
+  const TechnologyStackSlide = () => (
+    <motion.div 
+      className="pitch-slide bg-background"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
+      <div className="pitch-content">
+        <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
+          Technology Stack & Infrastructure
+        </motion.h2>
+        
+        <div className="grid md:grid-cols-2 gap-12">
+          <motion.div variants={itemVariants}>
+            <Card className="p-8 bg-white shadow-elevated border border-border h-full">
+              <div className="flex items-center gap-4 mb-6">
+                <Code className="w-16 h-16 text-accent" />
+                <h3 className="text-2xl font-bold text-primary">Development Technologies</h3>
+              </div>
+              
+              <div className="space-y-6">
+                <div>
+                  <h4 className="font-bold text-primary mb-3">Frontend Development</h4>
+                  <div className="grid grid-cols-2 gap-3">
+                    {["React.js", "Next.js", "Vue.js", "Angular", "TypeScript", "Tailwind CSS"].map((tech, index) => (
+                      <div key={index} className="p-3 bg-accent/10 rounded-lg text-center">
+                        <span className="text-muted-foreground font-medium">{tech}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                <div>
+                  <h4 className="font-bold text-primary mb-3">Backend Development</h4>
+                  <div className="grid grid-cols-2 gap-3">
+                    {["Node.js", "Python", "Java", "PHP", "Express.js", "Django"].map((tech, index) => (
+                      <div key={index} className="p-3 bg-primary/10 rounded-lg text-center">
+                        <span className="text-muted-foreground font-medium">{tech}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={itemVariants} className="space-y-8">
+            <Card className="p-8 bg-white shadow-elevated border border-border">
+              <div className="flex items-center gap-4 mb-6">
+                <Database className="w-16 h-16 text-primary" />
+                <h3 className="text-2xl font-bold text-primary">Database & Storage</h3>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-3">
+                {["MongoDB", "PostgreSQL", "MySQL", "Redis", "Firebase", "AWS S3"].map((tech, index) => (
+                  <div key={index} className="p-3 bg-primary/10 rounded-lg text-center">
+                    <span className="text-muted-foreground font-medium">{tech}</span>
+                  </div>
+                ))}
+              </div>
+            </Card>
+
+            <Card className="p-8 bg-white shadow-elevated border border-border">
+              <div className="flex items-center gap-4 mb-6">
+                <Cloud className="w-16 h-16 text-accent" />
+                <h3 className="text-2xl font-bold text-primary">Cloud & DevOps</h3>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-3">
+                {["AWS", "Azure", "Docker", "Kubernetes", "Jenkins", "GitLab CI"].map((tech, index) => (
+                  <div key={index} className="p-3 bg-accent/10 rounded-lg text-center">
+                    <span className="text-muted-foreground font-medium">{tech}</span>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </motion.div>
+        </div>
+
+        <motion.div variants={itemVariants} className="mt-12">
+          <Card className="p-8 bg-white shadow-elevated border border-border text-center">
+            <Brain className="w-16 h-16 text-accent mx-auto mb-6" />
+            <h3 className="text-2xl font-bold text-primary mb-4">AI/ML Capabilities</h3>
+            <div className="grid md:grid-cols-4 gap-4">
+              {[
+                { name: "Natural Language Processing", icon: Brain },
+                { name: "Computer Vision", icon: Eye },
+                { name: "Predictive Analytics", icon: TrendingUp },
+                { name: "Machine Learning Models", icon: Cpu }
+              ].map((capability, index) => (
+                <div key={index} className="p-4 bg-accent/10 rounded-lg">
+                  <capability.icon className="w-8 h-8 text-accent mx-auto mb-2" />
+                  <p className="font-medium text-primary text-sm">{capability.name}</p>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+
+  // Slide 11: Case Studies & Success Stories
+  const CaseStudiesSlide = () => (
+    <motion.div 
+      className="pitch-slide bg-background"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
+      <div className="pitch-content">
+        <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
+          Case Studies & Success Stories
+        </motion.h2>
+        
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "E-commerce Platform",
+              client: "Retail Startup",
+              challenge: "Needed a scalable e-commerce solution with AI recommendations",
+              solution: "Built MERN stack platform with ML-powered product recommendations",
+              results: ["300% increase in sales", "50% better user engagement", "Deployed in 8 weeks"],
+              icon: Smartphone,
+              color: "accent"
+            },
+            {
+              title: "Digital Marketing Campaign",
+              client: "Tech Company",
+              challenge: "Low brand awareness and poor online presence",
+              solution: "Comprehensive SEO, content marketing, and social media strategy",
+              results: ["400% increase in web traffic", "200% growth in leads", "10x social media reach"],
+              icon: TrendingUp,
+              color: "primary"
+            },
+            {
+              title: "Healthcare Management System",
+              client: "Medical Clinic Chain",
+              challenge: "Manual processes and poor patient data management",
+              solution: "Custom ERP with patient management, scheduling, and analytics",
+              results: ["80% reduction in admin time", "99.9% uptime", "Improved patient satisfaction"],
+              icon: Heart,
+              color: "success"
+            }
+          ].map((study, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              whileHover={{ scale: 1.05, y: -10 }}
+            >
+              <Card className="p-8 bg-white shadow-elevated border border-border h-full">
+                <div className={`w-16 h-16 bg-${study.color}/10 rounded-xl flex items-center justify-center mb-6 mx-auto`}>
+                  <study.icon className={`w-8 h-8 text-${study.color}`} />
+                </div>
+                
+                <h3 className="text-xl font-bold text-primary mb-2 text-center">{study.title}</h3>
+                <p className="text-accent font-semibold mb-4 text-center">{study.client}</p>
+                
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-bold text-primary mb-2">Challenge</h4>
+                    <p className="text-muted-foreground text-sm">{study.challenge}</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-bold text-primary mb-2">Solution</h4>
+                    <p className="text-muted-foreground text-sm">{study.solution}</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-bold text-primary mb-2">Results</h4>
+                    <ul className="space-y-1">
+                      {study.results.map((result, idx) => (
+                        <li key={idx} className="flex items-center gap-2">
+                          <CheckCircle className={`w-4 h-4 text-${study.color} flex-shrink-0`} />
+                          <span className="text-muted-foreground text-sm">{result}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div variants={itemVariants} className="mt-12">
+          <Card className="p-8 bg-white shadow-elevated border border-border text-center">
+            <Award className="w-16 h-16 text-accent mx-auto mb-6" />
+            <h3 className="text-2xl font-bold text-primary mb-4">Client Satisfaction</h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div>
+                <div className="text-4xl font-bold text-accent mb-2">98%</div>
+                <p className="text-muted-foreground">Client Retention Rate</p>
+              </div>
+              <div>
+                <div className="text-4xl font-bold text-primary mb-2">4.9/5</div>
+                <p className="text-muted-foreground">Average Client Rating</p>
+              </div>
+              <div>
+                <div className="text-4xl font-bold text-success mb-2">85%</div>
+                <p className="text-muted-foreground">Repeat Business Rate</p>
+              </div>
+            </div>
+          </Card>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+
+  // Slide 15: Risk Mitigation & Contingency
+  const RiskMitigationSlide = () => (
+    <motion.div 
+      className="pitch-slide bg-background"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
+      <div className="pitch-content">
+        <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
+          Risk Mitigation & Contingency Planning
+        </motion.h2>
+        
+        <div className="grid md:grid-cols-2 gap-12">
+          <motion.div variants={itemVariants} className="space-y-8">
+            <Card className="p-8 bg-white shadow-elevated border border-border">
+              <div className="flex items-center gap-4 mb-6">
+                <AlertTriangle className="w-16 h-16 text-destructive" />
+                <h3 className="text-2xl font-bold text-primary">Identified Risks</h3>
+              </div>
+              
+              <div className="space-y-6">
+                {[
+                  {
+                    risk: "Market Competition",
+                    impact: "Medium",
+                    probability: "High",
+                    mitigation: "Differentiation through integrated services and competitive pricing"
+                  },
+                  {
+                    risk: "Talent Retention",
+                    impact: "High", 
+                    probability: "Medium",
+                    mitigation: "Competitive compensation, equity participation, growth opportunities"
+                  },
+                  {
+                    risk: "Economic Downturn",
+                    impact: "High",
+                    probability: "Low",
+                    mitigation: "Diversified client base, flexible cost structure, recession-proof services"
+                  }
+                ].map((riskItem, index) => (
+                  <div key={index} className="p-4 border border-border rounded-lg">
+                    <h4 className="font-bold text-primary mb-2">{riskItem.risk}</h4>
+                    <div className="flex gap-4 text-sm mb-2">
+                      <span className="text-muted-foreground">Impact: <span className="font-medium">{riskItem.impact}</span></span>
+                      <span className="text-muted-foreground">Probability: <span className="font-medium">{riskItem.probability}</span></span>
+                    </div>
+                    <p className="text-muted-foreground text-sm">{riskItem.mitigation}</p>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={itemVariants} className="space-y-8">
+            <Card className="p-8 bg-white shadow-elevated border border-border">
+              <div className="flex items-center gap-4 mb-6">
+                <Shield className="w-16 h-16 text-success" />
+                <h3 className="text-2xl font-bold text-primary">Contingency Measures</h3>
+              </div>
+              
+              <div className="space-y-4">
+                {[
+                  "Emergency fund (10% of raised capital)",
+                  "Flexible team structure for scaling up/down",
+                  "Multiple revenue streams for stability",
+                  "Strong client relationships and contracts",
+                  "Backup partnerships and vendor relationships",
+                  "Insurance coverage for key personnel"
+                ].map((measure, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-success mt-1 flex-shrink-0" />
+                    <span className="text-muted-foreground">{measure}</span>
+                  </div>
+                ))}
+              </div>
+            </Card>
+
+            <Card className="p-8 bg-white shadow-elevated border border-border text-center">
+              <Activity className="w-16 h-16 text-accent mx-auto mb-6" />
+              <h3 className="text-2xl font-bold text-primary mb-4">Business Continuity Plan</h3>
+              <p className="text-muted-foreground">
+                Comprehensive disaster recovery and business continuity protocols ensure 
+                minimal disruption to client services and operations.
+              </p>
+            </Card>
+          </motion.div>
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  // Slide 16: Expansion Strategy & Global Vision
+  const ExpansionStrategySlide = () => (
+    <motion.div 
+      className="pitch-slide bg-background"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
+      <div className="pitch-content">
+        <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
+          Expansion Strategy & Global Vision
+        </motion.h2>
+        
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
+          {[
+            {
+              phase: "Phase 1 (Year 1)",
+              title: "Market Consolidation",
+              goals: ["Establish strong presence in India", "Build core team to 50+ members", "Achieve ₹5Cr revenue"],
+              icon: Building,
+              color: "accent"
+            },
+            {
+              phase: "Phase 2 (Year 2)",
+              title: "EU Market Entry",
+              goals: ["Launch operations in UK & Germany", "Partnerships with local firms", "International team of 25+ members"],
+              icon: Globe,
+              color: "primary"
+            },
+            {
+              phase: "Phase 3 (Year 3+)",
+              title: "Global Scale",
+              goals: ["Expand to US and Asia-Pacific", "Franchise/licensing model", "100+ team members globally"],
+              icon: Rocket,
+              color: "success"
+            }
+          ].map((phase, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              whileHover={{ scale: 1.05, y: -10 }}
+            >
+              <Card className="p-8 bg-white shadow-elevated border border-border h-full text-center">
+                <div className={`w-20 h-20 bg-${phase.color}/10 rounded-full flex items-center justify-center mx-auto mb-6`}>
+                  <phase.icon className={`w-10 h-10 text-${phase.color}`} />
+                </div>
+                
+                <h3 className="text-lg font-bold text-primary mb-2">{phase.phase}</h3>
+                <h4 className="text-xl font-bold text-accent mb-4">{phase.title}</h4>
+                
+                <ul className="space-y-2 text-left">
+                  {phase.goals.map((goal, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <CheckCircle className={`w-4 h-4 text-${phase.color} mt-1 flex-shrink-0`} />
+                      <span className="text-muted-foreground text-sm">{goal}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div variants={itemVariants}>
+          <Card className="p-8 bg-white shadow-elevated border border-border text-center">
+            <MapPin className="w-16 h-16 text-accent mx-auto mb-6" />
+            <h3 className="text-2xl font-bold text-primary mb-6">Target Markets & Rationale</h3>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <h4 className="font-bold text-primary mb-2">Europe (Primary)</h4>
+                <p className="text-muted-foreground text-sm">High digital adoption, strong SME ecosystem, regulatory stability</p>
+              </div>
+              <div className="text-center">
+                <h4 className="font-bold text-primary mb-2">North America</h4>
+                <p className="text-muted-foreground text-sm">Largest tech market, high spending on digital services</p>
+              </div>
+              <div className="text-center">
+                <h4 className="font-bold text-primary mb-2">Asia-Pacific</h4>
+                <p className="text-muted-foreground text-sm">Emerging markets with rapid digitalization needs</p>
+              </div>
+            </div>
+          </Card>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+
+  // Slide 17: Social Impact & Sustainability
+  const SocialImpactSlide = () => (
+    <motion.div 
+      className="pitch-slide bg-background"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
+      <div className="pitch-content">
+        <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
+          Social Impact & Sustainability
+        </motion.h2>
+        
+        <div className="grid md:grid-cols-2 gap-12">
+          <motion.div variants={itemVariants} className="space-y-8">
+            <Card className="p-8 bg-white shadow-elevated border border-border">
+              <div className="flex items-center gap-4 mb-6">
+                <Heart className="w-16 h-16 text-destructive" />
+                <h3 className="text-2xl font-bold text-primary">Social Impact Initiatives</h3>
+              </div>
+              
+              <div className="space-y-6">
+                {[
+                  {
+                    title: "Skill Development Programs",
+                    description: "Free coding bootcamps for underprivileged youth",
+                    impact: "500+ students trained annually"
+                  },
+                  {
+                    title: "Startup Ecosystem Support",
+                    description: "Mentorship and discounted services for early-stage startups",
+                    impact: "100+ startups supported"
+                  },
+                  {
+                    title: "Digital Literacy Campaigns",
+                    description: "Community workshops on digital marketing and basic tech skills",
+                    impact: "1000+ individuals reached"
+                  }
+                ].map((initiative, index) => (
+                  <div key={index} className="p-4 border border-border rounded-lg">
+                    <h4 className="font-bold text-primary mb-2">{initiative.title}</h4>
+                    <p className="text-muted-foreground text-sm mb-2">{initiative.description}</p>
+                    <p className="text-accent font-medium text-sm">{initiative.impact}</p>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={itemVariants} className="space-y-8">
+            <Card className="p-8 bg-white shadow-elevated border border-border">
+              <div className="flex items-center gap-4 mb-6">
+                <Leaf className="w-16 h-16 text-success" />
+                <h3 className="text-2xl font-bold text-primary">Sustainability Practices</h3>
+              </div>
+              
+              <div className="space-y-4">
+                {[
+                  "Carbon-neutral hosting and cloud services",
+                  "Paperless operations and digital workflows",
+                  "Remote-first culture reducing commute emissions",
+                  "Green technology recommendations for clients",
+                  "Sustainable supplier partnerships",
+                  "Employee environmental awareness programs"
+                ].map((practice, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-success mt-1 flex-shrink-0" />
+                    <span className="text-muted-foreground">{practice}</span>
+                  </div>
+                ))}
+              </div>
+            </Card>
+
+            <Card className="p-8 bg-white shadow-elevated border border-border text-center">
+              <Globe className="w-16 h-16 text-accent mx-auto mb-6" />
+              <h3 className="text-2xl font-bold text-primary mb-4">UN SDG Alignment</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  "Quality Education (SDG 4)",
+                  "Decent Work (SDG 8)", 
+                  "Industry Innovation (SDG 9)",
+                  "Reduced Inequalities (SDG 10)"
+                ].map((sdg, index) => (
+                  <div key={index} className="p-3 bg-accent/10 rounded-lg">
+                    <span className="text-muted-foreground text-sm font-medium">{sdg}</span>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </motion.div>
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  // Slide 18: Vision & Closing
   const VisionClosingSlide = () => (
     <motion.div 
       className="pitch-slide bg-background text-foreground relative overflow-hidden"
@@ -1008,9 +1511,14 @@ const PitchDeck = () => {
       case 'go-to-market': return <GoToMarketSlide />;
       case 'traction': return <TractionSlide />;
       case 'competitive-landscape': return <CompetitiveLandscapeSlide />;
+      case 'technology-stack': return <TechnologyStackSlide />;
+      case 'case-studies': return <CaseStudiesSlide />;
       case 'team-leadership': return <TeamLeadershipSlide />;
       case 'financials': return <FinancialsSlide />;
       case 'funding-ask': return <FundingAskSlide />;
+      case 'risk-mitigation': return <RiskMitigationSlide />;
+      case 'expansion-strategy': return <ExpansionStrategySlide />;
+      case 'social-impact': return <SocialImpactSlide />;
       case 'vision-closing': return <VisionClosingSlide />;
       default: return <CoverSlide />;
     }
