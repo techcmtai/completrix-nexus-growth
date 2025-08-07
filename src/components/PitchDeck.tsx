@@ -9,33 +9,7 @@ import cmtAiLogo from '/lovable-uploads/a576a2c2-c473-4314-a9a6-a3f11e45253c.png
 const PitchDeck = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(false);
-  const slides = [
-    'cover', 
-    'company-overview',
-    'problem', 
-    'market-research',
-    'target-customers',
-    'solution', 
-    'cmt-ai-products',
-    'we-market-you-services',
-    'technology-architecture',
-    'development-process',
-    'business-model', 
-    'revenue-streams',
-    'pricing-strategy',
-    'go-to-market', 
-    'competitive-landscape',
-    'swot-analysis', 
-    'case-studies',
-    'traction', 
-    'team-leadership',
-    'financials',
-    'funding-ask',
-    'risk-mitigation', 
-    'expansion-strategy',
-    'social-impact',
-    'vision-closing'
-  ];
+  const slides = ['cover', 'company-overview', 'problem', 'market-research', 'target-customers', 'solution', 'cmt-ai-products', 'we-market-you-services', 'technology-architecture', 'development-process', 'business-model', 'revenue-streams', 'pricing-strategy', 'go-to-market', 'competitive-landscape', 'swot-analysis', 'case-studies', 'traction', 'team-leadership', 'financials', 'funding-ask', 'risk-mitigation', 'expansion-strategy', 'social-impact', 'vision-closing'];
 
   // Enhanced data sets for interactive visualizations
   const financialData = [{
@@ -345,8 +319,7 @@ const PitchDeck = () => {
     </motion.div>;
 
   // Slide 2: Company Overview
-  const CompanyOverviewSlide = () => (
-    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+  const CompanyOverviewSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-4xl font-bold text-primary mb-8 text-center" variants={itemVariants}>
           About Completrix Microtechnologies
@@ -384,24 +357,32 @@ const PitchDeck = () => {
           <Card className="p-8 bg-white shadow-elevated border border-border">
             <h3 className="text-2xl font-bold text-primary mb-6 text-center">Company Highlights</h3>
             <div className="grid md:grid-cols-4 gap-6">
-              {[
-                { label: "Founded", value: "2024", icon: Calendar },
-                { label: "Headquarters", value: "India", icon: MapPin },
-                { label: "Team Size", value: "30+", icon: Users },
-                { label: "Active Clients", value: "200+", icon: Briefcase }
-              ].map((stat, index) => (
-                <div key={index} className="text-center">
+              {[{
+              label: "Founded",
+              value: "2024",
+              icon: Calendar
+            }, {
+              label: "Headquarters",
+              value: "India",
+              icon: MapPin
+            }, {
+              label: "Team Size",
+              value: "30+",
+              icon: Users
+            }, {
+              label: "Active Clients",
+              value: "200+",
+              icon: Briefcase
+            }].map((stat, index) => <div key={index} className="text-center">
                   <stat.icon className="w-12 h-12 text-accent mx-auto mb-3" />
                   <div className="text-2xl font-bold text-primary">{stat.value}</div>
                   <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </Card>
         </motion.div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Slide 2: Problem
   const ProblemSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
@@ -636,55 +617,44 @@ const PitchDeck = () => {
           </div>
           
           <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Web Development",
-                description: "Websites, e-commerce, CMS, PWAs",
-                icon: Monitor,
-                color: "text-blue-500"
-              },
-              {
-                title: "App Development", 
-                description: "Android, iOS, cross-platform, hybrid",
-                icon: Smartphone,
-                color: "text-green-500"
-              },
-              {
-                title: "AI & ML Services",
-                description: "Chatbots, analytics, NLP, computer vision",
-                icon: Brain,
-                color: "text-purple-500"
-              },
-              {
-                title: "Cloud Services",
-                description: "Migration, DevOps, backups, security",
-                icon: Cloud,
-                color: "text-cyan-500"
-              },
-              {
-                title: "Custom Software",
-                description: "SaaS, ERP, CRM, POS, enterprise tools",
-                icon: Code,
-                color: "text-orange-500"
-              },
-              {
-                title: "Ongoing Support",
-                description: "Bug fixes, upgrades, maintenance, SLA",
-                icon: Shield,
-                color: "text-red-500"
-              }
-            ].map((service, index) => (
-              <motion.div
-                key={index}
-                className="p-6 bg-white rounded-xl shadow-elevated border border-border hover:shadow-glow transition-spring"
-                variants={itemVariants}
-                whileHover={{ scale: 1.02, y: -2 }}
-              >
+            {[{
+            title: "Web Development",
+            description: "Websites, e-commerce, CMS, PWAs",
+            icon: Monitor,
+            color: "text-blue-500"
+          }, {
+            title: "App Development",
+            description: "Android, iOS, cross-platform, hybrid",
+            icon: Smartphone,
+            color: "text-green-500"
+          }, {
+            title: "AI & ML Services",
+            description: "Chatbots, analytics, NLP, computer vision",
+            icon: Brain,
+            color: "text-purple-500"
+          }, {
+            title: "Cloud Services",
+            description: "Migration, DevOps, backups, security",
+            icon: Cloud,
+            color: "text-cyan-500"
+          }, {
+            title: "Custom Software",
+            description: "SaaS, ERP, CRM, POS, enterprise tools",
+            icon: Code,
+            color: "text-orange-500"
+          }, {
+            title: "Ongoing Support",
+            description: "Bug fixes, upgrades, maintenance, SLA",
+            icon: Shield,
+            color: "text-red-500"
+          }].map((service, index) => <motion.div key={index} className="p-6 bg-white rounded-xl shadow-elevated border border-border hover:shadow-glow transition-spring" variants={itemVariants} whileHover={{
+            scale: 1.02,
+            y: -2
+          }}>
                 <service.icon className={`w-10 h-10 ${service.color} mb-4`} />
                 <h4 className="text-lg font-bold text-primary mb-2">{service.title}</h4>
                 <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
-              </motion.div>
-            ))}
+              </motion.div>)}
           </div>
         </motion.div>
 
@@ -698,49 +668,39 @@ const PitchDeck = () => {
           </div>
           
           <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Digital Marketing",
-                description: "SEO, SEM, social media, paid ads",
-                icon: TrendingUp,
-                color: "text-pink-500"
-              },
-              {
-                title: "Content Strategy",
-                description: "Email campaigns, blog, short-form content",
-                icon: PieChart,
-                color: "text-indigo-500"
-              },
-              {
-                title: "Analytics & Insights",
-                description: "Customer insights, ROI tracking",
-                icon: BarChart3,
-                color: "text-yellow-500"
-              },
-              {
-                title: "Public Relations",
-                description: "Crisis comms, media, reputation mgmt",
-                icon: Users,
-                color: "text-teal-500"
-              },
-              {
-                title: "Advocacy & Lobbying",
-                description: "Election campaigns, messaging",
-                icon: Target,
-                color: "text-violet-500"
-              }
-            ].map((service, index) => (
-              <motion.div
-                key={index}
-                className="p-6 bg-white rounded-xl shadow-elevated border border-border hover:shadow-glow transition-spring"
-                variants={itemVariants}
-                whileHover={{ scale: 1.02, y: -2 }}
-              >
+            {[{
+            title: "Digital Marketing",
+            description: "SEO, SEM, social media, paid ads",
+            icon: TrendingUp,
+            color: "text-pink-500"
+          }, {
+            title: "Content Strategy",
+            description: "Email campaigns, blog, short-form content",
+            icon: PieChart,
+            color: "text-indigo-500"
+          }, {
+            title: "Analytics & Insights",
+            description: "Customer insights, ROI tracking",
+            icon: BarChart3,
+            color: "text-yellow-500"
+          }, {
+            title: "Public Relations",
+            description: "Crisis comms, media, reputation mgmt",
+            icon: Users,
+            color: "text-teal-500"
+          }, {
+            title: "Advocacy & Lobbying",
+            description: "Election campaigns, messaging",
+            icon: Target,
+            color: "text-violet-500"
+          }].map((service, index) => <motion.div key={index} className="p-6 bg-white rounded-xl shadow-elevated border border-border hover:shadow-glow transition-spring" variants={itemVariants} whileHover={{
+            scale: 1.02,
+            y: -2
+          }}>
                 <service.icon className={`w-10 h-10 ${service.color} mb-4`} />
                 <h4 className="text-lg font-bold text-primary mb-2">{service.title}</h4>
                 <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
-              </motion.div>
-            ))}
+              </motion.div>)}
           </div>
         </motion.div>
       </div>
@@ -1822,8 +1782,7 @@ const PitchDeck = () => {
     </motion.div>;
 
   // Market Research Slide
-  const MarketResearchSlide = () => (
-    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+  const MarketResearchSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-4xl font-bold text-primary mb-8 text-center" variants={itemVariants}>
           Market Research & Validation
@@ -1834,17 +1793,10 @@ const PitchDeck = () => {
             <Card className="p-6 bg-white shadow-elevated border border-border h-full">
               <h3 className="text-xl font-bold text-primary mb-4">Primary Research Findings</h3>
               <div className="space-y-4">
-                {[
-                  "78% of SMEs lack dedicated tech teams",
-                  "65% struggle with digital marketing ROI",
-                  "Market size growing at 23% CAGR",
-                  "Average project cost reduced by 40% with our model"
-                ].map((finding, index) => (
-                  <div key={index} className="flex items-start gap-3">
+                {["78% of SMEs lack dedicated tech teams", "65% struggle with digital marketing ROI", "Market size growing at 23% CAGR", "Average project cost reduced by 40% with our model"].map((finding, index) => <div key={index} className="flex items-start gap-3">
                     <BarChart3 className="w-5 h-5 text-accent mt-1" />
                     <span className="text-muted-foreground">{finding}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </Card>
           </motion.div>
@@ -1870,53 +1822,44 @@ const PitchDeck = () => {
           </motion.div>
         </div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Target Customers Slide
-  const TargetCustomersSlide = () => (
-    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+  const TargetCustomersSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-4xl font-bold text-primary mb-8 text-center" variants={itemVariants}>
           Target Customer Profiles
         </motion.h2>
         
         <div className="grid md:grid-cols-3 gap-6">
-          {[
-            {
-              title: "Early-Stage Startups",
-              description: "Pre-seed to Series A companies needing MVP development and market entry strategy",
-              size: "40%",
-              revenue: "₹0-50L",
-              needs: ["MVP Development", "Digital Presence", "Growth Strategy"],
-              icon: Rocket,
-              color: "text-blue-500"
-            },
-            {
-              title: "SMEs & Growing Businesses", 
-              description: "Established businesses looking to digitize operations and scale marketing efforts",
-              size: "45%",
-              revenue: "₹50L-10Cr",
-              needs: ["Digital Transformation", "Marketing Automation", "System Integration"],
-              icon: Building,
-              color: "text-green-500"
-            },
-            {
-              title: "Enterprise Clients",
-              description: "Large corporations needing specialized tech solutions and strategic marketing",
-              size: "15%", 
-              revenue: "₹10Cr+",
-              needs: ["Custom Solutions", "Strategic Consulting", "Large-scale Implementation"],
-              icon: Briefcase,
-              color: "text-purple-500"
-            }
-          ].map((segment, index) => (
-            <motion.div
-              key={index}
-              className="p-6 bg-white rounded-xl shadow-elevated border border-border"
-              variants={itemVariants}
-              whileHover={{ scale: 1.02, y: -5 }}
-            >
+          {[{
+          title: "Early-Stage Startups",
+          description: "Pre-seed to Series A companies needing MVP development and market entry strategy",
+          size: "40%",
+          revenue: "₹0-50L",
+          needs: ["MVP Development", "Digital Presence", "Growth Strategy"],
+          icon: Rocket,
+          color: "text-blue-500"
+        }, {
+          title: "SMEs & Growing Businesses",
+          description: "Established businesses looking to digitize operations and scale marketing efforts",
+          size: "45%",
+          revenue: "₹50L-10Cr",
+          needs: ["Digital Transformation", "Marketing Automation", "System Integration"],
+          icon: Building,
+          color: "text-green-500"
+        }, {
+          title: "Enterprise Clients",
+          description: "Large corporations needing specialized tech solutions and strategic marketing",
+          size: "15%",
+          revenue: "₹10Cr+",
+          needs: ["Custom Solutions", "Strategic Consulting", "Large-scale Implementation"],
+          icon: Briefcase,
+          color: "text-purple-500"
+        }].map((segment, index) => <motion.div key={index} className="p-6 bg-white rounded-xl shadow-elevated border border-border" variants={itemVariants} whileHover={{
+          scale: 1.02,
+          y: -5
+        }}>
               <segment.icon className={`w-12 h-12 ${segment.color} mb-4`} />
               <h3 className="text-xl font-bold text-primary mb-2">{segment.title}</h3>
               <p className="text-muted-foreground text-sm mb-4">{segment.description}</p>
@@ -1934,25 +1877,20 @@ const PitchDeck = () => {
                 <div className="mt-4">
                   <h4 className="font-semibold text-primary mb-2">Key Needs:</h4>
                   <ul className="space-y-1">
-                    {segment.needs.map((need, idx) => (
-                      <li key={idx} className="text-xs text-muted-foreground flex items-center gap-2">
+                    {segment.needs.map((need, idx) => <li key={idx} className="text-xs text-muted-foreground flex items-center gap-2">
                         <Check className="w-3 h-3 text-accent" />
                         {need}
-                      </li>
-                    ))}
+                      </li>)}
                   </ul>
                 </div>
               </div>
-            </motion.div>
-          ))}
+            </motion.div>)}
         </div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // We Market You Services Detailed Slide
-  const WeMarketYouServicesSlide = () => (
-    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+  const WeMarketYouServicesSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.div className="flex items-center gap-4 mb-8" variants={itemVariants}>
           <div className="w-16 h-12">
@@ -1962,83 +1900,49 @@ const PitchDeck = () => {
         </motion.div>
         
         <div className="grid md:grid-cols-2 gap-8">
-          {[
-            {
-              category: "Digital Marketing",
-              services: [
-                "Search Engine Optimization", 
-                "Pay-Per-Click Advertising",
-                "Social Media Marketing",
-                "Content Marketing Strategy"
-              ],
-              metrics: "Average 3x ROI increase",
-              icon: TrendingUp,
-              color: "text-pink-500"
-            },
-            {
-              category: "Brand Strategy",
-              services: [
-                "Brand Identity Development",
-                "Corporate Communications",
-                "Crisis Management",
-                "Reputation Building"
-              ],
-              metrics: "95% brand recall improvement",
-              icon: Target,
-              color: "text-indigo-500"
-            },
-            {
-              category: "Analytics & Insights",
-              services: [
-                "Customer Journey Mapping",
-                "ROI Tracking & Reporting",
-                "Market Research",
-                "Competitive Analysis"
-              ],
-              metrics: "40% better decision making",
-              icon: BarChart3,
-              color: "text-yellow-500"
-            },
-            {
-              category: "Public Relations",
-              services: [
-                "Media Relations",
-                "Press Release Distribution",
-                "Event Management",
-                "Influencer Partnerships"
-              ],
-              metrics: "200% media coverage increase",
-              icon: Users,
-              color: "text-teal-500"
-            }
-          ].map((category, index) => (
-            <motion.div
-              key={index}
-              className="p-6 bg-white rounded-xl shadow-elevated border border-border"
-              variants={itemVariants}
-              whileHover={{ scale: 1.02 }}
-            >
+          {[{
+          category: "Digital Marketing",
+          services: ["Search Engine Optimization", "Pay-Per-Click Advertising", "Social Media Marketing", "Content Marketing Strategy"],
+          metrics: "Average 3x ROI increase",
+          icon: TrendingUp,
+          color: "text-pink-500"
+        }, {
+          category: "Brand Strategy",
+          services: ["Brand Identity Development", "Corporate Communications", "Crisis Management", "Reputation Building"],
+          metrics: "95% brand recall improvement",
+          icon: Target,
+          color: "text-indigo-500"
+        }, {
+          category: "Analytics & Insights",
+          services: ["Customer Journey Mapping", "ROI Tracking & Reporting", "Market Research", "Competitive Analysis"],
+          metrics: "40% better decision making",
+          icon: BarChart3,
+          color: "text-yellow-500"
+        }, {
+          category: "Public Relations",
+          services: ["Media Relations", "Press Release Distribution", "Event Management", "Influencer Partnerships"],
+          metrics: "200% media coverage increase",
+          icon: Users,
+          color: "text-teal-500"
+        }].map((category, index) => <motion.div key={index} className="p-6 bg-white rounded-xl shadow-elevated border border-border" variants={itemVariants} whileHover={{
+          scale: 1.02
+        }}>
               <category.icon className={`w-10 h-10 ${category.color} mb-4`} />
               <h3 className="text-xl font-bold text-primary mb-2">{category.category}</h3>
               <p className="text-sm text-accent font-semibold mb-4">{category.metrics}</p>
               <ul className="space-y-2">
-                {category.services.map((service, idx) => (
-                  <li key={idx} className="flex items-center gap-2">
+                {category.services.map((service, idx) => <li key={idx} className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-accent" />
                     <span className="text-muted-foreground text-sm">{service}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
-            </motion.div>
-          ))}
+            </motion.div>)}
         </div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Technology Architecture Slide
-  const TechnologyArchitectureSlide = () => (
-    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+  const TechnologyArchitectureSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-4xl font-bold text-primary mb-8 text-center" variants={itemVariants}>
           Technology Architecture & Stack
@@ -2050,12 +1954,10 @@ const PitchDeck = () => {
               <Server className="w-12 h-12 text-blue-500 mb-4" />
               <h3 className="text-xl font-bold text-primary mb-4">Backend Technologies</h3>
               <div className="space-y-2">
-                {["Node.js & Express", "Python/Django", "Java Spring Boot", "Microservices Architecture", "RESTful APIs", "GraphQL"].map((tech, index) => (
-                  <div key={index} className="flex items-center gap-2">
+                {["Node.js & Express", "Python/Django", "Java Spring Boot", "Microservices Architecture", "RESTful APIs", "GraphQL"].map((tech, index) => <div key={index} className="flex items-center gap-2">
                     <Code className="w-4 h-4 text-accent" />
                     <span className="text-sm text-muted-foreground">{tech}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </Card>
           </motion.div>
@@ -2065,12 +1967,10 @@ const PitchDeck = () => {
               <Monitor className="w-12 h-12 text-green-500 mb-4" />
               <h3 className="text-xl font-bold text-primary mb-4">Frontend Technologies</h3>
               <div className="space-y-2">
-                {["React.js & Next.js", "Vue.js & Nuxt.js", "Angular", "TypeScript", "Tailwind CSS", "Progressive Web Apps"].map((tech, index) => (
-                  <div key={index} className="flex items-center gap-2">
+                {["React.js & Next.js", "Vue.js & Nuxt.js", "Angular", "TypeScript", "Tailwind CSS", "Progressive Web Apps"].map((tech, index) => <div key={index} className="flex items-center gap-2">
                     <Code className="w-4 h-4 text-accent" />
                     <span className="text-sm text-muted-foreground">{tech}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </Card>
           </motion.div>
@@ -2080,69 +1980,56 @@ const PitchDeck = () => {
               <Database className="w-12 h-12 text-purple-500 mb-4" />
               <h3 className="text-xl font-bold text-primary mb-4">Database & DevOps</h3>
               <div className="space-y-2">
-                {["PostgreSQL & MongoDB", "Redis Caching", "Docker & Kubernetes", "AWS/Azure/GCP", "CI/CD Pipelines", "Monitoring & Analytics"].map((tech, index) => (
-                  <div key={index} className="flex items-center gap-2">
+                {["PostgreSQL & MongoDB", "Redis Caching", "Docker & Kubernetes", "AWS/Azure/GCP", "CI/CD Pipelines", "Monitoring & Analytics"].map((tech, index) => <div key={index} className="flex items-center gap-2">
                     <Code className="w-4 h-4 text-accent" />
                     <span className="text-sm text-muted-foreground">{tech}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </Card>
           </motion.div>
         </div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Revenue Streams Slide
-  const RevenueStreamsSlide = () => (
-    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+  const RevenueStreamsSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-4xl font-bold text-primary mb-8 text-center" variants={itemVariants}>
           Revenue Streams & Business Model
         </motion.h2>
         
         <div className="grid md:grid-cols-2 gap-8 mb-8">
-          {[
-            {
-              stream: "Project-Based Revenue",
-              description: "Custom development projects with fixed pricing",
-              percentage: "60%",
-              avgValue: "₹5-50L per project",
-              icon: Briefcase,
-              color: "text-blue-500"
-            },
-            {
-              stream: "Subscription Services", 
-              description: "Monthly recurring revenue for ongoing services",
-              percentage: "25%",
-              avgValue: "₹50K-5L per month",
-              icon: Activity,
-              color: "text-green-500"
-            },
-            {
-              stream: "Consulting & Strategy",
-              description: "Strategic advisory and consulting services",
-              percentage: "10%",
-              avgValue: "₹2-10L per engagement",
-              icon: Brain,
-              color: "text-purple-500"
-            },
-            {
-              stream: "Training & Support",
-              description: "Technical training and ongoing support services",
-              percentage: "5%",
-              avgValue: "₹1-5L per program",
-              icon: Award,
-              color: "text-orange-500"
-            }
-          ].map((stream, index) => (
-            <motion.div
-              key={index}
-              className="p-6 bg-white rounded-xl shadow-elevated border border-border"
-              variants={itemVariants}
-              whileHover={{ scale: 1.02 }}
-            >
+          {[{
+          stream: "Project-Based Revenue",
+          description: "Custom development projects with fixed pricing",
+          percentage: "60%",
+          avgValue: "₹5-50L per project",
+          icon: Briefcase,
+          color: "text-blue-500"
+        }, {
+          stream: "Subscription Services",
+          description: "Monthly recurring revenue for ongoing services",
+          percentage: "25%",
+          avgValue: "₹50K-5L per month",
+          icon: Activity,
+          color: "text-green-500"
+        }, {
+          stream: "Consulting & Strategy",
+          description: "Strategic advisory and consulting services",
+          percentage: "10%",
+          avgValue: "₹2-10L per engagement",
+          icon: Brain,
+          color: "text-purple-500"
+        }, {
+          stream: "Training & Support",
+          description: "Technical training and ongoing support services",
+          percentage: "5%",
+          avgValue: "₹1-5L per program",
+          icon: Award,
+          color: "text-orange-500"
+        }].map((stream, index) => <motion.div key={index} className="p-6 bg-white rounded-xl shadow-elevated border border-border" variants={itemVariants} whileHover={{
+          scale: 1.02
+        }}>
               <stream.icon className={`w-10 h-10 ${stream.color} mb-4`} />
               <h3 className="text-xl font-bold text-primary mb-2">{stream.stream}</h3>
               <p className="text-muted-foreground text-sm mb-4">{stream.description}</p>
@@ -2157,16 +2044,13 @@ const PitchDeck = () => {
                   <div className="text-xs text-muted-foreground">Average Value</div>
                 </div>
               </div>
-            </motion.div>
-          ))}
+            </motion.div>)}
         </div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // CMT AI Products Detailed Slide
-  const CmtAiProductsSlide = () => (
-    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+  const CmtAiProductsSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.div className="flex items-center gap-4 mb-8" variants={itemVariants}>
           <div className="w-16 h-12">
@@ -2176,126 +2060,83 @@ const PitchDeck = () => {
         </motion.div>
         
         <div className="grid md:grid-cols-2 gap-8">
-          {[
-            {
-              category: "Web Development",
-              products: [
-                "E-commerce Platforms",
-                "Content Management Systems", 
-                "Progressive Web Apps",
-                "Custom Web Applications"
-              ],
-              icon: Monitor,
-              color: "text-blue-500"
-            },
-            {
-              category: "AI/ML Solutions",
-              products: [
-                "Chatbot Development",
-                "Predictive Analytics",
-                "Computer Vision Systems",
-                "Natural Language Processing"
-              ],
-              icon: Brain,
-              color: "text-purple-500"
-            },
-            {
-              category: "Cloud Services",
-              products: [
-                "Cloud Migration",
-                "DevOps Implementation",
-                "Infrastructure Management",
-                "Security & Compliance"
-              ],
-              icon: Cloud,
-              color: "text-cyan-500"
-            },
-            {
-              category: "Mobile Development",
-              products: [
-                "Native iOS/Android Apps",
-                "Cross-platform Solutions",
-                "Hybrid Applications", 
-                "Mobile-first Design"
-              ],
-              icon: Smartphone,
-              color: "text-green-500"
-            }
-          ].map((category, index) => (
-            <motion.div
-              key={index}
-              className="p-6 bg-white rounded-xl shadow-elevated border border-border"
-              variants={itemVariants}
-              whileHover={{ scale: 1.02 }}
-            >
+          {[{
+          category: "Web Development",
+          products: ["E-commerce Platforms", "Content Management Systems", "Progressive Web Apps", "Custom Web Applications"],
+          icon: Monitor,
+          color: "text-blue-500"
+        }, {
+          category: "AI/ML Solutions",
+          products: ["Chatbot Development", "Predictive Analytics", "Computer Vision Systems", "Natural Language Processing"],
+          icon: Brain,
+          color: "text-purple-500"
+        }, {
+          category: "Cloud Services",
+          products: ["Cloud Migration", "DevOps Implementation", "Infrastructure Management", "Security & Compliance"],
+          icon: Cloud,
+          color: "text-cyan-500"
+        }, {
+          category: "Mobile Development",
+          products: ["Native iOS/Android Apps", "Cross-platform Solutions", "Hybrid Applications", "Mobile-first Design"],
+          icon: Smartphone,
+          color: "text-green-500"
+        }].map((category, index) => <motion.div key={index} className="p-6 bg-white rounded-xl shadow-elevated border border-border" variants={itemVariants} whileHover={{
+          scale: 1.02
+        }}>
               <category.icon className={`w-10 h-10 ${category.color} mb-4`} />
               <h3 className="text-xl font-bold text-primary mb-4">{category.category}</h3>
               <ul className="space-y-2">
-                {category.products.map((product, idx) => (
-                  <li key={idx} className="flex items-center gap-2">
+                {category.products.map((product, idx) => <li key={idx} className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-accent" />
                     <span className="text-muted-foreground text-sm">{product}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
-            </motion.div>
-          ))}
+            </motion.div>)}
         </div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Development Process Slide
-  const DevelopmentProcessSlide = () => (
-    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+  const DevelopmentProcessSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-4xl font-bold text-primary mb-8 text-center" variants={itemVariants}>
           Development Process & Methodology
         </motion.h2>
         
         <div className="grid md:grid-cols-4 gap-6 mb-8">
-          {[
-            {
-              phase: "Discovery",
-              description: "Requirements gathering, stakeholder interviews, technical assessment",
-              duration: "1-2 weeks",
-              icon: Eye,
-              color: "text-blue-500"
-            },
-            {
-              phase: "Design",
-              description: "UI/UX design, system architecture, technical specifications",
-              duration: "2-3 weeks", 
-              icon: Monitor,
-              color: "text-green-500"
-            },
-            {
-              phase: "Development",
-              description: "Agile development sprints, continuous integration, testing",
-              duration: "4-12 weeks",
-              icon: Code,
-              color: "text-purple-500"
-            },
-            {
-              phase: "Deployment",
-              description: "Production deployment, monitoring setup, training & handover",
-              duration: "1-2 weeks",
-              icon: Rocket,
-              color: "text-orange-500"
-            }
-          ].map((phase, index) => (
-            <motion.div
-              key={index}
-              className="p-6 bg-white rounded-xl shadow-elevated border border-border text-center"
-              variants={itemVariants}
-              whileHover={{ scale: 1.05, y: -5 }}
-            >
+          {[{
+          phase: "Discovery",
+          description: "Requirements gathering, stakeholder interviews, technical assessment",
+          duration: "1-2 weeks",
+          icon: Eye,
+          color: "text-blue-500"
+        }, {
+          phase: "Design",
+          description: "UI/UX design, system architecture, technical specifications",
+          duration: "2-3 weeks",
+          icon: Monitor,
+          color: "text-green-500"
+        }, {
+          phase: "Development",
+          description: "Agile development sprints, continuous integration, testing",
+          duration: "4-12 weeks",
+          icon: Code,
+          color: "text-purple-500"
+        }, {
+          phase: "Deployment",
+          description: "Production deployment, monitoring setup, training & handover",
+          duration: "1-2 weeks",
+          icon: Rocket,
+          color: "text-orange-500"
+        }].map((phase, index) => <motion.div key={index} className="p-6 bg-white rounded-xl shadow-elevated border border-border text-center" variants={itemVariants} whileHover={{
+          scale: 1.05,
+          y: -5
+        }}>
               <phase.icon className={`w-12 h-12 ${phase.color} mx-auto mb-4`} />
               <h3 className="text-lg font-bold text-primary mb-2">{phase.phase}</h3>
               <p className="text-sm text-muted-foreground mb-3">{phase.description}</p>
               <div className="text-xs font-semibold text-accent">{phase.duration}</div>
-            </motion.div>
-          ))}
+            </motion.div>)}
         </div>
 
         <motion.div variants={itemVariants}>
@@ -2321,101 +2162,68 @@ const PitchDeck = () => {
           </Card>
         </motion.div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // Pricing Strategy Slide
-  const PricingStrategySlide = () => (
-    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+  const PricingStrategySlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-4xl font-bold text-primary mb-8 text-center" variants={itemVariants}>
           Pricing Strategy & Packages
         </motion.h2>
         
         <div className="grid md:grid-cols-3 gap-8">
-          {[
-            {
-              tier: "Starter",
-              target: "Early-stage startups",
-              price: "₹2-10L",
-              features: [
-                "MVP Development",
-                "Basic Marketing Setup", 
-                "3 months support",
-                "Standard hosting"
-              ],
-              popular: false,
-              color: "border-gray-200"
-            },
-            {
-              tier: "Growth",
-              target: "Growing businesses",
-              price: "₹10-50L", 
-              features: [
-                "Full-stack development",
-                "Comprehensive marketing",
-                "12 months support",
-                "Premium infrastructure"
-              ],
-              popular: true,
-              color: "border-accent"
-            },
-            {
-              tier: "Enterprise",
-              target: "Large corporations",
-              price: "₹50L+",
-              features: [
-                "Custom solutions",
-                "Strategic consulting",
-                "24/7 support",
-                "Dedicated team"
-              ],
-              popular: false,
-              color: "border-gray-200"
-            }
-          ].map((tier, index) => (
-            <motion.div
-              key={index}
-              className={`p-8 bg-white rounded-xl shadow-elevated border-2 ${tier.color} relative`}
-              variants={itemVariants}
-              whileHover={{ scale: 1.02, y: -5 }}
-            >
-              {tier.popular && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+          {[{
+          tier: "Starter",
+          target: "Early-stage startups",
+          price: "₹2-10L",
+          features: ["MVP Development", "Basic Marketing Setup", "3 months support", "Standard hosting"],
+          popular: false,
+          color: "border-gray-200"
+        }, {
+          tier: "Growth",
+          target: "Growing businesses",
+          price: "₹10-50L",
+          features: ["Full-stack development", "Comprehensive marketing", "12 months support", "Premium infrastructure"],
+          popular: true,
+          color: "border-accent"
+        }, {
+          tier: "Enterprise",
+          target: "Large corporations",
+          price: "₹50L+",
+          features: ["Custom solutions", "Strategic consulting", "24/7 support", "Dedicated team"],
+          popular: false,
+          color: "border-gray-200"
+        }].map((tier, index) => <motion.div key={index} className={`p-8 bg-white rounded-xl shadow-elevated border-2 ${tier.color} relative`} variants={itemVariants} whileHover={{
+          scale: 1.02,
+          y: -5
+        }}>
+              {tier.popular && <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                   <span className="bg-accent text-white px-4 py-1 rounded-full text-sm font-semibold">
                     Most Popular
                   </span>
-                </div>
-              )}
+                </div>}
               
               <h3 className="text-2xl font-bold text-primary mb-2">{tier.tier}</h3>
               <p className="text-muted-foreground mb-4">{tier.target}</p>
               <div className="text-3xl font-bold text-accent mb-6">{tier.price}</div>
               
               <ul className="space-y-3 mb-8">
-                {tier.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-2">
+                {tier.features.map((feature, idx) => <li key={idx} className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-accent" />
                     <span className="text-sm text-muted-foreground">{feature}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
               
-              <Button 
-                className={`w-full ${tier.popular ? 'bg-accent hover:bg-accent/90' : 'bg-primary hover:bg-primary/90'}`}
-              >
+              <Button className={`w-full ${tier.popular ? 'bg-accent hover:bg-accent/90' : 'bg-primary hover:bg-primary/90'}`}>
                 Get Started
               </Button>
-            </motion.div>
-          ))}
+            </motion.div>)}
         </div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 
   // SWOT Analysis Slide
-  const SwotAnalysisSlide = () => (
-    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+  const SwotAnalysisSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="text-4xl font-bold text-primary mb-8 text-center" variants={itemVariants}>
           SWOT Analysis
@@ -2429,18 +2237,10 @@ const PitchDeck = () => {
                 <h3 className="text-xl font-bold text-primary">Strengths</h3>
               </div>
               <ul className="space-y-2">
-                {[
-                  "Dual expertise in tech + marketing",
-                  "Experienced founding team",
-                  "Cost-effective pricing model",
-                  "Proven track record with 200+ clients",
-                  "Agile development methodology"
-                ].map((strength, index) => (
-                  <li key={index} className="flex items-start gap-2">
+                {["Dual expertise in tech + marketing", "Experienced founding team", "Cost-effective pricing model", "Proven track record with 200+ clients", "Agile development methodology"].map((strength, index) => <li key={index} className="flex items-start gap-2">
                     <Check className="w-4 h-4 text-green-500 mt-1" />
                     <span className="text-sm text-muted-foreground">{strength}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
             </Card>
           </motion.div>
@@ -2452,18 +2252,10 @@ const PitchDeck = () => {
                 <h3 className="text-xl font-bold text-primary">Weaknesses</h3>
               </div>
               <ul className="space-y-2">
-                {[
-                  "Limited brand recognition vs. large players",
-                  "Scaling team capabilities",
-                  "Geographic concentration in India",
-                  "Dependency on founder expertise",
-                  "Working capital requirements"
-                ].map((weakness, index) => (
-                  <li key={index} className="flex items-start gap-2">
+                {["Limited brand recognition vs. large players", "Scaling team capabilities", "Geographic concentration in India", "Dependency on founder expertise", "Working capital requirements"].map((weakness, index) => <li key={index} className="flex items-start gap-2">
                     <X className="w-4 h-4 text-yellow-500 mt-1" />
                     <span className="text-sm text-muted-foreground">{weakness}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
             </Card>
           </motion.div>
@@ -2475,18 +2267,10 @@ const PitchDeck = () => {
                 <h3 className="text-xl font-bold text-primary">Opportunities</h3>
               </div>
               <ul className="space-y-2">
-                {[
-                  "Growing digital transformation market",
-                  "Post-pandemic shift to digital services",
-                  "Government digitization initiatives",
-                  "Expansion to international markets",
-                  "Strategic partnerships & acquisitions"
-                ].map((opportunity, index) => (
-                  <li key={index} className="flex items-start gap-2">
+                {["Growing digital transformation market", "Post-pandemic shift to digital services", "Government digitization initiatives", "Expansion to international markets", "Strategic partnerships & acquisitions"].map((opportunity, index) => <li key={index} className="flex items-start gap-2">
                     <ArrowRight className="w-4 h-4 text-blue-500 mt-1" />
                     <span className="text-sm text-muted-foreground">{opportunity}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
             </Card>
           </motion.div>
@@ -2498,25 +2282,16 @@ const PitchDeck = () => {
                 <h3 className="text-xl font-bold text-primary">Threats</h3>
               </div>
               <ul className="space-y-2">
-                {[
-                  "Competition from established players",
-                  "Economic downturns affecting SME spending",
-                  "Technology disruption & obsolescence",
-                  "Talent acquisition challenges",
-                  "Currency fluctuations in global markets"
-                ].map((threat, index) => (
-                  <li key={index} className="flex items-start gap-2">
+                {["Competition from established players", "Economic downturns affecting SME spending", "Technology disruption & obsolescence", "Talent acquisition challenges", "Currency fluctuations in global markets"].map((threat, index) => <li key={index} className="flex items-start gap-2">
                     <AlertTriangle className="w-4 h-4 text-red-500 mt-1" />
                     <span className="text-sm text-muted-foreground">{threat}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
             </Card>
           </motion.div>
         </div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
   const renderSlide = () => {
     switch (slides[currentSlide]) {
       case 'cover':
@@ -2548,15 +2323,18 @@ const PitchDeck = () => {
       case 'go-to-market':
         return <GoToMarketSlide />;
       case 'marketing-sales-funnel':
-        return <GoToMarketSlide />; // Will expand later
+        return <GoToMarketSlide />;
+      // Will expand later
       case 'partnership-strategy':
-        return <GoToMarketSlide />; // Will expand later
+        return <GoToMarketSlide />;
+      // Will expand later
       case 'competitive-landscape':
         return <CompetitiveLandscapeSlide />;
       case 'swot-analysis':
         return <SwotAnalysisSlide />;
       case 'customer-acquisition':
-        return <GoToMarketSlide />; // Will expand later
+        return <GoToMarketSlide />;
+      // Will expand later
       case 'case-studies':
         return <CaseStudiesSlide />;
       case 'traction':
@@ -2564,17 +2342,21 @@ const PitchDeck = () => {
       case 'team-leadership':
         return <TeamLeadershipSlide />;
       case 'advisory-board':
-        return <TeamLeadershipSlide />; // Will expand later
+        return <TeamLeadershipSlide />;
+      // Will expand later
       case 'organizational-structure':
-        return <TeamLeadershipSlide />; // Will expand later
+        return <TeamLeadershipSlide />;
+      // Will expand later
       case 'financials':
         return <FinancialsSlide />;
       case 'unit-economics':
-        return <FinancialsSlide />; // Will expand later
+        return <FinancialsSlide />;
+      // Will expand later
       case 'funding-ask':
         return <FundingAskSlide />;
       case 'use-of-funds':
-        return <FundingAskSlide />; // Will expand later
+        return <FundingAskSlide />;
+      // Will expand later
       case 'risk-mitigation':
         return <RiskMitigationSlide />;
       case 'expansion-strategy':
@@ -2582,11 +2364,14 @@ const PitchDeck = () => {
       case 'social-impact':
         return <SocialImpactSlide />;
       case 'milestones-roadmap':
-        return <ExpansionStrategySlide />; // Will expand later
+        return <ExpansionStrategySlide />;
+      // Will expand later
       case 'exit-strategy':
-        return <VisionClosingSlide />; // Will expand later
+        return <VisionClosingSlide />;
+      // Will expand later
       case 'qa-preparation':
-        return <VisionClosingSlide />; // Will expand later
+        return <VisionClosingSlide />;
+      // Will expand later
       case 'vision-closing':
         return <VisionClosingSlide />;
       default:
@@ -2614,15 +2399,15 @@ const PitchDeck = () => {
 
       {/* Central Navigation Controls */}
       <motion.div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50" initial={{
-        opacity: 0,
-        y: 20
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        duration: 0.4,
-        delay: 0.3
-      }}>
+      opacity: 0,
+      y: 20
+    }} animate={{
+      opacity: 1,
+      y: 0
+    }} transition={{
+      duration: 0.4,
+      delay: 0.3
+    }}>
         <div className="flex items-center gap-4 bg-white/95 backdrop-blur-md rounded-2xl px-6 py-3 shadow-glow border border-border/50">
           <Button onClick={prevSlide} size="sm" variant="ghost" className="h-10 px-3 hover:bg-accent hover:text-accent-foreground">
             <ChevronLeft className="w-4 h-4 mr-1" />
@@ -2630,17 +2415,7 @@ const PitchDeck = () => {
           </Button>
           
           <div className="flex items-center gap-2">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentSlide 
-                    ? 'bg-accent w-6' 
-                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                }`}
-              />
-            ))}
+            {slides.map((_, index) => <button key={index} onClick={() => goToSlide(index)} className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentSlide ? 'bg-accent w-6' : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'}`} />)}
           </div>
 
           <Button onClick={nextSlide} size="sm" variant="ghost" className="h-10 px-3 hover:bg-accent hover:text-accent-foreground">
@@ -2676,37 +2451,7 @@ const PitchDeck = () => {
       </motion.div>
 
       {/* AutoPlay Toggle */}
-      <motion.div className="fixed top-6 left-6 z-50" initial={{
-        opacity: 0,
-        scale: 0.8,
-        x: -20
-      }} animate={{
-        opacity: 1,
-        scale: 1,
-        x: 0
-      }} transition={{
-        duration: 0.4,
-        delay: 0.2
-      }}>
-        <Button 
-          onClick={() => setIsAutoPlay(!isAutoPlay)}
-          size="sm" 
-          variant={isAutoPlay ? "default" : "outline"}
-          className="bg-white/90 backdrop-blur-sm border-border/50 hover:bg-accent hover:text-accent-foreground shadow-lg"
-        >
-          {isAutoPlay ? (
-            <>
-              <Zap className="w-4 h-4 mr-2" />
-              Auto
-            </>
-          ) : (
-            <>
-              <Zap className="w-4 h-4 mr-2" />
-              Manual
-            </>
-          )}
-        </Button>
-      </motion.div>
+      
 
       {/* Main content with enhanced spacing */}
       <AnimatePresence mode="wait">
