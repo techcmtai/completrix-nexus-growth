@@ -200,6 +200,13 @@
     padding-bottom: 8rem; /* Extra space for navigation */
     overflow-x: hidden;
     overflow-y: auto;
+    /* Hide scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  
+  .pitch-slide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
   }
   
   .pitch-content {
@@ -264,21 +271,17 @@
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   }
   
-  /* Custom scrollbar */
+  /* Hide all scrollbars globally */
   ::-webkit-scrollbar {
-    width: 8px;
+    display: none;
   }
   
-  ::-webkit-scrollbar-track {
-    background: hsl(var(--muted));
+  * {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
   }
   
-  ::-webkit-scrollbar-thumb {
-    background: hsl(var(--accent));
-    border-radius: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--accent-light));
+  html, body {
+    overflow-x: hidden;
   }
 }

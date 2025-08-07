@@ -1697,7 +1697,7 @@ const PitchDeck = () => {
         return <CoverSlide />;
     }
   };
-  return <div className="min-h-screen w-full bg-background relative overflow-x-hidden max-w-full">
+  return <div className="min-h-screen w-full bg-background relative overflow-hidden max-w-full">
       {/* Animated Background Elements */}
       <div className="fixed inset-0 z-0">
         {[...Array(6)].map((_, i) => <motion.div key={i} className="absolute w-96 h-96 rounded-full" style={{
