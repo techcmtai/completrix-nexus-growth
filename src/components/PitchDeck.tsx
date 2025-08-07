@@ -8,16 +8,6 @@ import weMarketYouLogo from '/lovable-uploads/2ba6b31a-4757-4d6a-9d5a-3fd490fce4
 import cmtAiLogo from '/lovable-uploads/a576a2c2-c473-4314-a9a6-a3f11e45253c.png';
 
 const PitchDeck = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAutoPlay, setIsAutoPlay] = useState(false);
-  
-  const slides = [
-    'cover', 'problem', 'solution', 'market-opportunity', 'products-services', 
-    'business-model', 'go-to-market', 'traction', 'competitive-landscape',
-    'technology-stack', 'case-studies', 'team-leadership', 'financials', 
-    'funding-ask', 'risk-mitigation', 'expansion-strategy', 'social-impact', 'vision-closing'
-  ];
-
   // Enhanced data sets for interactive visualizations
   const financialData = [
     { year: '2024-25', revenue: 1, grossMargin: 40, netProfit: 15, clients: 200, teamSize: 30, expenses: 0.85 },
@@ -63,25 +53,6 @@ const PitchDeck = () => {
     { metric: 'Communication', score: 4.7 },
     { metric: 'Value for Money', score: 4.8 }
   ];
-
-  const nextSlide = () => {
-    setCurrentSlide(prev => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide(prev => (prev - 1 + slides.length) % slides.length);
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
-
-  useEffect(() => {
-    if (isAutoPlay) {
-      const interval = setInterval(nextSlide, 8000);
-      return () => clearInterval(interval);
-    }
-  }, [isAutoPlay]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -1748,116 +1719,65 @@ const PitchDeck = () => {
     </motion.div>
   );
 
-  const renderSlide = () => {
-    switch (slides[currentSlide]) {
-      case 'cover': return <CoverSlide />;
-      case 'problem': return <ProblemSlide />;
-      case 'solution': return <SolutionSlide />;
-      case 'market-opportunity': return <MarketOpportunitySlide />;
-      case 'products-services': return <ProductsServicesSlide />;
-      case 'business-model': return <BusinessModelSlide />;
-      case 'go-to-market': return <GoToMarketSlide />;
-      case 'traction': return <TractionSlide />;
-      case 'competitive-landscape': return <CompetitiveLandscapeSlide />;
-      case 'technology-stack': return <TechnologyStackSlide />;
-      case 'case-studies': return <CaseStudiesSlide />;
-      case 'team-leadership': return <TeamLeadershipSlide />;
-      case 'financials': return <FinancialsSlide />;
-      case 'funding-ask': return <FundingAskSlide />;
-      case 'risk-mitigation': return <RiskMitigationSlide />;
-      case 'expansion-strategy': return <ExpansionStrategySlide />;
-      case 'social-impact': return <SocialImpactSlide />;
-      case 'vision-closing': return <VisionClosingSlide />;
-      default: return <CoverSlide />;
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-background relative">
-      {/* Enhanced Compact Navigation */}
-      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
-        <motion.div 
-          className="bg-white/95 backdrop-blur-md rounded-full shadow-glow border border-border/50 px-3 py-2 flex items-center gap-3"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={prevSlide}
-            className="h-8 w-8 rounded-full hover:bg-accent/20 transition-spring group"
-          >
-            <ChevronLeft className="h-4 w-4 text-accent group-hover:scale-110 transition-spring" />
-          </Button>
-          
-          <div className="flex gap-1.5 px-2">
-            {slides.map((_, index) => (
-              <motion.button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-2 h-2 rounded-full transition-spring ${
-                  index === currentSlide 
-                    ? 'bg-accent shadow-sm' 
-                    : 'bg-muted hover:bg-accent/60'
-                }`}
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-                animate={{
-                  scale: index === currentSlide ? 1.3 : 1,
-                  opacity: index === currentSlide ? 1 : 0.7
-                }}
-              />
-            ))}
-          </div>
-          
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={nextSlide}
-            className="h-8 w-8 rounded-full hover:bg-accent/20 transition-spring group"
-          >
-            <ChevronRight className="h-4 w-4 text-accent group-hover:scale-110 transition-spring" />
-          </Button>
-        </motion.div>
+    <div className="min-h-screen bg-background">
+      {/* Single Page Website Layout */}
+      <div className="w-full">
+        {/* Cover Section */}
+        <CoverSlide />
+        
+        {/* Problem Section */}
+        <ProblemSlide />
+        
+        {/* Solution Section */}
+        <SolutionSlide />
+        
+        {/* Market Opportunity Section */}
+        <MarketOpportunitySlide />
+        
+        {/* Products & Services Section */}
+        <ProductsServicesSlide />
+        
+        {/* Business Model Section */}
+        <BusinessModelSlide />
+        
+        {/* Go-to-Market Section */}
+        <GoToMarketSlide />
+        
+        {/* Traction Section */}
+        <TractionSlide />
+        
+        {/* Competitive Landscape Section */}
+        <CompetitiveLandscapeSlide />
+        
+        {/* Technology Stack Section */}
+        <TechnologyStackSlide />
+        
+        {/* Case Studies Section */}
+        <CaseStudiesSlide />
+        
+        {/* Team Leadership Section */}
+        <TeamLeadershipSlide />
+        
+        {/* Financials Section */}
+        <FinancialsSlide />
+        
+        {/* Funding Ask Section */}
+        <FundingAskSlide />
+        
+        {/* Risk Mitigation Section */}
+        <RiskMitigationSlide />
+        
+        {/* Expansion Strategy Section */}
+        <ExpansionStrategySlide />
+        
+        {/* Social Impact Section */}
+        <SocialImpactSlide />
+        
+        {/* Vision Closing Section */}
+        <VisionClosingSlide />
       </div>
-
-      {/* Compact Slide Counter */}
-      <motion.div 
-        className="fixed top-6 right-6 z-50 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-card border border-border/50"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.3 }}
-      >
-        <span className="text-xs font-medium text-muted-foreground">
-          {currentSlide + 1} / {slides.length}
-        </span>
-      </motion.div>
-
-      {/* Compact Auto-play Toggle */}
-      <motion.div 
-        className="fixed top-6 left-6 z-50"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.3, delay: 0.1 }}
-      >
-        <Button
-          variant={isAutoPlay ? "default" : "ghost"}
-          size="sm"
-          onClick={() => setIsAutoPlay(!isAutoPlay)}
-          className="h-8 w-16 text-xs bg-white/90 backdrop-blur-sm border-border/50 hover:bg-accent/10 transition-spring"
-        >
-          {isAutoPlay ? "⏸" : "▶"} Auto
-        </Button>
-      </motion.div>
-
-      {/* Main content */}
-      <AnimatePresence mode="wait">
-        {renderSlide()}
-      </AnimatePresence>
-
     </div>
   );
 };
-
 export default PitchDeck;
