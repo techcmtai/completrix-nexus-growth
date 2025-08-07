@@ -206,6 +206,13 @@
     max-width: 1400px;
     width: 100%;
     margin: 0 auto;
+    overflow-x: hidden;
+  }
+  
+  /* Ensure no horizontal scrolling anywhere */
+  .pitch-slide * {
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
   .transition-spring {
