@@ -217,12 +217,12 @@ const PitchDeck = () => {
     }
   };
 
-  // Slide 1: Cover
+  // Slide 1: Cover - Enhanced Responsive Design
   const CoverSlide = () => <motion.div className="pitch-slide bg-background text-foreground relative overflow-hidden" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-primary/5"></div>
       <div className="pitch-content text-center relative z-10">
-        <motion.div className="mb-8" variants={itemVariants}>
-          <motion.h1 className="text-4xl md:text-6xl font-black mb-4 tracking-tight text-primary" initial={{
+        <motion.div className="mb-6 sm:mb-8" variants={itemVariants}>
+          <motion.h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-3 sm:mb-4 tracking-tight text-primary" initial={{
           scale: 0.5,
           opacity: 0
         }} animate={{
@@ -234,7 +234,7 @@ const PitchDeck = () => {
         }}>
             COMPLETRIX
           </motion.h1>
-          <motion.p className="text-lg md:text-xl font-light mb-3 text-muted-foreground" initial={{
+          <motion.p className="text-sm sm:text-base md:text-lg lg:text-xl font-light mb-3 text-muted-foreground px-2" initial={{
           y: 20,
           opacity: 0
         }} animate={{
@@ -246,15 +246,15 @@ const PitchDeck = () => {
         }}>
             MICROTECHNOLOGIES PRIVATE LIMITED
           </motion.p>
-          <motion.div className="w-32 h-1 bg-accent mx-auto mb-8" initial={{
+          <motion.div className="w-24 sm:w-32 h-1 bg-accent mx-auto mb-6 sm:mb-8" initial={{
           width: 0
         }} animate={{
-          width: 128
+          width: "100%"
         }} transition={{
           duration: 0.8,
           delay: 0.5
         }} />
-          <motion.p className="text-2xl md:text-3xl font-bold max-w-4xl mx-auto leading-relaxed text-accent mb-8" initial={{
+          <motion.p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold max-w-4xl mx-auto leading-relaxed text-accent mb-6 sm:mb-8 px-4" initial={{
           y: 30,
           opacity: 0
         }} animate={{
@@ -268,29 +268,29 @@ const PitchDeck = () => {
           </motion.p>
         </motion.div>
         
-        <motion.div className="grid md:grid-cols-2 gap-6 mt-8" variants={itemVariants}>
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mt-6 sm:mt-8" variants={itemVariants}>
           <Card className="bg-white border border-border shadow-elevated hover:shadow-glow transition-spring overflow-hidden">
-            <CardContent className="p-8 text-center relative">
-              <div className="w-48 h-36 mx-auto mb-6 relative">
-                <img src={cmtAiLogo} alt="CMT AI Logo" className="w-full h-full object-contain rounded-2xl shadow-card" />
+            <CardContent className="p-4 sm:p-6 lg:p-8 text-center relative">
+              <div className="w-32 h-24 sm:w-40 sm:h-28 md:w-48 md:h-36 mx-auto mb-4 sm:mb-6 relative">
+                <img src={cmtAiLogo} alt="CMT AI Logo" className="w-full h-full object-contain rounded-xl sm:rounded-2xl shadow-card" />
               </div>
-              <h3 className="text-2xl font-bold text-primary mb-2">CMT AI</h3>
-              <p className="text-lg text-muted-foreground">Software Development & AI Solutions</p>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-primary mb-2">CMT AI</h3>
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground">Software Development & AI Solutions</p>
             </CardContent>
           </Card>
           
           <Card className="bg-white border border-border shadow-elevated hover:shadow-glow transition-spring overflow-hidden">
-            <CardContent className="p-8 text-center relative">
-              <div className="w-48 h-36 mx-auto mb-6 relative">
-                <img src={weMarketYouLogo} alt="We Market You Logo" className="w-full h-full object-contain rounded-2xl shadow-card" />
+            <CardContent className="p-4 sm:p-6 lg:p-8 text-center relative">
+              <div className="w-32 h-24 sm:w-40 sm:h-28 md:w-48 md:h-36 mx-auto mb-4 sm:mb-6 relative">
+                <img src={weMarketYouLogo} alt="We Market You Logo" className="w-full h-full object-contain rounded-xl sm:rounded-2xl shadow-card" />
               </div>
-              <h3 className="text-2xl font-bold text-primary mb-2">We Market You</h3>
-              <p className="text-lg text-muted-foreground">Digital Marketing & Strategic Communication</p>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-primary mb-2">We Market You</h3>
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground">Digital Marketing & Strategic Communication</p>
             </CardContent>
           </Card>
         </motion.div>
 
-        <motion.div className="mt-16 text-center" initial={{
+        <motion.div className="mt-8 sm:mt-12 md:mt-16 text-center" initial={{
         y: 50,
         opacity: 0
       }} animate={{
@@ -300,16 +300,16 @@ const PitchDeck = () => {
         duration: 0.8,
         delay: 1.5
       }}>
-          <p className="text-xl text-muted-foreground mb-4">Contact</p>
-          <div className="text-lg">
-            <p className="font-bold text-primary">Anurag Singh, Founder & CEO</p>
-            <div className="flex justify-center gap-4 mt-4">
-              <div className="flex items-center gap-2">
-                <Mail className="w-5 h-5 text-accent" />
-                <span>contact@completrix.com</span>
+          <p className="text-lg sm:text-xl text-muted-foreground mb-3 sm:mb-4">Contact</p>
+          <div className="text-sm sm:text-base md:text-lg">
+            <p className="font-bold text-primary mb-3 sm:mb-4">Anurag Singh, Founder & CEO</p>
+            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4">
+              <div className="flex items-center justify-center gap-2">
+                <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-accent flex-shrink-0" />
+                <span className="break-all sm:break-normal">contact@completrix.com</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-5 h-5 text-accent" />
+              <div className="flex items-center justify-center gap-2">
+                <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-accent flex-shrink-0" />
                 <span>+91-XXXXXXXXXX</span>
               </div>
             </div>
@@ -325,29 +325,29 @@ const PitchDeck = () => {
           About Completrix Microtechnologies
         </motion.h2>
         
-        <div className="grid md:grid-cols-2 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8">
           <motion.div variants={itemVariants}>
-            <Card className="p-6 bg-white shadow-elevated border border-border">
-              <h3 className="text-2xl font-bold text-primary mb-4">Our Mission</h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">
+            <Card className="p-4 sm:p-6 bg-white shadow-elevated border border-border h-full">
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3 sm:mb-4">Our Mission</h3>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-3 sm:mb-4">
                 To democratize technology and marketing services for startups and SMEs, enabling them to compete with enterprise-level capabilities at affordable costs.
               </p>
               <div className="flex items-center gap-2">
-                <Rocket className="w-5 h-5 text-accent" />
-                <span className="font-semibold text-accent">Start. Scale. Succeed.</span>
+                <Rocket className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
+                <span className="text-sm sm:text-base font-semibold text-accent">Start. Scale. Succeed.</span>
               </div>
             </Card>
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            <Card className="p-6 bg-white shadow-elevated border border-border">
-              <h3 className="text-2xl font-bold text-primary mb-4">Our Vision</h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">
+            <Card className="p-4 sm:p-6 bg-white shadow-elevated border border-border h-full">
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3 sm:mb-4">Our Vision</h3>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-3 sm:mb-4">
                 To become the go-to technology and marketing partner for emerging businesses across India and globally, fostering innovation and growth.
               </p>
               <div className="flex items-center gap-2">
-                <Globe className="w-5 h-5 text-accent" />
-                <span className="font-semibold text-accent">Global Innovation Partner</span>
+                <Globe className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
+                <span className="text-sm sm:text-base font-semibold text-accent">Global Innovation Partner</span>
               </div>
             </Card>
           </motion.div>
@@ -356,7 +356,7 @@ const PitchDeck = () => {
         <motion.div variants={itemVariants}>
           <Card className="p-8 bg-white shadow-elevated border border-border">
             <h3 className="text-2xl font-bold text-primary mb-6 text-center">Company Highlights</h3>
-            <div className="grid md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
               {[{
               label: "Founded",
               value: "2024",
@@ -374,9 +374,9 @@ const PitchDeck = () => {
               value: "200+",
               icon: Briefcase
             }].map((stat, index) => <div key={index} className="text-center">
-                  <stat.icon className="w-12 h-12 text-accent mx-auto mb-3" />
-                  <div className="text-2xl font-bold text-primary">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  <stat.icon className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-accent mx-auto mb-2 sm:mb-3" />
+                  <div className="text-lg sm:text-xl md:text-2xl font-bold text-primary">{stat.value}</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">{stat.label}</div>
                 </div>)}
             </div>
           </Card>
@@ -391,7 +391,7 @@ const PitchDeck = () => {
           The Problem
         </motion.h2>
         
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
           {[{
           title: "Technical Expertise Gap",
           description: "85% of startups fail due to lack of technical co-founders. Entrepreneurs struggle to find reliable, full-stack tech partners who understand modern frameworks, AI/ML, and scalable cloud infrastructure.",
@@ -410,13 +410,13 @@ const PitchDeck = () => {
           stats: "₹50L+ typical cost",
           icon: DollarSign,
           color: "text-yellow-500"
-        }].map((problem, index) => <motion.div key={index} className="p-6 bg-white rounded-xl shadow-elevated border border-border hover:shadow-glow transition-spring" variants={itemVariants} whileHover={{
+        }].map((problem, index) => <motion.div key={index} className="p-4 sm:p-6 bg-white rounded-xl shadow-elevated border border-border hover:shadow-glow transition-spring h-full" variants={itemVariants} whileHover={{
           scale: 1.03,
           y: -5
         }}>
-              <problem.icon className={`w-12 h-12 ${problem.color} mb-4`} />
-              <h3 className="text-lg font-bold text-primary mb-3">{problem.title}</h3>
-              <p className="text-muted-foreground leading-relaxed mb-3 text-sm">{problem.description}</p>
+              <problem.icon className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 ${problem.color} mb-3 sm:mb-4`} />
+              <h3 className="text-base sm:text-lg font-bold text-primary mb-2 sm:mb-3">{problem.title}</h3>
+              <p className="text-muted-foreground leading-relaxed mb-3 text-xs sm:text-sm">{problem.description}</p>
               <div className="bg-accent/10 p-2 rounded-lg">
                 <p className="font-bold text-accent text-xs">{problem.stats}</p>
               </div>
@@ -432,41 +432,41 @@ const PitchDeck = () => {
           Our Solution
         </motion.h2>
         
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <motion.div variants={itemVariants} className="space-y-8">
-            <Card className="p-6 bg-white shadow-elevated border border-border">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-accent/10 rounded-xl flex items-center justify-center">
-                  <Brain className="w-8 h-8 text-accent" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+          <motion.div variants={itemVariants} className="space-y-4 sm:space-y-6 lg:space-y-8">
+            <Card className="p-4 sm:p-6 bg-white shadow-elevated border border-border">
+              <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Brain className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-accent" />
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-primary mb-2">CMT AI</h3>
-                  <p className="text-muted-foreground">Offers end-to-end technology development – from custom web/mobile apps to AI/ML model training, DevOps, and cloud migration.</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg sm:text-xl font-bold text-primary mb-2">CMT AI</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground">Offers end-to-end technology development – from custom web/mobile apps to AI/ML model training, DevOps, and cloud migration.</p>
                 </div>
               </div>
             </Card>
 
-            <Card className="p-6 bg-white shadow-elevated border border-border">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-accent/10 rounded-xl flex items-center justify-center">
-                  <Target className="w-8 h-8 text-accent" />
+            <Card className="p-4 sm:p-6 bg-white shadow-elevated border border-border">
+              <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Target className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-accent" />
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-primary mb-2">We Market You</h3>
-                  <p className="text-muted-foreground">A full-service marketing arm handling SEO, PR, advertising, and brand building.</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg sm:text-xl font-bold text-primary mb-2">We Market You</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground">A full-service marketing arm handling SEO, PR, advertising, and brand building.</p>
                 </div>
               </div>
             </Card>
           </motion.div>
 
           <motion.div variants={itemVariants} className="text-center">
-            <div className="bg-white p-8 rounded-2xl shadow-elevated border border-border">
-              <h3 className="text-3xl font-bold text-primary mb-6">One-Stop Growth Partner</h3>
-              <p className="text-xl text-muted-foreground mb-8">
+            <div className="bg-white p-4 sm:p-6 lg:p-8 rounded-2xl shadow-elevated border border-border">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary mb-4 sm:mb-6">One-Stop Growth Partner</h3>
+              <p className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-6 sm:mb-8">
                 A comprehensive tech + marketing powerhouse enabling businesses to ideate, launch, and scale.
               </p>
               
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 {[{
                 label: "Modern",
                 icon: Rocket
@@ -2397,8 +2397,8 @@ const PitchDeck = () => {
       }} />)}
       </div>
 
-      {/* Central Navigation Controls */}
-      <motion.div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50" initial={{
+      {/* Enhanced Responsive Navigation Controls */}
+      <motion.div className="fixed bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 z-50 w-auto max-w-[90vw]" initial={{
       opacity: 0,
       y: 20
     }} animate={{
@@ -2408,25 +2408,25 @@ const PitchDeck = () => {
       duration: 0.4,
       delay: 0.3
     }}>
-        <div className="flex items-center gap-4 bg-white/95 backdrop-blur-md rounded-2xl px-6 py-3 shadow-glow border border-border/50">
-          <Button onClick={prevSlide} size="sm" variant="ghost" className="h-10 px-3 hover:bg-accent hover:text-accent-foreground">
-            <ChevronLeft className="w-4 h-4 mr-1" />
-            Previous
+        <div className="flex items-center gap-2 sm:gap-3 md:gap-4 bg-white/95 backdrop-blur-md rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-2 sm:py-3 shadow-glow border border-border/50">
+          <Button onClick={prevSlide} size="sm" variant="ghost" className="h-8 sm:h-9 md:h-10 px-2 sm:px-3 hover:bg-accent hover:text-accent-foreground text-xs sm:text-sm">
+            <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4 sm:mr-1" />
+            <span className="hidden sm:inline">Previous</span>
           </Button>
           
-          <div className="flex items-center gap-2">
-            {slides.map((_, index) => <button key={index} onClick={() => goToSlide(index)} className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentSlide ? 'bg-accent w-6' : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'}`} />)}
+          <div className="flex items-center gap-1 sm:gap-2 max-w-[40vw] sm:max-w-none overflow-x-auto">
+            {slides.map((_, index) => <button key={index} onClick={() => goToSlide(index)} className={`w-2 h-2 sm:w-2 sm:h-2 rounded-full transition-all duration-300 flex-shrink-0 ${index === currentSlide ? 'bg-accent w-4 sm:w-6' : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'}`} />)}
           </div>
 
-          <Button onClick={nextSlide} size="sm" variant="ghost" className="h-10 px-3 hover:bg-accent hover:text-accent-foreground">
-            Next
-            <ChevronRight className="w-4 h-4 ml-1" />
+          <Button onClick={nextSlide} size="sm" variant="ghost" className="h-8 sm:h-9 md:h-10 px-2 sm:px-3 hover:bg-accent hover:text-accent-foreground text-xs sm:text-sm">
+            <span className="hidden sm:inline">Next</span>
+            <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 sm:ml-1" />
           </Button>
         </div>
       </motion.div>
 
-      {/* Enhanced Slide Counter with Animation */}
-      <motion.div className="fixed top-6 right-6 z-50 bg-white/95 backdrop-blur-md rounded-2xl px-4 py-2 shadow-glow border border-border/50" initial={{
+      {/* Enhanced Responsive Slide Counter */}
+      <motion.div className="fixed top-4 sm:top-6 right-4 sm:right-6 z-50 bg-white/95 backdrop-blur-md rounded-xl sm:rounded-2xl px-3 sm:px-4 py-2 shadow-glow border border-border/50" initial={{
       opacity: 0,
       scale: 0.8,
       x: 20
@@ -2437,14 +2437,14 @@ const PitchDeck = () => {
     }} transition={{
       duration: 0.4
     }}>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <motion.div className="w-2 h-2 bg-accent rounded-full" animate={{
           scale: [1, 1.2, 1]
         }} transition={{
           duration: 2,
           repeat: Infinity
         }} />
-          <span className="text-sm font-semibold text-primary">
+          <span className="text-xs sm:text-sm font-semibold text-primary">
             {currentSlide + 1} <span className="text-muted-foreground">of</span> {slides.length}
           </span>
         </div>

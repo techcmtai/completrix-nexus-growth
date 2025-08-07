@@ -170,36 +170,40 @@
   }
   
   .pitch-slide {
-    @apply min-h-screen flex flex-col justify-center items-center p-8 relative;
+    @apply min-h-screen flex flex-col justify-center items-center p-2 sm:p-4 md:p-6 lg:p-8 relative;
   }
   
   .pitch-content {
-    @apply max-w-6xl mx-auto w-full;
+    @apply max-w-6xl mx-auto w-full px-2 sm:px-4 md:px-6;
   }
   
   .section-title {
-    @apply text-4xl md:text-5xl font-bold mb-8 text-center;
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-center;
     background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    line-height: 1.2;
   }
   
   .subsection-title {
-    @apply text-2xl md:text-3xl font-semibold mb-6;
+    @apply text-xl sm:text-2xl md:text-3xl font-semibold mb-4 sm:mb-6;
     color: hsl(var(--primary));
+    line-height: 1.3;
   }
 
-  /* Pitch Deck Specific Styles */
+  /* Enhanced Pitch Deck Responsive Styles */
   .pitch-slide {
     min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile */
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding: 2rem 1rem;
-    padding-bottom: 12rem; /* Extra space for navigation */
+    padding: 1rem;
+    padding-bottom: 8rem; /* Space for navigation */
     overflow-x: hidden;
     overflow-y: auto;
+    position: relative;
     /* Hide scrollbar */
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
@@ -214,7 +218,8 @@
     width: 100%;
     margin: 0 auto;
     overflow-x: hidden;
-    padding: 0 1rem;
+    padding: 0;
+    position: relative;
   }
   
   /* Ensure no horizontal scrolling anywhere */
@@ -223,15 +228,17 @@
     box-sizing: border-box;
   }
 
-  /* Grid improvements to prevent overlapping */
+  /* Grid improvements with responsive behavior */
   .pitch-content .grid {
     gap: 1.5rem;
     align-items: stretch;
+    width: 100%;
   }
 
   .pitch-content .grid > * {
     min-height: fit-content;
     height: auto;
+    min-width: 0; /* Prevent flex item overflow */
   }
 
   /* Card spacing improvements */
@@ -239,22 +246,141 @@
   .pitch-content .grid [class*="card"] {
     margin-bottom: 0;
     break-inside: avoid;
+    width: 100%;
   }
 
-  /* Responsive grid adjustments */
-  @media (max-width: 768px) {
+  /* Enhanced Mobile Responsive Design (320px - 480px) */
+  @media (max-width: 480px) {
+    .pitch-slide {
+      padding: 0.75rem 0.5rem;
+      padding-bottom: 7rem;
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
+    
+    .pitch-content {
+      padding: 0;
+    }
+    
+    .pitch-content .grid {
+      grid-template-columns: 1fr !important;
+      gap: 0.75rem;
+    }
+    
+    /* Typography adjustments for small screens */
+    .pitch-content h1 {
+      font-size: 1.75rem !important;
+      line-height: 1.2 !important;
+    }
+    
+    .pitch-content h2 {
+      font-size: 1.5rem !important;
+      line-height: 1.3 !important;
+    }
+    
+    .pitch-content h3 {
+      font-size: 1.25rem !important;
+      line-height: 1.3 !important;
+    }
+    
+    .pitch-content p {
+      font-size: 0.875rem !important;
+      line-height: 1.5 !important;
+    }
+    
+    /* Card padding adjustments */
+    .pitch-content .card {
+      padding: 0.75rem !important;
+    }
+    
+    .pitch-content [class*="p-6"] {
+      padding: 0.75rem !important;
+    }
+    
+    .pitch-content [class*="p-8"] {
+      padding: 1rem !important;
+    }
+  }
+
+  /* Tablet Portrait (481px - 768px) */
+  @media (min-width: 481px) and (max-width: 768px) {
+    .pitch-slide {
+      padding: 1rem 0.75rem;
+      padding-bottom: 8rem;
+    }
+    
+    .pitch-content {
+      padding: 0;
+    }
+    
     .pitch-content .grid {
       grid-template-columns: 1fr !important;
       gap: 1rem;
     }
     
+    .pitch-content h1 {
+      font-size: 2rem !important;
+    }
+    
+    .pitch-content h2 {
+      font-size: 1.75rem !important;
+    }
+    
+    .pitch-content .card {
+      padding: 1rem !important;
+    }
+  }
+
+  /* Tablet Landscape (769px - 1024px) */
+  @media (min-width: 769px) and (max-width: 1024px) {
     .pitch-slide {
-      padding: 1rem 0.5rem;
-      padding-bottom: 10rem;
+      padding: 1.5rem 1rem;
+      padding-bottom: 9rem;
     }
     
     .pitch-content {
       padding: 0 0.5rem;
+    }
+    
+    .pitch-content .grid {
+      gap: 1.25rem;
+    }
+    
+    /* Allow 2-column grids on tablet landscape for suitable content */
+    .pitch-content .grid-cols-2 {
+      grid-template-columns: 1fr 1fr !important;
+    }
+    
+    .pitch-content .grid-cols-3 {
+      grid-template-columns: 1fr 1fr !important;
+    }
+    
+    .pitch-content .grid-cols-4 {
+      grid-template-columns: 1fr 1fr !important;
+    }
+  }
+
+  /* Desktop (1025px and up) */
+  @media (min-width: 1025px) {
+    .pitch-slide {
+      padding: 2rem 1rem;
+      padding-bottom: 10rem;
+    }
+    
+    .pitch-content {
+      padding: 0 1rem;
+    }
+  }
+
+  /* Large Desktop (1400px and up) */
+  @media (min-width: 1400px) {
+    .pitch-slide {
+      padding: 2.5rem 1rem;
+      padding-bottom: 12rem;
+    }
+    
+    .pitch-content {
+      padding: 0 2rem;
     }
   }
   
