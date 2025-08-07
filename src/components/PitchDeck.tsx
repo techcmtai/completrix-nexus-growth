@@ -83,6 +83,21 @@ const PitchDeck = () => {
     }
   }, [isAutoPlay]);
 
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === ' ') {
+        e.preventDefault();
+        setIsAutoPlay(!isAutoPlay);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [isAutoPlay]);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -1773,87 +1788,183 @@ const PitchDeck = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background relative">
-      {/* Enhanced Compact Navigation */}
-      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="fixed inset-0 z-0">
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-96 h-96 rounded-full"
+            style={{
+              background: `radial-gradient(circle, hsl(180 68% ${30 + i * 5}% / 0.02), transparent)`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.1, 0.2, 0.1],
+              x: [0, 50, 0],
+              y: [0, 30, 0],
+            }}
+            transition={{
+              duration: 20 + i * 2,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Enhanced Multi-Level Navigation */}
+      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
         <motion.div 
-          className="bg-white/95 backdrop-blur-md rounded-full shadow-glow border border-border/50 px-3 py-2 flex items-center gap-3"
+          className="bg-white/95 backdrop-blur-md rounded-2xl shadow-glow border border-border/50 p-3"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={prevSlide}
-            className="h-8 w-8 rounded-full hover:bg-accent/20 transition-spring group"
-          >
-            <ChevronLeft className="h-4 w-4 text-accent group-hover:scale-110 transition-spring" />
-          </Button>
-          
-          <div className="flex gap-1.5 px-2">
-            {slides.map((_, index) => (
-              <motion.button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-2 h-2 rounded-full transition-spring ${
-                  index === currentSlide 
-                    ? 'bg-accent shadow-sm' 
-                    : 'bg-muted hover:bg-accent/60'
-                }`}
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-                animate={{
-                  scale: index === currentSlide ? 1.3 : 1,
-                  opacity: index === currentSlide ? 1 : 0.7
-                }}
-              />
-            ))}
+          {/* Navigation Controls */}
+          <div className="flex items-center gap-4 mb-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={prevSlide}
+              className="h-10 w-10 rounded-xl hover:bg-accent/20 transition-spring group bg-accent/5"
+            >
+              <ChevronLeft className="h-5 w-5 text-accent group-hover:scale-110 transition-spring" />
+            </Button>
+            
+            <div className="flex gap-2 px-3">
+              {slides.map((_, index) => (
+                <motion.button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-spring relative ${
+                    index === currentSlide 
+                      ? 'bg-accent shadow-md' 
+                      : 'bg-muted hover:bg-accent/60'
+                  }`}
+                  whileHover={{ scale: 1.3 }}
+                  whileTap={{ scale: 0.8 }}
+                  animate={{
+                    scale: index === currentSlide ? 1.4 : 1,
+                    opacity: index === currentSlide ? 1 : 0.6
+                  }}
+                >
+                  {index === currentSlide && (
+                    <motion.div
+                      className="absolute inset-0 bg-accent rounded-full"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: [1, 1.5, 1] }}
+                      transition={{ duration: 0.6, repeat: Infinity }}
+                    />
+                  )}
+                </motion.button>
+              ))}
+            </div>
+            
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={nextSlide}
+              className="h-10 w-10 rounded-xl hover:bg-accent/20 transition-spring group bg-accent/5"
+            >
+              <ChevronRight className="h-5 w-5 text-accent group-hover:scale-110 transition-spring" />
+            </Button>
           </div>
-          
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={nextSlide}
-            className="h-8 w-8 rounded-full hover:bg-accent/20 transition-spring group"
-          >
-            <ChevronRight className="h-4 w-4 text-accent group-hover:scale-110 transition-spring" />
-          </Button>
+
+          {/* Progress Bar */}
+          <div className="w-full bg-muted/30 rounded-full h-1.5 overflow-hidden">
+            <motion.div 
+              className="h-full bg-gradient-to-r from-accent to-accent-light rounded-full"
+              initial={{ width: 0 }}
+              animate={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            />
+          </div>
         </motion.div>
       </div>
 
-      {/* Compact Slide Counter */}
+      {/* Enhanced Slide Counter with Animation */}
       <motion.div 
-        className="fixed top-6 right-6 z-50 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-card border border-border/50"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.3 }}
+        className="fixed top-6 right-6 z-50 bg-white/95 backdrop-blur-md rounded-2xl px-4 py-2 shadow-glow border border-border/50"
+        initial={{ opacity: 0, scale: 0.8, x: 20 }}
+        animate={{ opacity: 1, scale: 1, x: 0 }}
+        transition={{ duration: 0.4 }}
       >
-        <span className="text-xs font-medium text-muted-foreground">
-          {currentSlide + 1} / {slides.length}
-        </span>
+        <div className="flex items-center gap-3">
+          <motion.div 
+            className="w-2 h-2 bg-accent rounded-full"
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+          <span className="text-sm font-semibold text-primary">
+            {currentSlide + 1} <span className="text-muted-foreground">of</span> {slides.length}
+          </span>
+        </div>
       </motion.div>
 
-      {/* Compact Auto-play Toggle */}
+      {/* Enhanced Control Panel */}
       <motion.div 
-        className="fixed top-6 left-6 z-50"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.3, delay: 0.1 }}
+        className="fixed top-6 left-6 z-50 bg-white/95 backdrop-blur-md rounded-2xl p-3 shadow-glow border border-border/50"
+        initial={{ opacity: 0, scale: 0.8, x: -20 }}
+        animate={{ opacity: 1, scale: 1, x: 0 }}
+        transition={{ duration: 0.4, delay: 0.1 }}
       >
-        <Button
-          variant={isAutoPlay ? "default" : "ghost"}
-          size="sm"
-          onClick={() => setIsAutoPlay(!isAutoPlay)}
-          className="h-8 w-16 text-xs bg-white/90 backdrop-blur-sm border-border/50 hover:bg-accent/10 transition-spring"
-        >
-          {isAutoPlay ? "⏸" : "▶"} Auto
-        </Button>
+        <div className="flex flex-col gap-2">
+          <Button
+            variant={isAutoPlay ? "default" : "ghost"}
+            size="sm"
+            onClick={() => setIsAutoPlay(!isAutoPlay)}
+            className="h-9 px-3 text-xs font-medium transition-spring relative overflow-hidden"
+          >
+            <motion.div
+              className="flex items-center gap-2"
+              animate={{ x: isAutoPlay ? 0 : 2 }}
+            >
+              {isAutoPlay ? "⏸️" : "▶️"} 
+              <span>{isAutoPlay ? "Pause" : "Auto"}</span>
+            </motion.div>
+            {isAutoPlay && (
+              <motion.div
+                className="absolute bottom-0 left-0 h-0.5 bg-accent"
+                initial={{ width: 0 }}
+                animate={{ width: "100%" }}
+                transition={{ duration: 8, repeat: Infinity }}
+              />
+            )}
+          </Button>
+          
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => window.print()}
+            className="h-9 px-3 text-xs font-medium hover:bg-accent/10 transition-spring"
+          >
+            🖨️ Print
+          </Button>
+        </div>
       </motion.div>
 
-      {/* Main content */}
+      {/* Keyboard Shortcuts Indicator */}
+      <motion.div 
+        className="fixed bottom-4 right-6 z-40 bg-white/90 backdrop-blur-sm rounded-xl p-2 shadow-card border border-border/30 text-xs text-muted-foreground"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 0.3 }}
+      >
+        <div className="flex gap-2">
+          <kbd className="px-1.5 py-0.5 bg-muted rounded">←</kbd>
+          <kbd className="px-1.5 py-0.5 bg-muted rounded">→</kbd>
+          <span className="text-xs">Navigate</span>
+        </div>
+      </motion.div>
+
+      {/* Main content with enhanced spacing */}
       <AnimatePresence mode="wait">
-        {renderSlide()}
+        <div className="relative z-10">
+          {renderSlide()}
+        </div>
       </AnimatePresence>
 
     </div>
