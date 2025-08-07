@@ -1747,41 +1747,7 @@ const PitchDeck = () => {
       </motion.div>
 
       {/* Enhanced Control Panel */}
-      <motion.div className="fixed top-6 left-6 z-50 bg-white/95 backdrop-blur-md rounded-2xl p-3 shadow-glow border border-border/50" initial={{
-      opacity: 0,
-      scale: 0.8,
-      x: -20
-    }} animate={{
-      opacity: 1,
-      scale: 1,
-      x: 0
-    }} transition={{
-      duration: 0.4,
-      delay: 0.1
-    }}>
-        <div className="flex flex-col gap-2">
-          <Button variant={isAutoPlay ? "default" : "ghost"} size="sm" onClick={() => setIsAutoPlay(!isAutoPlay)} className="h-9 px-3 text-xs font-medium transition-spring relative overflow-hidden">
-            <motion.div className="flex items-center gap-2" animate={{
-            x: isAutoPlay ? 0 : 2
-          }}>
-              {isAutoPlay ? "⏸️" : "▶️"} 
-              <span>{isAutoPlay ? "Pause" : "Auto"}</span>
-            </motion.div>
-            {isAutoPlay && <motion.div className="absolute bottom-0 left-0 h-0.5 bg-accent" initial={{
-            width: 0
-          }} animate={{
-            width: "100%"
-          }} transition={{
-            duration: 8,
-            repeat: Infinity
-          }} />}
-          </Button>
-          
-          <Button variant="ghost" size="sm" onClick={() => window.print()} className="h-9 px-3 text-xs font-medium hover:bg-accent/10 transition-spring">
-            🖨️ Print
-          </Button>
-        </div>
-      </motion.div>
+      
 
       {/* Keyboard Shortcuts Indicator */}
       <motion.div className="fixed bottom-4 right-6 z-40 bg-white/90 backdrop-blur-sm rounded-xl p-2 shadow-card border border-border/30 text-xs text-muted-foreground" initial={{
