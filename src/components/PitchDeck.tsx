@@ -537,47 +537,127 @@ const PitchDeck = () => {
   // Slide 5: Products & Services Overview
   const ProductsServicesSlide = () => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
-        <motion.h2 className="text-5xl font-bold text-primary mb-12 text-center" variants={itemVariants}>
+        <motion.h2 className="text-4xl font-bold text-primary mb-8 text-center" variants={itemVariants}>
           Products & Services Overview
         </motion.h2>
         
-        <div className="grid md:grid-cols-2 gap-12">
-          <motion.div variants={itemVariants}>
-            <Card className="p-8 bg-white shadow-elevated border border-border h-full">
-              <div className="text-center mb-6">
-                <div className="w-24 h-18 mx-auto mb-4">
-                  <img src={cmtAiLogo} alt="CMT AI" className="w-full h-full object-contain" />
-                </div>
-                <h3 className="text-2xl font-bold text-primary">CMT AI (Software & Cloud)</h3>
-              </div>
-              
-              <div className="space-y-4">
-                {["Web Development: Websites, e-commerce, CMS, PWAs", "App Development: Android, iOS, cross-platform, hybrid", "AI & ML: Chatbots, analytics, NLP, computer vision", "Cloud Services: Migration, DevOps, backups, security", "Custom Software: SaaS, ERP, CRM, POS, enterprise tools", "Ongoing Support: Bug fixes, upgrades, maintenance, SLA"].map((service, index) => <div key={index} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
-                    <span className="text-muted-foreground">{service}</span>
-                  </div>)}
-              </div>
-            </Card>
-          </motion.div>
+        {/* CMT AI Services */}
+        <motion.div className="mb-12" variants={itemVariants}>
+          <div className="flex items-center gap-4 mb-6">
+            <div className="w-16 h-12">
+              <img src={cmtAiLogo} alt="CMT AI" className="w-full h-full object-contain" />
+            </div>
+            <h3 className="text-2xl font-bold text-primary">CMT AI (Software & Cloud)</h3>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Web Development",
+                description: "Websites, e-commerce, CMS, PWAs",
+                icon: Monitor,
+                color: "text-blue-500"
+              },
+              {
+                title: "App Development", 
+                description: "Android, iOS, cross-platform, hybrid",
+                icon: Smartphone,
+                color: "text-green-500"
+              },
+              {
+                title: "AI & ML Services",
+                description: "Chatbots, analytics, NLP, computer vision",
+                icon: Brain,
+                color: "text-purple-500"
+              },
+              {
+                title: "Cloud Services",
+                description: "Migration, DevOps, backups, security",
+                icon: Cloud,
+                color: "text-cyan-500"
+              },
+              {
+                title: "Custom Software",
+                description: "SaaS, ERP, CRM, POS, enterprise tools",
+                icon: Code,
+                color: "text-orange-500"
+              },
+              {
+                title: "Ongoing Support",
+                description: "Bug fixes, upgrades, maintenance, SLA",
+                icon: Shield,
+                color: "text-red-500"
+              }
+            ].map((service, index) => (
+              <motion.div
+                key={index}
+                className="p-6 bg-white rounded-xl shadow-elevated border border-border hover:shadow-glow transition-spring"
+                variants={itemVariants}
+                whileHover={{ scale: 1.02, y: -2 }}
+              >
+                <service.icon className={`w-10 h-10 ${service.color} mb-4`} />
+                <h4 className="text-lg font-bold text-primary mb-2">{service.title}</h4>
+                <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
-          <motion.div variants={itemVariants}>
-            <Card className="p-8 bg-white shadow-elevated border border-border h-full">
-              <div className="text-center mb-6">
-                <div className="w-24 h-18 mx-auto mb-4">
-                  <img src={weMarketYouLogo} alt="We Market You" className="w-full h-full object-contain" />
-                </div>
-                <h3 className="text-2xl font-bold text-primary">We Market You (Marketing & Communication)</h3>
-              </div>
-              
-              <div className="space-y-4">
-                {["Digital Marketing: SEO, SEM, social media, paid ads", "Email & Content Strategy: Campaigns, blog/short-form", "Analytics: Customer insights, ROI tracking", "Public Relations: Crisis comms, media, reputation mgmt", "Advocacy & Lobbying: Election campaigns, messaging"].map((service, index) => <div key={index} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
-                    <span className="text-muted-foreground">{service}</span>
-                  </div>)}
-              </div>
-            </Card>
-          </motion.div>
-        </div>
+        {/* We Market You Services */}
+        <motion.div variants={itemVariants}>
+          <div className="flex items-center gap-4 mb-6">
+            <div className="w-16 h-12">
+              <img src={weMarketYouLogo} alt="We Market You" className="w-full h-full object-contain" />
+            </div>
+            <h3 className="text-2xl font-bold text-primary">We Market You (Marketing & Communication)</h3>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Digital Marketing",
+                description: "SEO, SEM, social media, paid ads",
+                icon: TrendingUp,
+                color: "text-pink-500"
+              },
+              {
+                title: "Content Strategy",
+                description: "Email campaigns, blog, short-form content",
+                icon: PieChart,
+                color: "text-indigo-500"
+              },
+              {
+                title: "Analytics & Insights",
+                description: "Customer insights, ROI tracking",
+                icon: BarChart3,
+                color: "text-yellow-500"
+              },
+              {
+                title: "Public Relations",
+                description: "Crisis comms, media, reputation mgmt",
+                icon: Users,
+                color: "text-teal-500"
+              },
+              {
+                title: "Advocacy & Lobbying",
+                description: "Election campaigns, messaging",
+                icon: Target,
+                color: "text-violet-500"
+              }
+            ].map((service, index) => (
+              <motion.div
+                key={index}
+                className="p-6 bg-white rounded-xl shadow-elevated border border-border hover:shadow-glow transition-spring"
+                variants={itemVariants}
+                whileHover={{ scale: 1.02, y: -2 }}
+              >
+                <service.icon className={`w-10 h-10 ${service.color} mb-4`} />
+                <h4 className="text-lg font-bold text-primary mb-2">{service.title}</h4>
+                <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </motion.div>;
 
