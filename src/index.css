@@ -200,7 +200,7 @@
     align-items: flex-start;
     justify-content: center;
     padding: 1rem;
-    padding-bottom: 8rem; /* Space for navigation */
+    padding-bottom: 2rem; /* Reduced space since no bottom navigation */
     overflow-x: hidden;
     overflow-y: auto;
     position: relative;
@@ -253,7 +253,7 @@
   @media (max-width: 480px) {
     .pitch-slide {
       padding: 0.75rem 0.5rem;
-      padding-bottom: 7rem;
+      padding-bottom: 1.5rem;
       min-height: 100vh;
       min-height: 100dvh;
     }
@@ -306,7 +306,7 @@
   @media (min-width: 481px) and (max-width: 768px) {
     .pitch-slide {
       padding: 1rem 0.75rem;
-      padding-bottom: 8rem;
+      padding-bottom: 2rem;
     }
     
     .pitch-content {
@@ -335,7 +335,7 @@
   @media (min-width: 769px) and (max-width: 1024px) {
     .pitch-slide {
       padding: 1.5rem 1rem;
-      padding-bottom: 9rem;
+      padding-bottom: 2.5rem;
     }
     
     .pitch-content {
@@ -364,7 +364,7 @@
   @media (min-width: 1025px) {
     .pitch-slide {
       padding: 2rem 1rem;
-      padding-bottom: 10rem;
+      padding-bottom: 3rem;
     }
     
     .pitch-content {
@@ -376,7 +376,7 @@
   @media (min-width: 1400px) {
     .pitch-slide {
       padding: 2.5rem 1rem;
-      padding-bottom: 12rem;
+      padding-bottom: 4rem;
     }
     
     .pitch-content {

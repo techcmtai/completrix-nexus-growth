@@ -2397,32 +2397,36 @@ const PitchDeck = () => {
       }} />)}
       </div>
 
-      {/* Enhanced Responsive Navigation Controls */}
-      <motion.div className="fixed bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 z-50 w-auto max-w-[90vw]" initial={{
+      {/* Left Navigation Button */}
+      <motion.div className="fixed left-4 sm:left-6 top-1/2 transform -translate-y-1/2 z-50" initial={{
       opacity: 0,
-      y: 20
+      x: -20
     }} animate={{
       opacity: 1,
-      y: 0
+      x: 0
     }} transition={{
       duration: 0.4,
       delay: 0.3
     }}>
-        <div className="flex items-center gap-2 sm:gap-3 md:gap-4 bg-white/95 backdrop-blur-md rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-2 sm:py-3 shadow-glow border border-border/50">
-          <Button onClick={prevSlide} size="sm" variant="ghost" className="h-8 sm:h-9 md:h-10 px-2 sm:px-3 hover:bg-accent hover:text-accent-foreground text-xs sm:text-sm">
-            <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4 sm:mr-1" />
-            <span className="hidden sm:inline">Previous</span>
-          </Button>
-          
-          <div className="flex items-center gap-1 sm:gap-2 max-w-[40vw] sm:max-w-none overflow-x-auto">
-            {slides.map((_, index) => <button key={index} onClick={() => goToSlide(index)} className={`w-2 h-2 sm:w-2 sm:h-2 rounded-full transition-all duration-300 flex-shrink-0 ${index === currentSlide ? 'bg-accent w-4 sm:w-6' : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'}`} />)}
-          </div>
+        <Button onClick={prevSlide} size="lg" variant="ghost" className="h-12 w-12 sm:h-14 sm:w-14 rounded-full bg-white/95 backdrop-blur-md shadow-glow border border-border/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110">
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+        </Button>
+      </motion.div>
 
-          <Button onClick={nextSlide} size="sm" variant="ghost" className="h-8 sm:h-9 md:h-10 px-2 sm:px-3 hover:bg-accent hover:text-accent-foreground text-xs sm:text-sm">
-            <span className="hidden sm:inline">Next</span>
-            <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 sm:ml-1" />
-          </Button>
-        </div>
+      {/* Right Navigation Button */}
+      <motion.div className="fixed right-4 sm:right-6 top-1/2 transform -translate-y-1/2 z-50" initial={{
+      opacity: 0,
+      x: 20
+    }} animate={{
+      opacity: 1,
+      x: 0
+    }} transition={{
+      duration: 0.4,
+      delay: 0.3
+    }}>
+        <Button onClick={nextSlide} size="lg" variant="ghost" className="h-12 w-12 sm:h-14 sm:w-14 rounded-full bg-white/95 backdrop-blur-md shadow-glow border border-border/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110">
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+        </Button>
       </motion.div>
 
       {/* Enhanced Responsive Slide Counter */}
