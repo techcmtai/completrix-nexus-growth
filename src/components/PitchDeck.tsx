@@ -246,14 +246,7 @@ const PitchDeck = () => {
         }}>
             MICROTECHNOLOGIES PRIVATE LIMITED
           </motion.p>
-          <motion.div className="w-24 sm:w-32 h-1 bg-accent mx-auto mb-6 sm:mb-8" initial={{
-          width: 0
-        }} animate={{
-          width: "100%"
-        }} transition={{
-          duration: 0.8,
-          delay: 0.5
-        }} />
+          
           <motion.p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold max-w-4xl mx-auto leading-relaxed text-accent mb-6 sm:mb-8 px-4" initial={{
           y: 30,
           opacity: 0
