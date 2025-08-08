@@ -2306,15 +2306,19 @@ const PitchDeck = () => {
                     className="w-full h-40 sm:h-44 md:h-48 object-cover"
                     onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/placeholder.svg' }}
                   />
-                  <a href={client.url} target="_blank" rel="noopener noreferrer" className="absolute top-3 right-3">
-                    <Button size="icon" variant="ghost" aria-label={`View ${client.name}`} className="rounded-full bg-background/80 hover:bg-accent hover:text-accent-foreground shadow-card">
-                      <Eye className="w-4 h-4" />
-                    </Button>
-                  </a>
                 </div>
-                <CardContent className="p-4">
-                  <h3 className="text-base font-semibold text-primary">{client.name}</h3>
-                  <p className="text-xs text-muted-foreground mt-1">{client.category}</p>
+                <CardContent className="p-4 pt-3">
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <h3 className="text-base font-semibold text-primary">{client.name}</h3>
+                      <p className="text-xs text-muted-foreground mt-1">{client.category}</p>
+                    </div>
+                    <a href={client.url} target="_blank" rel="noopener noreferrer">
+                      <Button size="icon" variant="ghost" aria-label={`View ${client.name}`} className="rounded-full bg-background/80 hover:bg-accent hover:text-accent-foreground shadow-card">
+                        <Eye className="w-4 h-4" />
+                      </Button>
+                    </a>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
