@@ -6,10 +6,14 @@ import { ChevronLeft, ChevronRight, ArrowRight, TrendingUp, Users, DollarSign, Z
 import { LineChart as RechartsLineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart as RechartsBarChart, Bar, PieChart as RechartsPieChart, Cell, Pie, Legend } from 'recharts';
 import weMarketYouLogo from '/lovable-uploads/2ba6b31a-4757-4d6a-9d5a-3fd490fce4c9.png';
 import cmtAiLogo from '/lovable-uploads/a576a2c2-c473-4314-a9a6-a3f11e45253c.png';
+import { clients as clientList } from '@/data/clients';
 const PitchDeck = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(false);
-  const slides = ['cover', 'company-overview', 'problem', 'market-research', 'target-customers', 'solution', 'cmt-ai-products', 'we-market-you-services', 'technology-architecture', 'development-process', 'business-model', 'revenue-streams', 'pricing-strategy', 'go-to-market', 'competitive-landscape', 'swot-analysis', 'case-studies', 'traction', 'team-leadership', 'financials', 'funding-ask', 'risk-mitigation', 'expansion-strategy', 'social-impact', 'vision-closing'];
+  // Dynamic client slides (3x3 per slide)
+  const clientChunks = Array.from({ length: Math.ceil(clientList.length / 9) }, (_, i) => clientList.slice(i * 9, (i + 1) * 9));
+  const clientSlideIds = clientChunks.map((_, i) => `clients-${i + 1}`);
+  const slides = ['cover', 'company-overview', 'problem', 'market-research', 'target-customers', 'solution', 'cmt-ai-products', 'we-market-you-services', 'technology-architecture', 'development-process', 'business-model', 'revenue-streams', 'pricing-strategy', 'go-to-market', 'competitive-landscape', 'swot-analysis', ...clientSlideIds, 'case-studies', 'traction', 'team-leadership', 'financials', 'funding-ask', 'risk-mitigation', 'expansion-strategy', 'social-impact', 'vision-closing'];
 
   // Enhanced data sets for interactive visualizations
   const financialData = [{
@@ -2285,6 +2289,41 @@ const PitchDeck = () => {
         </div>
       </div>
     </motion.div>;
+  const ClientsSlide: React.FC<{ page: number }> = ({ page }) => (
+    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+      <div className="pitch-content">
+        <motion.h2 className="section-title" variants={itemVariants}>Client Portfolio</motion.h2>
+        <p className="text-center text-muted-foreground mb-6">Page {page + 1} of {clientChunks.length}</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {clientChunks[page]?.map((client, idx) => (
+            <motion.div key={client.url} variants={itemVariants} whileHover={{ y: -4, scale: 1.01 }}>
+              <Card className="overflow-hidden group bg-card border border-border shadow-card hover:shadow-glow transition-spring">
+                <div className="relative">
+                  <img
+                    src={client.thumbnail || '/placeholder.svg'}
+                    loading="lazy"
+                    alt={`${client.name} - ${client.category}`}
+                    className="w-full h-40 sm:h-44 md:h-48 object-cover"
+                    onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/placeholder.svg' }}
+                  />
+                  <a href={client.url} target="_blank" rel="noopener noreferrer" className="absolute top-3 right-3">
+                    <Button size="icon" variant="ghost" aria-label={`View ${client.name}`} className="rounded-full bg-background/80 hover:bg-accent hover:text-accent-foreground shadow-card">
+                      <Eye className="w-4 h-4" />
+                    </Button>
+                  </a>
+                </div>
+                <CardContent className="p-4">
+                  <h3 className="text-base font-semibold text-primary">{client.name}</h3>
+                  <p className="text-xs text-muted-foreground mt-1">{client.category}</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+
   const renderSlide = () => {
     switch (slides[currentSlide]) {
       case 'cover':
@@ -2368,6 +2407,10 @@ const PitchDeck = () => {
       case 'vision-closing':
         return <VisionClosingSlide />;
       default:
+        if (slides[currentSlide]?.startsWith('clients-')) {
+          const page = Number(slides[currentSlide].split('-')[1]) - 1;
+          return <ClientsSlide page={isNaN(page) ? 0 : page} />;
+        }
         return <CoverSlide />;
     }
   };
