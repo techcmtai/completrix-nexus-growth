@@ -262,20 +262,20 @@ const PitchDeck = () => {
         </motion.div>
         
         <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mt-6 sm:mt-8" variants={itemVariants}>
-          <Card className="bg-white border border-border shadow-elevated hover:shadow-glow transition-spring overflow-hidden">
+          <Card className="bg-card border border-border shadow-elevated hover:shadow-glow transition-spring overflow-hidden">
             <CardContent className="p-4 sm:p-6 lg:p-8 text-center relative">
               <div className="w-32 h-24 sm:w-40 sm:h-28 md:w-48 md:h-36 mx-auto mb-4 sm:mb-6 relative">
-                <img src={cmtAiLogo} alt="CMT AI Logo" className="w-full h-full object-contain rounded-xl sm:rounded-2xl shadow-card" />
+                <img src={cmtAiLogo} alt="CMT AI Logo" loading="lazy" className="w-full h-full object-contain rounded-xl sm:rounded-2xl shadow-card" />
               </div>
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-primary mb-2">CMT AI</h3>
               <p className="text-sm sm:text-base md:text-lg text-muted-foreground">Software Development & AI Solutions</p>
             </CardContent>
           </Card>
           
-          <Card className="bg-white border border-border shadow-elevated hover:shadow-glow transition-spring overflow-hidden">
+          <Card className="bg-card border border-border shadow-elevated hover:shadow-glow transition-spring overflow-hidden">
             <CardContent className="p-4 sm:p-6 lg:p-8 text-center relative">
               <div className="w-32 h-24 sm:w-40 sm:h-28 md:w-48 md:h-36 mx-auto mb-4 sm:mb-6 relative">
-                <img src={weMarketYouLogo} alt="We Market You Logo" className="w-full h-full object-contain rounded-xl sm:rounded-2xl shadow-card" />
+                <img src={weMarketYouLogo} alt="We Market You Logo" loading="lazy" className="w-full h-full object-contain rounded-xl sm:rounded-2xl shadow-card" />
               </div>
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-primary mb-2">We Market You</h3>
               <p className="text-sm sm:text-base md:text-lg text-muted-foreground">Digital Marketing & Strategic Communication</p>
@@ -320,7 +320,7 @@ const PitchDeck = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8">
           <motion.div variants={itemVariants}>
-            <Card className="p-4 sm:p-6 bg-white shadow-elevated border border-border h-full">
+            <Card className="p-4 sm:p-6 bg-card shadow-elevated border border-border h-full">
               <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3 sm:mb-4">Our Mission</h3>
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-3 sm:mb-4">
                 To democratize technology and marketing services for startups and SMEs, enabling them to compete with enterprise-level capabilities at affordable costs.
@@ -333,7 +333,7 @@ const PitchDeck = () => {
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            <Card className="p-4 sm:p-6 bg-white shadow-elevated border border-border h-full">
+            <Card className="p-4 sm:p-6 bg-card shadow-elevated border border-border h-full">
               <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3 sm:mb-4">Our Vision</h3>
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-3 sm:mb-4">
                 To become the go-to technology and marketing partner for emerging businesses across India and globally, fostering innovation and growth.
@@ -347,7 +347,7 @@ const PitchDeck = () => {
         </div>
 
         <motion.div variants={itemVariants}>
-          <Card className="p-8 bg-white shadow-elevated border border-border">
+          <Card className="p-8 bg-card shadow-elevated border border-border">
             <h3 className="text-2xl font-bold text-primary mb-6 text-center">Company Highlights</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
               {[{
@@ -2401,7 +2401,7 @@ const PitchDeck = () => {
       duration: 0.4,
       delay: 0.3
     }}>
-        <Button onClick={prevSlide} size="sm" variant="ghost" className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-white/95 backdrop-blur-md shadow-glow border border-border/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110">
+        <Button onClick={prevSlide} size="sm" variant="ghost" aria-label="Previous slide" title="Previous" className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-card/95 backdrop-blur-md shadow-glow border border-border/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110">
           <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
         </Button>
       </motion.div>
@@ -2417,13 +2417,13 @@ const PitchDeck = () => {
       duration: 0.4,
       delay: 0.3
     }}>
-        <Button onClick={nextSlide} size="sm" variant="ghost" className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-white/95 backdrop-blur-md shadow-glow border border-border/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110">
+        <Button onClick={nextSlide} size="sm" variant="ghost" aria-label="Next slide" title="Next" className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-card/95 backdrop-blur-md shadow-glow border border-border/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110">
           <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
         </Button>
       </motion.div>
 
       {/* Enhanced Responsive Slide Counter */}
-      <motion.div className="fixed top-4 sm:top-6 right-4 sm:right-6 z-50 bg-white/95 backdrop-blur-md rounded-xl sm:rounded-2xl px-3 sm:px-4 py-2 shadow-glow border border-border/50" initial={{
+      <motion.div className="fixed top-4 sm:top-6 right-4 sm:right-6 z-50 bg-card/95 backdrop-blur-md rounded-xl sm:rounded-2xl px-3 sm:px-4 py-2 shadow-glow border border-border/50" initial={{
       opacity: 0,
       scale: 0.8,
       x: 20
