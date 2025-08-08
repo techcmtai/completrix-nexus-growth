@@ -11,7 +11,9 @@ const PitchDeck = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(false);
   // Dynamic client slides (3x3 per slide)
-  const clientChunks = Array.from({ length: Math.ceil(clientList.length / 9) }, (_, i) => clientList.slice(i * 9, (i + 1) * 9));
+  const clientChunks = Array.from({
+    length: Math.ceil(clientList.length / 9)
+  }, (_, i) => clientList.slice(i * 9, (i + 1) * 9));
   const clientSlideIds = clientChunks.map((_, i) => `clients-${i + 1}`);
   const slides = ['cover', 'company-overview', 'problem', 'market-research', 'target-customers', 'solution', 'cmt-ai-products', 'we-market-you-services', 'technology-architecture', 'development-process', 'business-model', 'revenue-streams', 'pricing-strategy', 'go-to-market', 'competitive-landscape', 'swot-analysis', ...clientSlideIds, 'case-studies', 'traction', 'team-leadership', 'financials', 'funding-ask', 'risk-mitigation', 'expansion-strategy', 'social-impact', 'vision-closing'];
 
@@ -303,11 +305,11 @@ const PitchDeck = () => {
             <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4">
               <div className="flex items-center justify-center gap-2">
                 <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-accent flex-shrink-0" />
-                <span className="break-all sm:break-normal">contact@completrix.com</span>
+                <span className="break-all sm:break-normal">ceo@cmtai.in</span>
               </div>
               <div className="flex items-center justify-center gap-2">
                 <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-accent flex-shrink-0" />
-                <span>+91-XXXXXXXXXX</span>
+                <span>+91-9234894293</span>
               </div>
             </div>
           </div>
@@ -2289,23 +2291,24 @@ const PitchDeck = () => {
         </div>
       </div>
     </motion.div>;
-  const ClientsSlide: React.FC<{ page: number }> = ({ page }) => (
-    <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+  const ClientsSlide: React.FC<{
+    page: number;
+  }> = ({
+    page
+  }) => <motion.div className="pitch-slide bg-background" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="pitch-content">
         <motion.h2 className="section-title" variants={itemVariants}>Client Portfolio</motion.h2>
         <p className="text-center text-muted-foreground mb-6">Page {page + 1} of {clientChunks.length}</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {clientChunks[page]?.map((client, idx) => (
-            <motion.div key={client.url} variants={itemVariants} whileHover={{ y: -4, scale: 1.01 }}>
+          {clientChunks[page]?.map((client, idx) => <motion.div key={client.url} variants={itemVariants} whileHover={{
+          y: -4,
+          scale: 1.01
+        }}>
               <Card className="overflow-hidden group bg-card border border-border shadow-card hover:shadow-glow transition-spring">
                 <div className="relative">
-                  <img
-                    src={client.thumbnail || '/placeholder.svg'}
-                    loading="lazy"
-                    alt={`${client.name} - ${client.category}`}
-                    className="w-full h-40 sm:h-44 md:h-48 object-cover"
-                    onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/placeholder.svg' }}
-                  />
+                  <img src={client.thumbnail || '/placeholder.svg'} loading="lazy" alt={`${client.name} - ${client.category}`} className="w-full h-40 sm:h-44 md:h-48 object-cover" onError={e => {
+                (e.currentTarget as HTMLImageElement).src = '/placeholder.svg';
+              }} />
                 </div>
                 <CardContent className="p-4 pt-3">
                   <div className="flex items-center justify-between gap-3">
@@ -2321,13 +2324,10 @@ const PitchDeck = () => {
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
-          ))}
+            </motion.div>)}
         </div>
       </div>
-    </motion.div>
-  );
-
+    </motion.div>;
   const renderSlide = () => {
     switch (slides[currentSlide]) {
       case 'cover':
