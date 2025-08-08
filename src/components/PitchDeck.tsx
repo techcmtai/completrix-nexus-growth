@@ -309,7 +309,7 @@ const PitchDeck = () => {
               </div>
               <div className="flex items-center justify-center gap-2">
                 <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-accent flex-shrink-0" />
-                <span>+91-9234894293</span>
+                <span>+91-9234894293/9911055197</span>
               </div>
             </div>
           </div>
