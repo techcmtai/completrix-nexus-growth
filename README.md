@@ -1,6 +1,6 @@
 # Welcome to your Lovable project
 
-## Project info
+## Project infosss
 
 **URL**: https://lovable.dev/projects/f4bb212f-632d-43b7-a57e-b50259507ecd
 
