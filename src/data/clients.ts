@@ -38,9 +38,9 @@ export const clients: ClientItem[] = [
   },
   {
     name: "flickersports",
-    category: "Digital Marketing",
-    thumbnail: "",
-    url: "https://flickersports.com"
+    category: "Sports & Fitness",
+    thumbnail: "https://idr01.zata.ai/cmtacompany/images/6.png",
+    url: "https://flickersport.com"
   },
   {
     name: "vasstusanjivani",
