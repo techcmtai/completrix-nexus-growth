@@ -2716,7 +2716,7 @@ const PitchDeck = () => {
             </div>
             <h3 className="text-2xl font-bold text-center mb-1 text-accent">Growth</h3>
             <p className="text-gray-500 text-center text-sm mb-2">Growing businesses</p>
-            <div className="text-3xl font-black text-center mb-5 text-accent">₹10-50L</div>
+            <div className="text-3xl font-black text-center mb-5 text-accent">RS:5L to 25L</div>
             <ul className="space-y-3 mb-6">
               <li className="flex items-center gap-2">
                 <span className="w-6 h-6 bg-accent/20 rounded-full flex items-center justify-center">
@@ -2757,7 +2757,7 @@ const PitchDeck = () => {
             </div>
             <h3 className="text-2xl font-bold text-center mb-1">Enterprise</h3>
             <p className="text-gray-500 text-center text-sm mb-2">Large corporations</p>
-            <div className="text-3xl font-black text-center mb-5">₹50L+</div>
+            <div className="text-3xl font-black text-center mb-5">RS:10L to 50L</div>
             <ul className="space-y-3 mb-6">
               <li className="flex items-center gap-2">
                 <span className="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center">
