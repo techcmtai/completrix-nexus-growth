@@ -2669,7 +2669,7 @@ const PitchDeck = () => {
             </div>
             <h3 className="text-2xl font-bold text-center mb-1">Starter</h3>
             <p className="text-gray-500 text-center text-sm mb-2">Early-stage startups</p>
-            <div className="text-3xl font-black text-center mb-5">₹2-10L</div>
+            <div className="text-3xl font-black text-center mb-5">RS:15k to 500k</div>
             <ul className="space-y-3 mb-6">
               <li className="flex items-center gap-2">
                 <span className="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center">
