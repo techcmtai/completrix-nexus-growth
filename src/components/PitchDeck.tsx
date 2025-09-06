@@ -16,7 +16,7 @@ const PitchDeck = () => {
     length: Math.ceil(clientList.length / 9)
   }, (_, i) => clientList.slice(i * 9, (i + 1) * 9));
   const clientSlideIds = clientChunks.map((_, i) => `clients-${i + 1}`);
-  const slides = ['cover', 'company-overview', 'problem', 'market-research', 'target-customers', 'solution', 'cmt-ai-products', 'technology-architecture', 'development-process', 'business-model', 'pricing-strategy', 'go-to-market', 'competitive-landscape', 'swot-analysis', ...clientSlideIds, 'case-studies', 'traction', 'team-leadership', 'financials', 'funding-ask', 'risk-mitigation', 'expansion-strategy', 'social-impact', 'vision-closing'];
+  const slides = ['cover', 'company-overview', 'problem', 'market-research', 'target-customers', 'solution', 'cmt-ai-products', 'technology-architecture', 'development-process', 'business-model', 'go-to-market', 'competitive-landscape', 'swot-analysis', ...clientSlideIds, 'case-studies', 'traction', 'team-leadership', 'financials', 'funding-ask', 'risk-mitigation', 'expansion-strategy', 'social-impact', 'vision-closing'];
 
   // Enhanced data sets for interactive visualizations
   const financialData = [{
@@ -271,16 +271,71 @@ const PitchDeck = () => {
         <motion.div className="grid grid-cols-1 md:grid-cols-1 max-w-[600px] mx-auto gap-4 sm:gap-6 mt-6 sm:mt-8" variants={itemVariants}>
           <Card className="bg-card border border-border shadow-elevated hover:shadow-glow transition-spring overflow-hidden">
             <CardContent className="p-4 sm:p-6 lg:p-8 text-center relative">
-              <div className="w-32 h-24 sm:w-40 sm:h-28 md:w-48 md:h-36 mx-auto mb-4 sm:mb-6 relative">
+              <div className="w-32 h-24 sm:w-40 sm:h-28 md:w-48 md:h-36 mx-auto mb-2 sm:mb-4 relative">
                 <img src={cmtAiLogo} alt="CMT AI Logo" loading="lazy" className="w-full h-full object-contain rounded-xl sm:rounded-2xl" />
               </div>
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-primary mb-2">CMT AI</h3>
               <p className="text-sm sm:text-base md:text-lg text-muted-foreground">Software Development & AI Solutions</p>
             </CardContent>
           </Card>
           
         </motion.div>
 
+        {/* Company Details Section */}
+        <motion.div className="mt-8 sm:mt-12 md:mt-16" variants={itemVariants} initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 1.0 }}>
+          <Card className="p-6 sm:p-8 bg-white/90 backdrop-blur-sm shadow-xl border border-white/20 rounded-2xl max-w-4xl mx-auto">
+            <h3 className="text-xl sm:text-2xl font-bold text-primary mb-6">Company Information</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <Building className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-primary">Registered Office</p>
+                    <p className="text-sm text-muted-foreground">E-23 Lower Ground Floor, Sector-3, Noida, Uttar Pradesh, PIN: 201301</p>
+              </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Calendar className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-primary">Incorporation Date</p>
+                    <p className="text-sm text-muted-foreground">2024</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Award className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-primary">CIN</p>
+                    <p className="text-sm text-muted-foreground">U62091UP2024PTC209887</p>
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <Globe className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-primary">Website</p>
+                    <p className="text-sm text-muted-foreground">www.cmtai.in</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Users className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-primary">Team Size</p>
+                    <p className="text-sm text-muted-foreground">30+ Expert Professionals</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Briefcase className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-primary">Active Clients</p>
+                    <p className="text-sm text-muted-foreground">200+ and Growing</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </motion.div>
+
+        {/* Contact Information */}
         <motion.div className="mt-8 sm:mt-12 md:mt-16 text-center" initial={{
         y: 50,
         opacity: 0
@@ -525,9 +580,9 @@ const PitchDeck = () => {
             variants={itemVariants}
             className="flex flex-col gap-7 w-full md:w-1/2 max-w-xl"
           >
-            <Card className="flex items-start gap-5 p-6 bg-white border border-border shadow-elevated rounded-2xl hover:shadow-2xl transition-all duration-300">
-              <div className="flex items-center justify-center w-24 h-12 bg-accent/10 rounded-full mt-1">
-                <Target className="w-12 h-12 text-accent" />
+            <Card className="flex items-start gap-5 p-6 bg-gradient-to-br from-primary/5 via-accent/5 to-primary/10 border border-primary/20 shadow-elevated rounded-2xl hover:shadow-2xl transition-all duration-300 group">
+              <div className="flex items-center justify-center w-16 h-16 rounded-full mt-1 group-hover:scale-110 transition-transform duration-300">
+                <Target className="w-16 h-16 text-accent" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-primary mb-2">Growth Enablement</h3>
@@ -536,14 +591,14 @@ const PitchDeck = () => {
                 </p>
               </div>
             </Card>
-            <Card className="flex items-start gap-5 p-6 bg-white border border-border shadow-elevated rounded-2xl hover:shadow-2xl transition-all duration-300">
-              <div className="flex items-center justify-center w-24 h-12 bg-accent/10 rounded-full mt-1">
-                <Target className="w-12 h-12 text-accent" />
+            <Card className="flex items-start gap-5 p-6 bg-gradient-to-br from-accent/5 via-primary/5 to-accent/10 border border-accent/20 shadow-elevated rounded-2xl hover:shadow-2xl transition-all duration-300 group">
+              <div className="flex items-center justify-center w-16 h-16 rounded-full mt-1 group-hover:scale-110 transition-transform duration-300">
+                <Brain className="w-16 h-16 text-accent" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-primary mb-2">We Market You</h3>
+                <h3 className="text-xl font-bold text-primary mb-2">AI-Powered Solutions</h3>
                 <p className="text-base text-muted-foreground leading-relaxed">
-                  <span className="font-semibold text-primary">We Market You</span> is our marketing arm—offering SEO, branding, digital ads, and social media to help your business stand out and get real, measurable results.
+                  Leveraging cutting-edge <span className="font-semibold text-accent">Artificial Intelligence & Machine Learning</span> to build intelligent systems, automate processes, and deliver data-driven insights that transform your business operations.
                 </p>
               </div>
             </Card>
@@ -1234,39 +1289,63 @@ const PitchDeck = () => {
           Team & Leadership
         </motion.h2>
         
-        <div className="grid md:grid-cols-2 mx-auto gap-10 mb-20">
+        <div className="grid md:grid-cols-3 mx-auto gap-8 mb-20">
           {[{
           name: "Anurag Singh",
           title: "Founder & CEO",
-          experience: "7+ years in tech, marketing, and AI. Ex-HSBC/UWE. Scaled 50+ startups.",
-          icon: Rocket
-        },  {
+          experience: "With over 7+ Years of experience in Tech, Performance marketing and Branding & AI/ML. Worked with Global Mncs like HSBC/UWE and founded CMT AI. Helped 50+ Startups to scale and Transform into stable businesses.",
+          email: "ceo@cmtai.in",
+          image: "/anurag-singh.png"
+        }, {
+          name: "Shailesh Sinha",
+          title: "Co-founder & Mentor",
+          experience: "With over 25 years of experience in the field of communication, working with Top Media Houses like The Times Of India, TV Today Group, Aajtak, Mid Day Multimedia and many more, Shailesh Sinha has established himself as a trusted expert in helping individuals and organizations achieve their goals through effective communication and presentation.",
+          email: "mentor@cmtai.in",
+          image: "/shailesh-sinha.png"
+        }, {
           name: "Dharmendra Singh",
           title: "Co-founder & CMO",
-          experience: "15+ years in marketing (Club Mahindra, Axis Bank). Founded 3 startups.",
-          icon: Target
+          experience: "With over 15+ Years of experience in Marketing, Have worked in lead roles with Mncs like Club Mahindra, Magic holidays, Axis Bank & mentored startups like Lido learning & Fastdial, founded Edvertia, Prexa and CMT AI",
+          email: "cmo@cmtai.in",
+          image: "/dharmendra-singh.png"
           }].map((member, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
               whileHover={{
-                scale: 1.07,
-                y: -14
+          scale: 1.05,
+                y: -8
               }}
               className="relative"
             >
-              <Card className="relative p-12 bg-gradient-to-br from-white via-accent/5 to-accent/20 border-2 border-accent/20 shadow-2xl text-center h-full rounded-3xl overflow-visible transition-all duration-300 group hover:shadow-glow hover:-translate-y-1">
+              <Card className="relative p-8 bg-gradient-to-br from-white via-accent/5 to-accent/20 border-2 border-accent/20 shadow-2xl text-center h-full rounded-3xl overflow-visible transition-all duration-300 group hover:shadow-glow hover:-translate-y-1">
                 {/* Decorative Accent Ring */}
-                <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-28 h-28 bg-accent/20 rounded-full blur-2xl opacity-40 pointer-events-none z-0" />
-                {/* Avatar/Icon with ring */}
-                <div className="relative z-10 w-24 h-24 mx-auto mb-7 rounded-full bg-white flex items-center justify-center shadow-lg border-4 border-accent/20 group-hover:scale-110 transition-transform duration-300">
-                  <member.icon className="w-12 h-12 text-accent drop-shadow" />
+                <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-24 h-24 bg-accent/20 rounded-full blur-2xl opacity-40 pointer-events-none z-0" />
+                {/* Avatar with orange border */}
+                <div className="relative z-10 w-20 h-20 mx-auto mb-6 rounded-full bg-white flex items-center justify-center shadow-lg border-4 border-orange-500 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="w-full h-full object-cover rounded-full"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLElement).style.display = 'none';
+                      (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'flex';
+                    }}
+                  />
+                  <div className="w-full h-full bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center text-accent font-bold text-lg" style={{display: 'none'}}>
+                    {member.name.split(' ').map(n => n[0]).join('')}
+                </div>
                 </div>
                 {/* Name & Title */}
-                <h3 className="text-2xl font-extrabold text-primary mb-1 tracking-tight">{member.name}</h3>
-                <h4 className="text-base font-semibold text-accent mb-4 tracking-wide uppercase">{member.title}</h4>
+                <h3 className="text-xl font-extrabold text-primary mb-1 tracking-tight">{member.name}</h3>
+                <h4 className="text-sm font-semibold text-accent mb-4 tracking-wide uppercase">{member.title}</h4>
                 {/* Experience */}
-                <p className="text-muted-foreground leading-relaxed text-base px-3">{member.experience}</p>
+                <p className="text-muted-foreground leading-relaxed text-sm px-2 mb-6 flex-grow">{member.experience}</p>
+                {/* Email at bottom */}
+                <div className="flex items-center justify-center gap-2 text-accent text-sm font-medium mt-auto">
+                  <Mail className="w-4 h-4" />
+                  <span>{member.email}</span>
+                </div>
               </Card>
             </motion.div>
           ))}
@@ -1496,7 +1575,7 @@ const PitchDeck = () => {
               <div className="absolute -top-10 -left-10 w-40 h-40 bg-accent/20 rounded-full blur-2xl opacity-30 pointer-events-none" />
               <DollarSign className="w-24 h-24 text-accent mx-auto mb-8 drop-shadow" />
               <h3 className="text-3xl font-extrabold text-primary mb-2 tracking-tight">Funding Ask</h3>
-              <div className="text-5xl md:text-6xl font-black text-accent mb-4 drop-shadow">₹1 Crore</div>
+              <div className="text-5xl md:text-6xl font-black text-accent mb-4 drop-shadow">₹2 Crore</div>
               <p className="text-lg text-muted-foreground font-medium">(INR)</p>
               <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-primary/10 rounded-full blur-2xl opacity-20 pointer-events-none" />
             </Card>
@@ -1511,19 +1590,19 @@ const PitchDeck = () => {
               <div className="space-y-4">
                 {[
                   {
-                percentage: "10%",
+                percentage: "15%",
                 use: "Infra (build tech & content studios)",
-                amount: "₹10L"
+                amount: "₹25L"
                   },
                   {
                 percentage: "20%",
                 use: "EU Market Expansion",
-                amount: "₹20L"
+                amount: "₹30L"
                   },
                   {
                 percentage: "30%",
-                use: "Team Hiring (devs, PMs, marketers)",
-                amount: "₹30L"
+                use: "Team Hiring (devs, PMs, marketers keeping 1 year of runway in advance)",
+                amount: "₹96L"
                   },
                   {
                 percentage: "20%",
@@ -1533,12 +1612,12 @@ const PitchDeck = () => {
                   {
                 percentage: "10%",
                 use: "R&D/Product Development",
-                amount: "₹10L"
+                amount: "₹14L"
                   },
                   {
                 percentage: "10%",
                 use: "Risk & Emergency Fund",
-                amount: "₹10L"
+                amount: "₹15L"
                   }
                 ].map((item, index) => (
                   <div
@@ -1897,7 +1976,7 @@ const PitchDeck = () => {
           <div className="grid md:grid-cols-3 gap-8 relative z-10">
             {[
               {
-          phase: "Phase 1 (Year 1)",
+          phase: "Phase 1",
           title: "Market Consolidation",
                 goals: [
                   "Establish strong presence in India",
@@ -1909,7 +1988,7 @@ const PitchDeck = () => {
                 description: "Focus on Indian market, strengthen brand, and build a robust team foundation."
               },
               {
-          phase: "Phase 2 (Year 2)",
+          phase: "Phase 2",
           title: "EU Market Entry",
                 goals: [
                   "Launch operations in UK & Germany",
@@ -1921,7 +2000,7 @@ const PitchDeck = () => {
                 description: "Expand into Europe, leveraging partnerships and local expertise for rapid growth."
               },
               {
-          phase: "Phase 3 (Year 3+)",
+          phase: "Phase 3",
           title: "Global Scale",
                 goals: [
                   "Expand to US and Asia-Pacific",
@@ -2325,7 +2404,7 @@ const PitchDeck = () => {
               title: "Early-Stage Startups",
               description: "Pre-seed to Series A companies needing MVP development and market entry strategy",
               size: "40%",
-              revenue: "₹0-50L",
+              revenue: "₹15K-5L",
               needs: ["MVP Development", "Digital Presence", "Growth Strategy"],
               icon: Rocket,
               iconColor: "bg-blue-100 text-blue-500"
@@ -2334,7 +2413,7 @@ const PitchDeck = () => {
               title: "SMEs & Growing Businesses",
               description: "Established businesses looking to digitize operations and scale marketing efforts",
               size: "45%",
-              revenue: "₹50L-10Cr",
+              revenue: "₹50K-25L",
               needs: ["Digital Transformation", "Marketing Automation", "System Integration"],
               icon: Building,
               iconColor: "bg-green-100 text-green-500"
@@ -2343,7 +2422,7 @@ const PitchDeck = () => {
               title: "Enterprise Clients",
               description: "Large corporations needing specialized tech solutions and strategic marketing",
               size: "15%",
-              revenue: "₹10Cr+",
+              revenue: "₹25L+",
               needs: ["Custom Solutions", "Strategic Consulting", "Large-scale Implementation"],
               icon: Briefcase,
               iconColor: "bg-purple-100 text-purple-500"
@@ -2978,8 +3057,6 @@ const PitchDeck = () => {
       case 'revenue-streams':
         // TODO: Implement RevenueStreamsSlide or remove this case if not needed
         return null;
-      case 'pricing-strategy':
-        return <PricingStrategySlide />;
       case 'go-to-market':
         return <GoToMarketSlide />;
       case 'marketing-sales-funnel':
