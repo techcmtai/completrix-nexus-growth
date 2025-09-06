@@ -296,7 +296,7 @@ const PitchDeck = () => {
                 <div className="flex items-start gap-3">
                   <Calendar className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-primary">Incorporation Date</p>
+                    <p className="font-semibold text-primary">Incorporated in</p>
                     <p className="text-sm text-muted-foreground">2024</p>
                   </div>
                 </div>
