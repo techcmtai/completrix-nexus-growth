@@ -1291,38 +1291,23 @@ const PitchDeck = () => {
         
         <div className="grid md:grid-cols-3 mx-auto gap-8 mb-20">
           {[{
-          name: "Anurag Singh",
-          title: "Founder & CEO",
-          experience: "With over 7+ Years of experience in Tech, Performance marketing and Branding & AI/ML. Worked with Global Mncs like HSBC/UWE and founded CMT AI. Helped 50+ Startups to scale and Transform into stable businesses.",
-          email: "ceo@cmtai.in",
-          image: "/anurag-singh.png"
-        }, {
-          name: "Shailesh Sinha",
-          title: "Co-founder & Mentor",
-          experience: "With over 25 years of experience in the field of communication, working with Top Media Houses like The Times Of India, TV Today Group, Aajtak, Mid Day Multimedia and many more, Shailesh Sinha has established himself as a trusted expert in helping individuals and organizations achieve their goals through effective communication and presentation.",
-          email: "mentor@cmtai.in",
-          image: "/shailesh-sinha.png"
-        }, {
-          name: "Dharmendra Singh",
-          title: "Co-founder & CMO",
-          experience: "With over 15+ Years of experience in Marketing, Have worked in lead roles with Mncs like Club Mahindra, Magic holidays, Axis Bank & mentored startups like Lido learning & Fastdial, founded Edvertia, Prexa and CMT AI",
-          email: "cmo@cmtai.in",
-          image: "/dharmendra-singh.png"
-        <div className="grid md:grid-cols-3 mx-auto gap-10 mb-20">
-          {[{
-          name: "Anurag Singh",
-          title: "Founder,CEO & CTO",
-          experience: "With over 7+ Years of experience in Tech, Performance marketing and Branding & AI/ML.Worked with Global Mncs like HSBC/UWE and founded CMT AI. Helped 50+ Startups to scale and Tranform into stable businesses.",
-        },  
-{
-          name: "Dharmendra Singh",
-          title: "Co-founder & CMO",
-          experience: "With over 15+ Years of experience in Marketing, Have worked in lead roles with Mncs like Club Mahindra, Magic holidays, Axis Bank & mentored startups like Lido learning & Fastdial, founded Edvertia, Prexa and CMT AI",
-        },
-{
-          name: "Shailesh Sinha",
-          title: "Co-founder CPO & Mentor",
-          experience: "With over 25 years of experience in the field of communication, working with Top Media Houses like The Times Of India, TV Today Group, Aajtak, Mid Day Multimedia and many more, Shailesh Sinha has established himself as a trusted expert in helping individuals and organizations achieve their goals through effective communication and presentation.",
+            name: "Anurag Singh",
+            title: "Founder & CEO",
+            experience: "With over 7+ Years of experience in Tech, Performance marketing and Branding & AI/ML. Worked with Global Mncs like HSBC/UWE and founded CMT AI. Helped 50+ Startups to scale and Transform into stable businesses.",
+            email: "ceo@cmtai.in",
+            image: "/anurag-singh.png"
+          }, {
+            name: "Shailesh Sinha",
+            title: "Co-founder & Mentor",
+            experience: "With over 25 years of experience in the field of communication, working with Top Media Houses like The Times Of India, TV Today Group, Aajtak, Mid Day Multimedia and many more, Shailesh Sinha has established himself as a trusted expert in helping individuals and organizations achieve their goals through effective communication and presentation.",
+            email: "mentor@cmtai.in",
+            image: "/shailesh-sinha.png"
+          }, {
+            name: "Dharmendra Singh",
+            title: "Co-founder & CMO",
+            experience: "With over 15+ Years of experience in Marketing, Have worked in lead roles with Mncs like Club Mahindra, Magic holidays, Axis Bank & mentored startups like Lido learning & Fastdial, founded Edvertia, Prexa and CMT AI",
+            email: "cmo@cmtai.in",
+            image: "/dharmendra-singh.png"
           }].map((member, index) => (
             <motion.div
               key={index}
