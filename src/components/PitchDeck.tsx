@@ -1308,6 +1308,21 @@ const PitchDeck = () => {
           experience: "With over 15+ Years of experience in Marketing, Have worked in lead roles with Mncs like Club Mahindra, Magic holidays, Axis Bank & mentored startups like Lido learning & Fastdial, founded Edvertia, Prexa and CMT AI",
           email: "cmo@cmtai.in",
           image: "/dharmendra-singh.png"
+        <div className="grid md:grid-cols-3 mx-auto gap-10 mb-20">
+          {[{
+          name: "Anurag Singh",
+          title: "Founder,CEO & CTO",
+          experience: "With over 7+ Years of experience in Tech, Performance marketing and Branding & AI/ML.Worked with Global Mncs like HSBC/UWE and founded CMT AI. Helped 50+ Startups to scale and Tranform into stable businesses.",
+        },  
+{
+          name: "Dharmendra Singh",
+          title: "Co-founder & CMO",
+          experience: "With over 15+ Years of experience in Marketing, Have worked in lead roles with Mncs like Club Mahindra, Magic holidays, Axis Bank & mentored startups like Lido learning & Fastdial, founded Edvertia, Prexa and CMT AI",
+        },
+{
+          name: "Shailesh Sinha",
+          title: "Co-founder CPO & Mentor",
+          experience: "With over 25 years of experience in the field of communication, working with Top Media Houses like The Times Of India, TV Today Group, Aajtak, Mid Day Multimedia and many more, Shailesh Sinha has established himself as a trusted expert in helping individuals and organizations achieve their goals through effective communication and presentation.",
           }].map((member, index) => (
             <motion.div
               key={index}
@@ -2748,7 +2763,7 @@ const PitchDeck = () => {
             </div>
             <h3 className="text-2xl font-bold text-center mb-1">Starter</h3>
             <p className="text-gray-500 text-center text-sm mb-2">Early-stage startups</p>
-            <div className="text-3xl font-black text-center mb-5">₹2-10L</div>
+            <div className="text-3xl font-black text-center mb-5">RS:15k to 500k</div>
             <ul className="space-y-3 mb-6">
               <li className="flex items-center gap-2">
                 <span className="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center">
@@ -2795,7 +2810,7 @@ const PitchDeck = () => {
             </div>
             <h3 className="text-2xl font-bold text-center mb-1 text-accent">Growth</h3>
             <p className="text-gray-500 text-center text-sm mb-2">Growing businesses</p>
-            <div className="text-3xl font-black text-center mb-5 text-accent">₹10-50L</div>
+            <div className="text-3xl font-black text-center mb-5 text-accent">RS:5L to 25L</div>
             <ul className="space-y-3 mb-6">
               <li className="flex items-center gap-2">
                 <span className="w-6 h-6 bg-accent/20 rounded-full flex items-center justify-center">
@@ -2836,7 +2851,7 @@ const PitchDeck = () => {
             </div>
             <h3 className="text-2xl font-bold text-center mb-1">Enterprise</h3>
             <p className="text-gray-500 text-center text-sm mb-2">Large corporations</p>
-            <div className="text-3xl font-black text-center mb-5">₹50L+</div>
+            <div className="text-3xl font-black text-center mb-5">RS:10L to 50L</div>
             <ul className="space-y-3 mb-6">
               <li className="flex items-center gap-2">
                 <span className="w-6 h-6 bg-gray-100 rounded-full flex items-center justify-center">
